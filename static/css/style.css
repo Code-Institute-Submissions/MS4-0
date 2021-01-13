@@ -85,9 +85,50 @@ nav .fa-bars {
   background-color: #e3f2fd;
 }
 
+/* <----- DASHBOARD -----> */
+
+#tableDashboard {
+  width: 60%;
+  margin-top: 15px;
+  margin-left: 50%;
+  transform: translate(-50%, 0);
+  border-collapse: separate !important;
+}
+
+#tableDashboard tbody tr {
+  background-color: #c4c4c4;
+}
+
+.blankCell {
+  background-color: #e3f2fd;
+}
+
+#blankRow td{
+  padding: 5px;
+}
+
+.highlightCell {
+  background-color: #0d47a1;
+  color: #e3f2fd;
+  padding-left: 10px;
+  font-weight: 700;
+}
+
+.highlightCellReject {
+  padding-left: 10px;
+  font-weight: 700;
+}
+
+#rejectedRow td {
+  color: #53667F;
+}
+
+/* <----- REGISTER -----> */
+
 /* Table setup */
 
-table {
+
+#tableRegister {
   width: 95%;
   margin-top: 15px;
   margin-left: 50%;

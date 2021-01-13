@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+
+<table class="" id="tableDashboard">
+  <thead>
+    <tr>
+      <th class="blankCell"></th>
+      <th class="width_m center">£ Total</th>
+      <th class="width_s center">£/ft2</th>
+      <th class="width_m center">+/-<br>Area ft2</th>
+      <th class="width_m center">Total<br>Area ft2</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr id="blankRow">
+      <td class="blankCell"></td>
+    </tr>
+    <tr id="budgetRow">
+      <td class="highlightCell">Approved Budget</td>
+      <td class="center">1000000</td>
+      <td class="center">325</td>
+      <td class="center">-</td>
+      <td class="center">10,000</td>
+    </tr>
+    <tr id="blankRow">
+      <td class="blankCell"></td>
+    </tr>
+    <tr id="approvedRow">
+      <td class="highlightCell">Approved</td>
+      <td class="center">1000000</td>
+      <td class="center">325</td>
+      <td class="center">100</td>
+      <td class="center">10,100</td>
+    </tr>
+    <tr id="pendingRow">
+      <td class="highlightCell">Pending</td>
+      <td class="center">1000000</td>
+      <td class="center">325</td>
+      <td class="center">200</td>
+      <td class="center">10,300</td>
+    </tr>
+    <tr id="wipRow">
+      <td class="highlightCell">Work in Progress</td>
+      <td class="center">1000000</td>
+      <td class="center">325</td>
+      <td class="center">300</td>
+      <td class="center">10,600</td>
+    </tr>
+    <tr id="blankRow">
+      <td class="blankCell"></td>
+    </tr>
+    <tr id="revisedRow">
+      <td class="highlightCell">Revised Estimate</td>
+      <td class="center">1000000</td>
+      <td class="center">325</td>
+      <td class="center">600</td>
+      <td class="center">10,600</td>
+    </tr>
+    <tr id="blankRow">
+      <td class="blankCell"></td>
+    </tr>
+    <tr id="rejectedRow">
+      <td class="highlightCellReject">Rejected</td>
+      <td class="center">10,000</td>
+      <td class="center">325</td>
+      <td class="center">1000</td>
+      <td class="center">11,600</td>
+    </tr>
+  </tbody>
+</table>
+
+
+{% endblock %}
+
+
+
+{% block scripts %}
+
+
+{% endblock %}

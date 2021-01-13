@@ -19,7 +19,12 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 @app.route("/")
-@app.route("/get_register")
+@app.route("/dashboard")
+def get_dashboard():
+  return render_template("dashboard.html")
+
+
+@app.route("/register")
 def get_register():
   register = mongo.db.register.find()
   return render_template("register.html", register=register)
