@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- jQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Import Google fonts - www.google.com/fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+  <!-- Import Fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+    integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
+    crossorigin="anonymous" type="text/css">
+
+  <!-- Import Materialize CNN - www.materializecss.com -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    type="text/css">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+
+  {% block styles %}
+  {% endblock %}
+
+  <title>Contrarotolum</title>
+</head>
+
+<body>
+
+  <header>
+    <!-- Materialize Dropdown Menu -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="#!">one</a></li>
+      <li><a href="#!">two</a></li>
+      <li><a href="#!">three</a></li>
+    </ul>
+    <nav class="nav-main">
+      <div class="nav-wrapper blue darken-4">
+        <a href="#!" class="brand-logo">Contrarotolum</a>
+        <ul class="right">
+          <!-- Dropdown Trigger -->
+          <li><a class="dropdown-trigger center" href="#!" data-target="dropdown1"><i class="fas fa-bars blue"></i></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Materialize Fixed Navbar -->
+    <!-- <div class="navbar-fixed"> -->
+      <nav>
+        <div class="nav-wrapper blue">
+          <div class="row">
+            <div class="col s6 center-align submenu-item">
+              <a href="sass.html">Dashboard</a>
+            </div>
+            <div class="col s6 center-align submenu-item">
+              <a href="sass.html">Register</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <!-- </div> -->
+
+  </header>
+
+  <div class="row">
+    <div class="col s3 filter grey lighten-1">
+      <h3>Filter</h3>
+      <br>
+      
+      <form action="#">
+        <h5>COST</h5>
+        <div class="switch">
+          <label>
+            Nett
+            <input type="checkbox" name="cost" id="costSwitch">
+            <span class="lever"></span>
+            Gross
+          </label>
+        </div>
+        <br>
+        <h5>STATUS</h5>
+        <p>
+          <label>
+            <input type="checkbox" id="approved" checked/>
+            <span>Approved</span>
+          </label>
+          <label>
+            <input type="checkbox" id="pending" checked/>
+            <span>Pending</span>
+          </label>
+          <br>
+          <label>
+            <input type="checkbox" id="wip" checked/>
+            <span>WiP</span>
+          </label>
+          <label>
+            <input type="checkbox" id="rejected" checked/>
+            <span>Rejected</span>
+          </label>
+        </p>
+        <br>
+        <h5>CHANGE TYPE</h5>
+        <p>
+          <label>
+            <input type="checkbox" id="changeCA" checked/>
+            <span>CA</span>
+          </label>
+          <label>
+            <input type="checkbox" id="changeCR" checked/>
+            <span>CR</span>
+          </label>
+          <br>
+          <label>
+            <input type="checkbox" id="changeDD" checked/>
+            <span>DD</span>
+          </label>
+          <label>
+            <input type="checkbox" id="changePA" checked/>
+            <span>PA</span>
+          </label>
+          <br>
+          <label>
+            <input type="checkbox" id="changeEW" checked/>
+            <span>EW</span>
+          </label>
+          <label>
+            <input type="checkbox" id="changeVE" checked/>
+            <span>VE</span>
+          </label>
+        </p>
+        <br>
+        <h5>PERIOD (last 30 days)</h5>
+        <p>
+          <label>
+            <input type="checkbox" id="periodNew"/>
+            <span>New</span>
+          </label>
+          <label>
+            <input type="checkbox" id="periodChange"/>
+            <span>Changes</span>
+          </label>
+        </p>
+      </form>
+
+    </div>
+    <div class="col s9 section_main">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+
+
+  <!-- Materialize CDN - www.materializecss.com -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+  {% block scripts %}
+  {% endblock %}
+
+</body>
+
+</html>

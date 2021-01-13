@@ -1,0 +1,152 @@
+/* Global */
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Main navbar */
+
+nav .brand-logo {
+  color: #e3f2fd;
+  font-size: 2.5rem;
+  letter-spacing: 0.5rem;
+  margin-left: 25px;
+}
+
+nav .fa-bars {
+  color: #e3f2fd;
+  margin-right: 25px;
+}
+
+.nav-main {
+  height: 120px;
+  line-height: 120px;
+}
+
+nav .fa-bars {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+}
+
+#dropdown1 {
+  top: -100px;
+  padding-right: 25px;
+}
+
+/* Submenu */
+
+.submenu-item {
+  font-size: 1.5rem;
+  letter-spacing: 0.5rem;
+  color: #e3f2fd;
+}
+
+.submenu-item:hover {
+  font-weight: 700;
+}
+
+/* Filter sidebar */
+
+.filter {
+  height: 100vh;
+}
+
+.filter .switch label {
+  font-size: 1rem;
+  color: #0d47a1;
+}
+
+.filter h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5rem;
+  color: #0d47a1;
+}
+
+.filter h5 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.25rem;
+  color: #0d47a1;
+}
+
+.filter p label {
+  font-size: 1.5rem;
+  color: #0d47a1;
+  margin-right: 16px;
+}
+
+/* Main Section - Base HTML */
+
+.section_main {
+  margin: 0px;
+  height: 100vh;
+  background-color: #e3f2fd;
+}
+
+/* Table setup */
+
+table {
+  width: 95%;
+  margin-top: 15px;
+  margin-left: 50%;
+  transform: translate(-50%, 0);
+}
+
+th {
+  background-color: #0d47a1;
+  color: #e3f2fd;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+}
+
+td {
+  color: #0d47a1;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+}
+
+.width_s {
+  width: 75px;
+}
+
+.width_m {
+  width: 125px;
+}
+
+.width_l {
+  width: 200px;
+}
+
+th .center {
+  align-content: center;
+}
+
+.hideRowStatus {
+  display: none;
+}
+
+.hideRowType {
+  display: none;
+}
+
+/* Nett/Gross filter */
+.hideCost {
+  display: none;
+}
+
+/* Period filter */
+.hideNewRow {
+  display: none;
+}
+
+.hideChangedRow {
+  display: none;
+}
+
+/* Hide columns - for filtering only */
+.dateHidden {
+  display: none;
+}
