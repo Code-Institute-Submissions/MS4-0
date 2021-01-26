@@ -388,20 +388,20 @@ $('#costSwitch').click(function () {
 // Accepted Filter
 $("#A").click(function () {
   if ($(this).is(':checked') && $('.changeStatus').text().match('A')) {
-    $('.changeStatus:contains("A")').parent('tr').removeClass('hideRowStatus')
+    $('.changeStatus:contains("A")').filter(function() {return $(this).text() === 'A'}).parent('tr').removeClass('hideRowStatus')
   }
   else if ($(this).not(':checked') && $('.changeStatus').text().match('A')) {
-    $('.changeStatus:contains("A")').parent('tr').addClass('hideRowStatus');
+    $('.changeStatus:contains("A")').filter(function() {return $(this).text() === 'A'}).parent('tr').addClass('hideRowStatus');
   }
 });
 
 // Pending Filter
 $("#P").click(function () {
   if ($(this).is(':checked') && $('.changeStatus').text().match('P')) {
-    $('.changeStatus:contains("P")').parent('tr').removeClass('hideRowStatus')
+    $('.changeStatus:contains("P")').filter(function() {return $(this).text() === 'P'}).parent('tr').removeClass('hideRowStatus')
   }
   else if ($(this).not(':checked') && $('.changeStatus').text().match('P')) {
-    $('.changeStatus:contains("P")').parent('tr').addClass('hideRowStatus');
+    $('.changeStatus:contains("P")').filter(function() {return $(this).text() === 'P'}).parent('tr').addClass('hideRowStatus');
   }
 });
 
@@ -410,7 +410,7 @@ $("#WiP").click(function () {
   if ($(this).is(':checked') && $('.changeStatus').text().match('WiP')) {
     $('.changeStatus:contains("WiP")').parent('tr').removeClass('hideRowStatus')
   }
-  else if ($(this).not(':checked') && $('.changeStatus').text().match('P')) {
+  else if ($(this).not(':checked') && $('.changeStatus').text().match('WiP')) {
     $('.changeStatus:contains("WiP")').parent('tr').addClass('hideRowStatus');
   }
 });
@@ -418,10 +418,10 @@ $("#WiP").click(function () {
 // Rejected Filter
 $("#R").click(function () {
   if ($(this).is(':checked') && $('.changeStatus').text().match('R')) {
-    $('.changeStatus:contains("R")').parent('tr').removeClass('hideRowStatus')
+    $('.changeStatus:contains("R")').filter(function() {return $(this).text() === 'R'}).parent('tr').removeClass('hideRowStatus')
   }
   else if ($(this).not(':checked') && $('.changeStatus').text().match('R')) {
-    $('.changeStatus:contains("R")').parent('tr').addClass('hideRowStatus');
+    $('.changeStatus:contains("R")').filter(function() {return $(this).text() === 'R'}).parent('tr').addClass('hideRowStatus');
   }
 });
 
