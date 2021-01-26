@@ -85,20 +85,20 @@
         <h5>STATUS</h5>
         <p>
           <label>
-            <input type="checkbox" id="approved" checked/>
+            <input type="checkbox" id="A" onchange="handleChangeStatus()" checked/>
             <span>Approved</span>
           </label>
           <label>
-            <input type="checkbox" id="pending" checked/>
+            <input type="checkbox" id="P" onchange="handleChangeStatus()" checked/>
             <span>Pending</span>
           </label>
           <br>
           <label>
-            <input type="checkbox" id="wip" checked/>
+            <input type="checkbox" onchange="handleChangeStatus()" id="WiP" checked/>
             <span>WiP</span>
           </label>
           <label>
-            <input type="checkbox" id="rejected" checked/>
+            <input type="checkbox" onchange="handleChangeStatus()" id="R" checked/>
             <span>Rejected</span>
           </label>
         </p>
@@ -106,29 +106,29 @@
         <h5>CHANGE TYPE</h5>
         <p>
           <label>
-            <input type="checkbox" id="changeCA" checked/>
+            <input type="checkbox" onchange="handleChangeChanges()" id="CA" checked/>
             <span>CA</span>
           </label>
           <label>
-            <input type="checkbox" id="changeCR" checked/>
+            <input type="checkbox" onchange="handleChangeChanges()" id="CR" checked/>
             <span>CR</span>
           </label>
           <br>
           <label>
-            <input type="checkbox" id="changeDD" checked/>
+            <input type="checkbox" onchange="handleChangeChanges()" id="DD" checked/>
             <span>DD</span>
           </label>
           <label>
-            <input type="checkbox" id="changePA" checked/>
+            <input type="checkbox" onchange="handleChangeChanges()" id="PA" checked/>
             <span>PA</span>
           </label>
           <br>
           <label>
-            <input type="checkbox" id="changeEW" checked/>
+            <input type="checkbox" onchange="handleChangeChanges()" id="EW" checked/>
             <span>EW</span>
           </label>
           <label>
-            <input type="checkbox" id="changeVE" checked/>
+            <input type="checkbox" onchange="handleChangeChanges()" id="VE" checked/>
             <span>VE</span>
           </label>
         </p>
