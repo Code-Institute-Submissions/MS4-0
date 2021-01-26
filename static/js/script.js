@@ -21,8 +21,6 @@ $(window).on('load', function () {
 })
 
 
-
-
 let checkedStatus = ["A", "P", "WiP"]
 let checkedChanges = ["DD", "CA"]
 
@@ -388,7 +386,7 @@ $('#costSwitch').click(function () {
 })
 
 // Accepted Filter
-$("#approved").click(function () {
+$("#A").click(function () {
   if ($(this).is(':checked') && $('.changeStatus').text().match('A')) {
     $('.changeStatus:contains("A")').parent('tr').removeClass('hideRowStatus')
   }
@@ -398,7 +396,7 @@ $("#approved").click(function () {
 });
 
 // Pending Filter
-$("#pending").click(function () {
+$("#P").click(function () {
   if ($(this).is(':checked') && $('.changeStatus').text().match('P')) {
     $('.changeStatus:contains("P")').parent('tr').removeClass('hideRowStatus')
   }
@@ -408,7 +406,7 @@ $("#pending").click(function () {
 });
 
 // WiP Filter
-$("#wip").click(function () {
+$("#WiP").click(function () {
   if ($(this).is(':checked') && $('.changeStatus').text().match('WiP')) {
     $('.changeStatus:contains("WiP")').parent('tr').removeClass('hideRowStatus')
   }
@@ -418,7 +416,7 @@ $("#wip").click(function () {
 });
 
 // Rejected Filter
-$("#rejected").click(function () {
+$("#R").click(function () {
   if ($(this).is(':checked') && $('.changeStatus').text().match('R')) {
     $('.changeStatus:contains("R")').parent('tr').removeClass('hideRowStatus')
   }
@@ -428,7 +426,7 @@ $("#rejected").click(function () {
 });
 
 // CA Filter
-$("#changeCA").click(function () {
+$("#CA").click(function () {
   if ($(this).is(':checked') && $('.changeType').text().match('CA')) {
     $('.changeType:contains("CA")').parent('tr').removeClass('hideRowType')
   }
@@ -438,7 +436,7 @@ $("#changeCA").click(function () {
 });
 
 // CR Filter
-$("#changeCR").click(function () {
+$("#CR").click(function () {
   if ($(this).is(':checked') && $('.changeType').text().match('CR')) {
     $('.changeType:contains("CR")').parent('tr').removeClass('hideRowType')
   }
@@ -448,7 +446,7 @@ $("#changeCR").click(function () {
 });
 
 // DD Filter
-$("#changeDD").click(function () {
+$("#DD").click(function () {
   if ($(this).is(':checked') && $('.changeType').text().match('DD')) {
     $('.changeType:contains("DD")').parent('tr').removeClass('hideRowType')
   }
@@ -458,7 +456,7 @@ $("#changeDD").click(function () {
 });
 
 // PA Filter
-$("#changePA").click(function () {
+$("#PA").click(function () {
   if ($(this).is(':checked') && $('.changeType').text().match('PA')) {
     $('.changeType:contains("PA")').parent('tr').removeClass('hideRowType')
   }
@@ -468,7 +466,7 @@ $("#changePA").click(function () {
 });
 
 // EW Filter
-$("#changeEW").click(function () {
+$("#EW").click(function () {
   if ($(this).is(':checked') && $('.changeType').text().match('EW')) {
     $('.changeType:contains("EW")').parent('tr').removeClass('hideRowType')
   }
@@ -478,7 +476,7 @@ $("#changeEW").click(function () {
 });
 
 // VE Filter
-$("#changeVE").click(function () {
+$("#VE").click(function () {
   if ($(this).is(':checked') && $('.changeType').text().match('VE')) {
     $('.changeType:contains("VE")').parent('tr').removeClass('hideRowType')
   }
