@@ -1,5 +1,9 @@
 /* Global */
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
 }
@@ -189,5 +193,29 @@ th .center {
 
 /* Hide columns - for filtering only */
 .dateHidden {
+  display: none;
+}
+
+/* <----- Item Layout -----> */
+
+.itemContainer {
+  margin-top: 50px !important;
+}
+
+.itemHeading {
+  margin-left: 0.75rem;
+}
+
+.btnEdit {
+  position: relative;
+  margin-bottom: 50%;
+  transform: translate(0, 50%);
+}
+
+.itemContainer .btn-floating {
+  margin: 0px 10px 15px 10px;
+}
+
+.hideInput {
   display: none;
 }

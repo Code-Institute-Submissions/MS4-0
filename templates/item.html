@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Use of Materialize Forms -->
+<!-- top row -->
+<div class="container itemContainer">
+  <div class="row">
+    <form class="col s12" method="POST" action="{{ url_for('add_item')}}">
+      <div class="row">
+        <div class="col s9">
+          <div class="row">
+            <div class="input-field col s2">
+              <input id="change_nr" name="change_nr" type="number" class="validate" minlength="1" maxlength="3">
+              <label for="change_nr">Change Nr</label>
+            </div>
+            <div class="input-field col s4 offset-s1">
+              <input id="date_added" name="date_added" type="date" class="validate">
+              <label for="date_added">Date Added</label>
+            </div>
+            <div class="input-field col s4 offset-s1">
+              <input id="date_changed" name="date_changed" type="date" class="validate">
+              <label for="date_changed">Last Change</label>
+            </div>
+          </div>
+        </div>
+        <div class="col s3">
+          <div class="row">
+            <div class="col s10 right-align">
+              <a class="waves-effect waves-light blue btn-small btnEdit">Edit</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <!-- column 1 data -->
+        <div class="col s6">
+          <div class="row">
+            <div class="itemHeading">Change Details</div>
+            <div class="input-field col s12">
+              <input value="" id="change_name" name="change_name" type="text" class="validate" minlength="1" maxlength="30">
+              <label for="change_name">Change Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="change_description" name="change_description" class="materialize-textarea" minlength="1" maxlength="250"></textarea>
+              <label for="change_description">Description of Change</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <select id="status" name="status" class="validate" required>
+                <option value="" selected disabled>Select</option>
+                <option value="A">Accepted</option>
+                <option value="P">Pending</option>
+                <option value="WiP">Work in Progress</option>
+                <option value="R">Rejected</option>
+              </select>
+              <label>Status</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <select id="change_type" name="change_type" class="validate" required>
+                <option value="" disabled selected>Select</option>
+                <option value="CA">Client Approved</option>
+                <option value="CR">Regulatory Change</option>
+                <option value="DD">Design Development</option>
+                <option value="PA">Pricing/Measurement Adjustment</option>
+                <option value="EW">Early Warning</option>
+                <option value="VE">Value Engineering</option>
+              </select>
+              <label>Change Type</label>
+            </div>
+          </div>
+
+        </div>
+        <!-- column 2 data -->
+        <div class="col s6">
+          <div class="row">
+            <div class="itemHeading">Total Costs</div>
+            <div class="input-field col s6">
+              <input value="" id="cost_nett" name="cost_nett" type="number" class="validate" onchange="updateTotal()">
+              <label for="cost_nett">Nett Cost</label>
+            </div>
+            <div class="input-field col s6">
+              <input disabled placeholder="-" value="" id="cost_gross_show" name="cost_gross_show" type="number" class="validate">
+              <label for="cost_gross">Gross Cost</label>
+            </div>
+            <!-- Hidden cost_gross so that retrieved values will be sent to with POST -->
+            <div class="input-field col s6 hideInput">
+              <input value="" id="cost_gross" name="cost_gross" type="number" class="validate">
+              <label for="cost_gross">Hidden Gross Cost</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="itemHeading">Contingency</div>
+            <div class="input-field col s6">
+              <input value="" id="cont_design_total" name="cont_design_total" type="number" class="validate" onchange="updateTotal()">
+              <label for="cont_design_total">Design</label>
+            </div>
+            <div class="input-field col s6">
+              <input value="" id="cont_const_total" name="cont_const_total" type="number" class="validate" onchange="updateTotal()">
+              <label for="cont_const_total">Construction</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="itemHeading">Main Contractor On-Costs</div>
+            <div class="input-field col s6">
+              <input value="" id="prelims_total" name="prelims_total" type="number" class="validate" onchange="updateTotal()">
+              <label for="prelims_total">Preliminaries</label>
+            </div>
+            <div class="input-field col s6">
+              <input value="" id="ohp_total" name="ohp_total" type="number" class="validate" onchange="updateTotal()">
+              <label for="ohp_total">OH&P</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="itemHeading">Areas</div>
+            <div class="input-field col s6">
+              <input value="" id="NIA_ft2" name="NIA_ft2" type="number" class="validate">
+              <label for="NIA_ft2">NIA</label>
+            </div>
+            <div class="input-field col s6">
+              <input value="" id="GIA_ft2" name="GIA_ft2" type="number" class="validate">
+              <label for="GIA_ft2">GIA</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="fixed-action-btn">
+              <div class="col s12 right-align">
+                <button type="submit" class="btn-floating btn-large waves-effect waves-light blue"><i class="fas fa-check"></i></a>
+                <button type="submit" class="btn-floating btn-large waves-effect waves-light blue"><i class="fas fa-times"></i></a>
+              </div>
+          </div>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block scripts %}
+
+{% endblock %}

@@ -125,6 +125,30 @@ def get_filter():
   return jsonify(arr)
 
 
+@app.route("/item", methods=["GET", "POST"])
+def add_item():
+  if request.method == "POST":
+    item = {
+      "change_nr": request.form.get("change_nr"),
+      "date_added": request.form.get("date_added"),
+      "date_changed": request.form.get("date_changed"),
+      "change_name": request.form.get("change_name"),
+      "change_description": request.form.get("change_description"),
+      "status": request.form.get("status"),
+      "change_type": request.form.get("change_type"),
+      "cost_nett": request.form.get("cost_nett", type=int),
+      "cost_gross": request.form.get("cost_gross", type=int),
+      "cont_design_total": request.form.get("cont_design_total", type=int),
+      "cont_const_total": request.form.get("cont_const_total", type=int),
+      "prelims_total": request.form.get("prelims_total", type=int),
+      "ohp_total": request.form.get("ohp_total", type=int),
+      "NIA_ft2": request.form.get("NIA_ft2", type=int),
+      "GIA_ft2": request.form.get("GIA_ft2", type=int)    }
+    mongo.db.register.insert_one(item)
+  # item = mongo.db.register.find()
+  return render_template("item.html")
+
+
 if __name__ == "__main__":
   app.run(host=os.environ.get("IP"),
     port=int(os.environ.get("PORT")),
