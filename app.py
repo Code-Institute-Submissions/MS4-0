@@ -125,7 +125,7 @@ def get_filter():
   return jsonify(arr)
 
 
-@app.route("/item", methods=["GET", "POST"])
+@app.route("/add_item", methods=["GET", "POST"])
 def add_item():
   if request.method == "POST":
     item = {
@@ -145,8 +145,9 @@ def add_item():
       "NIA_ft2": request.form.get("NIA_ft2", type=int),
       "GIA_ft2": request.form.get("GIA_ft2", type=int)    }
     mongo.db.register.insert_one(item)
+    return redirect(url_for('register'))
   # item = mongo.db.register.find()
-  return render_template("item.html")
+  return render_template("add_item.html")
 
 
 if __name__ == "__main__":

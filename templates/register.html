@@ -1,54 +1,66 @@
 {% extends "base.html" %}
 {% block content %}
 
-<table class="highlight" id="tableRegister">
-  <thead>
-    <tr>
-      <th class="width_s center">Nr</th>
-      <th>Change</th>
-      <th class="width_l center costNett">Nett<br>£ Total</th>
-      <th class="width_l center costGross hideCost">Gross<br>£ Total</th>
-      <th class="width_m center giaNett">Nett<br>£/ft2</th>
-      <th class="width_m center giaGross hideCost">Gross<br>£/ft2</th>
-      <th class="width_m center">+/-<br>Area ft2</th>
-      <th class="width_s center">Change<br>Type</th>
-      <th class="width_s center">Status</th>
-      <th class="dateHidden">Date<br>Added</th>
-      <th class="dateHidden">New?</th>
-      <th class="dateHidden">Date<br>Changed</th>
-      <th class="dateHidden">changed?</th>
-    </tr>
-  </thead>
+<div class="row">
+  <div class="col s12">
+    <table class="highlight" id="tableRegister">
+      <thead>
+        <tr>
+          <th class="width_s center">Nr</th>
+          <th>Change</th>
+          <th class="width_l center costNett">Nett<br>£ Total</th>
+          <th class="width_l center costGross hideCost">Gross<br>£ Total</th>
+          <th class="width_m center giaNett">Nett<br>£/ft2</th>
+          <th class="width_m center giaGross hideCost">Gross<br>£/ft2</th>
+          <th class="width_m center">+/-<br>Area ft2</th>
+          <th class="width_s center">Change<br>Type</th>
+          <th class="width_s center">Status</th>
+          <th class="dateHidden">Date<br>Added</th>
+          <th class="dateHidden">New?</th>
+          <th class="dateHidden">Date<br>Changed</th>
+          <th class="dateHidden">changed?</th>
+        </tr>
+      </thead>
 
-  <tbody>
-    {% for change in register %}
-    <tr class="rowOff">
-      <td class="center changeNr">{{ change.change_nr }}</td>
-      <td class="changeName">{{ change.change_name }}</td>
-      <td class="center costNett">{{ change.cost_nett }}</td>
-      <td class="center costGross hideCost">{{ change.cost_gross }}</td>
-      <td class="center giaNett">
-        {% if change.GIA_ft2|int > 0 %}
-          {{ change.cost_nett|int // change.GIA_ft2 }}
-        {% endif %}
-      </td>
-      <td class="center giaGross hideCost">
-        {% if change.GIA_ft2|int > 0 %}
-          {{ change.cost_gross|int // change.GIA_ft2 }}
-        {% endif %}
-      </td>
-      <td class="center GIA">{{ change.GIA_ft2 }}</td>
-      <td class="center changeType">{{ change.change_type }}</td>
-      <td class="center changeStatus">{{ change.status }}</td>
-      <td class="dateAdded dateHidden">{{ change.date_added }}</td>
-      <td class="periodN dateHidden"></td>
-      <td class="dateChanged dateHidden">{{ change.date_changed }}</td>
-      <td class="periodC dateHidden"></td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+      <tbody>
+        {% for change in register %}
+        <tr class="rowOff">
+          <td class="center changeNr">{{ change.change_nr }}</td>
+          <td class="changeName">{{ change.change_name }}</td>
+          <td class="center costNett">{{ change.cost_nett }}</td>
+          <td class="center costGross hideCost">{{ change.cost_gross }}</td>
+          <td class="center giaNett">
+            {% if change.GIA_ft2|int > 0 %}
+            {{ change.cost_nett|int // change.GIA_ft2 }}
+            {% endif %}
+          </td>
+          <td class="center giaGross hideCost">
+            {% if change.GIA_ft2|int > 0 %}
+            {{ change.cost_gross|int // change.GIA_ft2 }}
+            {% endif %}
+          </td>
+          <td class="center GIA">{{ change.GIA_ft2 }}</td>
+          <td class="center changeType">{{ change.change_type }}</td>
+          <td class="center changeStatus">{{ change.status }}</td>
+          <td class="dateAdded dateHidden">{{ change.date_added }}</td>
+          <td class="periodN dateHidden"></td>
+          <td class="dateChanged dateHidden">{{ change.date_changed }}</td>
+          <td class="periodC dateHidden"></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 
+  </div>
+</div>
+
+<div class="row">
+  <div class="fixed-action-btn">
+    <div class="col s12 right-align">
+      <a href="{{ url_for('add_item') }}" class="btn-floating btn-large waves-effect waves-light blue"><i class="fas fa-plus"></i></a>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
 
