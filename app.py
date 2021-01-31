@@ -20,12 +20,12 @@ mongo = PyMongo(app)
 
 @app.route("/")
 @app.route("/dashboard")
-def get_dashboard():
+def dashboard():
   return render_template("dashboard.html")
 
 
 @app.route("/register")
-def get_register():
+def register():
   register = mongo.db.register.find()
   return render_template("register.html", register=register)
 
