@@ -196,6 +196,15 @@ th .center {
   display: none;
 }
 
+/* Make row a link */
+.hideLink {
+  display: none;
+}
+
+tr:hover {
+  cursor: pointer;
+}
+
 /* <----- Item Layout -----> */
 
 .itemContainer {

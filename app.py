@@ -125,10 +125,10 @@ def get_filter():
   return jsonify(arr)
 
 
-@app.route("/add_item", methods=["GET", "POST"])
-def add_item():
+@app.route("/add_change", methods=["GET", "POST"])
+def add_change():
   if request.method == "POST":
-    item = {
+    change = {
       "change_nr": request.form.get("change_nr"),
       "date_added": request.form.get("date_added"),
       "date_changed": request.form.get("date_changed"),
@@ -144,10 +144,40 @@ def add_item():
       "ohp_total": request.form.get("ohp_total", type=int),
       "NIA_ft2": request.form.get("NIA_ft2", type=int),
       "GIA_ft2": request.form.get("GIA_ft2", type=int)    }
-    mongo.db.register.insert_one(item)
+    mongo.db.register.insert_one(change)
     return redirect(url_for('register'))
-  # item = mongo.db.register.find()
-  return render_template("add_item.html")
+  return render_template("add_change.html")
+
+
+@app.route("/edit_change/<change_id>", methods=["GET", "POST"])
+def edit_change(change_id):
+  if request.method == "POST":
+    submit = {
+      "change_nr": request.form.get("change_nr"),
+      "date_added": request.form.get("date_added"),
+      "date_changed": request.form.get("date_changed"),
+      "change_name": request.form.get("change_name"),
+      "change_description": request.form.get("change_description"),
+      "status": request.form.get("status"),
+      "change_type": request.form.get("change_type"),
+      "cost_nett": request.form.get("cost_nett", type=int),
+      "cost_gross": request.form.get("cost_gross", type=int),
+      "cont_design_total": request.form.get("cont_design_total", type=int),
+      "cont_const_total": request.form.get("cont_const_total", type=int),
+      "prelims_total": request.form.get("prelims_total", type=int),
+      "ohp_total": request.form.get("ohp_total", type=int),
+      "NIA_ft2": request.form.get("NIA_ft2", type=int),
+      "GIA_ft2": request.form.get("GIA_ft2", type=int)
+    }
+    mongo.db.register.update({"_id": ObjectId(change_id)}, submit)
+    return redirect(url_for('register'))
+
+  status = mongo.db.status.find()
+  change_type = mongo.db.change_type.find()
+  change = mongo.db.register.find_one({"_id": ObjectId(change_id)})
+
+  return render_template("edit_change.html", change=change, status=status, change_type=change_type)
+
 
 
 if __name__ == "__main__":

@@ -19,6 +19,7 @@
           <th class="dateHidden">New?</th>
           <th class="dateHidden">Date<br>Changed</th>
           <th class="dateHidden">changed?</th>
+          <th class="center hideLink">Link</th>
         </tr>
       </thead>
 
@@ -46,6 +47,9 @@
           <td class="periodN dateHidden"></td>
           <td class="dateChanged dateHidden">{{ change.date_changed }}</td>
           <td class="periodC dateHidden"></td>
+          <td class="center hideLink">
+            <a href="{{ url_for('edit_change', change_id=change._id) }}">Link</a>
+          </td>
         </tr>
         {% endfor %}
       </tbody>
@@ -57,7 +61,7 @@
 <div class="row">
   <div class="fixed-action-btn">
     <div class="col s12 right-align">
-      <a href="{{ url_for('add_item') }}" class="btn-floating btn-large waves-effect waves-light blue"><i class="fas fa-plus"></i></a>
+      <a href="{{ url_for('add_change') }}" class="btn-floating btn-large waves-effect waves-light blue"><i class="fas fa-plus"></i></a>
     </div>
   </div>
 </div>
