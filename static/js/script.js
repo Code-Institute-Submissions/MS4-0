@@ -591,7 +591,7 @@ $('#periodChange').click(function () {
 $(document).ready(function () {
   $('tr').click(function () {
     var href = $(this).find('a').attr('href');
-    if(href) {
+    if (href) {
       window.location = href;
     }
   });
@@ -601,6 +601,14 @@ $(document).ready(function () {
 
 
 // <<----- ADD / EDIT ITEMS ----->
+
+// New Item - input today's date (Dated Added + Last Change)
+$(document).ready(function () {
+  if (window.location.pathname == '/add_change') {
+    $('#date_added').val(new Date().toISOString().split('T')[0]);
+    $('#date_changed').val(new Date().toISOString().split('T')[0]);
+  }
+})
 
 // Calculate gross total
 
@@ -663,13 +671,14 @@ function updateTotal() {
 }
 
 // Calculate gross when Row clicked to view/edit change
-$(document).ready(function() {
+$(document).ready(function () {
   updateTotal();
 })
 
 
 // Enable Edit in View Item
-$('.btnEdit').on('click', function() {
+$('.btnEdit').on('click', function () {
   $('.enableEdit').prop('disabled', false)
   $('select').formSelect();
+  $('#date_changed').val(new Date().toISOString().split('T')[0]);
 })
