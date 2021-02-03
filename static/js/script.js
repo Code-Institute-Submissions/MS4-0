@@ -529,14 +529,10 @@ $("#VE").click(function () {
 
 $(document).ready(function () {
   $('tr > .dateAdded').each(function (i) {
-    const ISOdate = $('.dateAdded').eq(i).text()
-    const ISOdateYear = ISOdate.slice(0, 4);
-    const ISOdateMonth = ISOdate.slice(5, 7) - 1;
-    const ISOdateDay = ISOdate.slice(8, 10);
-    const date = new Date(ISOdateYear, ISOdateMonth, ISOdateDay);
+    const date = new Date($('.dateAdded').eq(i).text());
     const today = new Date;
-    const ThirtyDaysInSecs = 30 * 24 * 60 * 60 * 60;
-    if (today - date < ThirtyDaysInSecs) {
+    const ThirtyDaysInMSecs = 1000 * 60 * 60 * 24 * 30;
+    if (today - date < ThirtyDaysInMSecs) {
       $('.periodN').eq(i).text("Y")
     }
     else {
@@ -558,14 +554,10 @@ $('#periodNew').click(function () {
 
 $(document).ready(function () {
   $('tr > .dateChanged').each(function (i) {
-    const ISOdate = $('.dateChanged').eq(i).text()
-    const ISOdateYear = ISOdate.slice(0, 4);
-    const ISOdateMonth = ISOdate.slice(5, 7) - 1;
-    const ISOdateDay = ISOdate.slice(8, 10);
-    const date = new Date(ISOdateYear, ISOdateMonth, ISOdateDay);
-    const today = new Date;
-    const ThirtyDaysInSecs = 30 * 24 * 60 * 60 * 60;
-    if (today - date < ThirtyDaysInSecs) {
+    const date = new Date($('.dateChanged').eq(i).text());
+    const today = new Date();
+    const ThirtyDaysInMSecs = 1000 * 60 * 60 * 24 * 30;
+    if (today - date < ThirtyDaysInMSecs) {
       $('.periodC').eq(i).text("Y")
     }
     else {
