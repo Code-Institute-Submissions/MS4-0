@@ -6,6 +6,7 @@ from flask_pymongo import PyMongo
 from bson import json_util
 from bson.objectid import ObjectId
 from bson.json_util import dumps
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
   import env
 
@@ -22,6 +23,11 @@ mongo = PyMongo(app)
 @app.route("/dashboard")
 def dashboard():
   return render_template("dashboard.html")
+
+
+@app.route("/registration", methods=["GET", "POST"])
+def registration():
+  return render_template("registration.html")
 
 
 @app.route("/register")

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="containerLogin">
+  <div class="row">
+    <form class="col s8 offset-s2" method="POST" action="{{ url_for('registration') }}">
+      <div class="card-panel blue lighten-4">
+        <h3 class="center-align">Register for Access</h3>
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" name="fname" id="fname" validate required>
+            <label for="fname">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input type="text" name="sname" id="sname" validate required>
+            <label for="sname">Surname</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" name="cname" id="cname" validate>
+            <label for="cname">Company</label>
+          </div>
+          <div class="input-field col s6">
+            <input type="email" name="email" id="email" validate required>
+            <label for="email">Email Address</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="password" name="password1" id="password1" validate required>
+            <label for="password1">Password</label>
+            <span class="passwordCheck"></span>
+          </div>
+          <div class="input-field col s6">
+            <input type="password" name="password2" id="password2" required>
+            <label for="password2">Re-enter Password</label>
+            <span class="passwordMatch"></span>
+          </div>
+        </div>
+        <div class="center-align">
+        <button class="btn waves-effect blue darken-4 waves-light" type="submit" name="action">
+          <i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Submit
+        </button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block scripts %}
+
+{% endblock %}

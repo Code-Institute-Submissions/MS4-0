@@ -89,6 +89,29 @@ nav .fa-bars {
   background-color: #e3f2fd;
 }
 
+
+/* <----- LOGIN / REGISTRATION PAGE -----> */
+
+.containerLogin {
+  margin-top: 25px;
+}
+
+.containerLogin h3 {
+  color: #0d47a1;
+  font-size: 2rem;
+  letter-spacing: 0.25rem;
+  font-weight: 700;
+}
+
+#password1,
+#password2 {
+  margin-bottom: 0px;
+}
+
+.passwordMatch {
+  font-size: 0.6rem;
+}
+
 /* <----- DASHBOARD -----> */
 
 #tableDashboard {
@@ -112,7 +135,7 @@ nav .fa-bars {
 }
 
 .highlightCell {
-  background-color: #0d47a1;
+  background-color: #555a61;
   color: #e3f2fd;
   padding-left: 10px;
   font-weight: 700;

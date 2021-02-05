@@ -37,9 +37,22 @@ $(document).ready(function () {
 });
 
 
+// <----- LOGIN / REGISTRATION ----->
 
-// $('#changeDescription').val('New Text');
-//   M.textareaAutoResize($('#changeDescription'));
+$('#password2').on('keyup', function() {
+  const var1 = $('#password1').val()
+  const var2 = $('#password2').val()
+  console.log(var1, var2)
+  if (var2 == '') {
+    $('.passwordMatch').html("")
+  }
+  else if (var1 == var2) {
+    $('.passwordMatch').html("Password match!")
+  }
+  else {
+    $('.passwordMatch').html("Password does not match")
+  }
+})
 
 
 // <----- DASHBOARD ----->
