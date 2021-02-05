@@ -246,3 +246,8 @@ tr:hover {
 .hideInput {
   display: none;
 }
+
+#date_added,
+#date_changed {
+  cursor: not-allowed;
+}

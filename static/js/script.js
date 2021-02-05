@@ -671,6 +671,7 @@ $(document).ready(function () {
 // Enable Edit in View Item
 $('.btnEdit').on('click', function () {
   $('.enableEdit').prop('disabled', false)
+  $('.enableReadOnly').prop('readonly', true)
   $('select').formSelect();
   $('#date_changed').val(new Date().toISOString().split('T')[0]);
   $('.btnHide').show()

@@ -21,7 +21,7 @@
             </div>
             <div class="input-field col s4 offset-s1">
               <input value="{{ change.date_changed }}" id="date_changed" name="date_changed" type="date"
-                class="validate" disabled>
+                class="validate enableEdit enableReadOnly" tabindex="-1" disabled>
               <label for="date_changed">Last Change</label>
             </div>
           </div>
@@ -40,8 +40,8 @@
           <div class="row">
             <div class="itemHeading">Change Details</div>
             <div class="input-field col s12">
-              <input value="{{ change.change_name }}" class="enableEdit" id="change_name" name="change_name" type="text"
-                class="validate" minlength="1" maxlength="30" disabled>
+              <input value="{{ change.change_name }}" id="change_name" name="change_name" type="text"
+                class="validate enableEdit" minlength="1" maxlength="30" disabled>
               <label for="change_name">Change Name</label>
             </div>
           </div>
