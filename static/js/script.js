@@ -673,4 +673,5 @@ $('.btnEdit').on('click', function () {
   $('.enableEdit').prop('disabled', false)
   $('select').formSelect();
   $('#date_changed').val(new Date().toISOString().split('T')[0]);
+  $('.btnHide').show()
 })

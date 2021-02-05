@@ -207,10 +207,6 @@ tr:hover {
 
 /* <----- Item Layout -----> */
 
-form {
-  /* height: 100vh; */
-}
-
 .itemContainer {
   margin-top: 50px !important;
   margin-bottom: 50px !important;
@@ -229,6 +225,10 @@ form {
 
 .btnDelete {
   color: #e3f2fd;
+}
+
+.btnHide {
+  display: none;
 }
 
 .btnDelRow {
