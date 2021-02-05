@@ -179,6 +179,11 @@ def edit_change(change_id):
   return render_template("edit_change.html", change=change, status=status, change_type=change_type)
 
 
+@app.route("/delete_change/<change_id>")
+def delete_change(change_id):
+  mongo.db.register.remove({"_id": ObjectId(change_id)})
+  return redirect(url_for("register"))
+
 
 if __name__ == "__main__":
   app.run(host=os.environ.get("IP"),

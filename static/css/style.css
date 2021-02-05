@@ -53,7 +53,7 @@ nav .fa-bars {
 /* Filter sidebar */
 
 .filter {
-  height: 100vh;
+  height: 110vh;
 }
 
 .filter .switch label {
@@ -85,7 +85,7 @@ nav .fa-bars {
 
 .section_main {
   margin: 0px;
-  height: 100vh;
+  height: 110vh;
   background-color: #e3f2fd;
 }
 
@@ -207,8 +207,14 @@ tr:hover {
 
 /* <----- Item Layout -----> */
 
+form {
+  /* height: 100vh; */
+}
+
 .itemContainer {
   margin-top: 50px !important;
+  margin-bottom: 50px !important;
+  /* height: 100%; */
 }
 
 .itemHeading {
@@ -219,6 +225,18 @@ tr:hover {
   position: relative;
   margin-bottom: 50%;
   transform: translate(0, 50%);
+}
+
+.btnDelete {
+  color: #e3f2fd;
+}
+
+.btnDelRow {
+  transform: translate(0,-50px);
+}
+
+.fixed-action-btn {
+  transform: translate(0,-25px);
 }
 
 .itemContainer .btn-floating {
