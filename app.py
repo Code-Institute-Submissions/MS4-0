@@ -27,6 +27,25 @@ def dashboard():
 
 @app.route("/registration", methods=["GET", "POST"])
 def registration():
+  if request.method == "POST":
+    existing_user = mongo.db.users.find_one({"email": request.form.get("email")})
+
+    if existing_user:
+      flash("User already exists")
+      return redirect(url_for("registration"))
+      
+    registration = {
+      "email": request.form.get("email"),
+      "password": generate_password_hash(request.form.get("password1")),
+      "first_name": request.form.get("fname"),
+      "last_name": request.form.get("lname"),
+      "company_name": request.form.get("cname"),
+      "user_type": "user"
+    }
+    mongo.db.users.insert_one(registration)
+
+    session["user"] = request.form.get("email")
+    flash("Registration Successful!")
   return render_template("registration.html")
 
 

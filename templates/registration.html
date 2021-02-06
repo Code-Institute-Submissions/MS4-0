@@ -8,27 +8,27 @@
         <h3 class="center-align">Register for Access</h3>
         <div class="row">
           <div class="input-field col s6">
-            <input type="text" name="fname" id="fname" validate required>
+            <input type="text" name="fname" id="fname" class="validate" minlength="2" maxlength="15" required>
             <label for="fname">First Name</label>
           </div>
           <div class="input-field col s6">
-            <input type="text" name="sname" id="sname" validate required>
-            <label for="sname">Surname</label>
+            <input type="text" name="lname" id="lname" minlength="2" maxlength="15" class="validate" required>
+            <label for="lname">Surname</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input type="text" name="cname" id="cname" validate>
+            <input type="text" name="cname" id="cname" class="validate">
             <label for="cname">Company</label>
           </div>
           <div class="input-field col s6">
-            <input type="email" name="email" id="email" validate required>
+            <input type="email" name="email" id="email" minlength="2" class="validate" required>
             <label for="email">Email Address</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input type="password" name="password1" id="password1" validate required>
+            <input type="password" name="password1" id="password1" minlength="2" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
             <label for="password1">Password</label>
             <span class="passwordCheck"></span>
           </div>
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="center-align">
-        <button class="btn waves-effect blue darken-4 waves-light" type="submit" name="action">
+        <button class="btn waves-effect blue darken-4 waves-light btnSubmit" type="submit" name="action" >
           <i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Submit
         </button>
       </div>

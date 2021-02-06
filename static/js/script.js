@@ -37,12 +37,21 @@ $(document).ready(function () {
 });
 
 
+
+// <----- SNACKBAR POP-UP ----->
+// Inspired and adapted from: https://www.w3schools.com/howto/howto_js_snackbar.asp
+
+function closeSnack() {
+  $('#snackbar').hide('slow')
+}
+
+
+
 // <----- LOGIN / REGISTRATION ----->
 
-$('#password2').on('keyup', function() {
+$('#password2').on('keyup', function () {
   const var1 = $('#password1').val()
   const var2 = $('#password2').val()
-  console.log(var1, var2)
   if (var2 == '') {
     $('.passwordMatch').html("")
   }
