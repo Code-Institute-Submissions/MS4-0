@@ -233,6 +233,10 @@ th .center {
   align-content: center;
 }
 
+#tableRegister th {
+  border: 2px solid #e3f2fd;
+}
+
 .hideRowStatus {
   display: none;
 }
