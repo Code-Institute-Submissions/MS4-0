@@ -37,7 +37,7 @@
     <!-- Materialize Dropdown Menu -->
     <ul id="dropdown1" class="dropdown-content">
       <li><a href="{{ url_for('login') }}">Log In</a></li>
-      <li><a href="#!">two</a></li>
+      <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
       <li><a href="{{ url_for('registration') }}">Register</a></li>
     </ul>
     <nav class="nav-main">
