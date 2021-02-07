@@ -46,7 +46,11 @@
     </ul>
     <nav class="nav-main">
       <div class="nav-wrapper blue darken-4">
-        <a href="#!" class="brand-logo">Contrarotolum</a>
+        {% if session.user %}
+          <a href="{{ url_for('dashboard') }}" class="brand-logo">Contrarotolum</a>
+        {% else %}
+          <a href="{{ url_for('login') }}" class="brand-logo">Contrarotolum</a>
+        {% endif %}
         <ul class="right">
           <!-- Dropdown Trigger -->
           <li><a class="dropdown-trigger center" href="#!" data-target="dropdown1"><i class="fas fa-bars blue"></i></a>
@@ -57,6 +61,8 @@
 
     <!-- Materialize Fixed Navbar -->
     <!-- <div class="navbar-fixed"> -->
+
+    {% if session.user %}
     <nav>
       <div class="nav-wrapper blue">
         <div class="row">
@@ -69,89 +75,93 @@
         </div>
       </div>
     </nav>
+    {% endif %}
     <!-- </div> -->
 
   </header>
 
   <div class="row">
     <div class="col s3 filter grey lighten-1">
-      <h3>Filter</h3>
-      <br>
 
-      <form action="#">
-        <h5>COST</h5>
-        <div class="switch">
-          <label>
-            Nett
-            <input type="checkbox" name="cost" id="costSwitch">
-            <span class="lever"></span>
-            Gross
-          </label>
-        </div>
+      {% if session.user %}
+        <h3>Filter</h3>
         <br>
-        <h5>STATUS</h5>
-        <p>
-          <label>
-            <input type="checkbox" id="A" onchange="handleChangeStatus()" checked />
-            <span>Approved</span>
-          </label>
-          <label>
-            <input type="checkbox" id="P" onchange="handleChangeStatus()" checked />
-            <span>Pending</span>
-          </label>
+
+        <form action="#">
+          <h5>COST</h5>
+          <div class="switch">
+            <label>
+              Nett
+              <input type="checkbox" name="cost" id="costSwitch">
+              <span class="lever"></span>
+              Gross
+            </label>
+          </div>
           <br>
-          <label>
-            <input type="checkbox" onchange="handleChangeStatus()" id="WiP" checked />
-            <span>WiP</span>
-          </label>
-          <label>
-            <input type="checkbox" onchange="handleChangeStatus()" id="R" checked />
-            <span>Rejected</span>
-          </label>
-        </p>
-        <br>
-        <h5>CHANGE TYPE</h5>
-        <p>
-          <label>
-            <input type="checkbox" onchange="handleChangeChanges()" id="CA" checked />
-            <span>CA</span>
-          </label>
-          <label>
-            <input type="checkbox" onchange="handleChangeChanges()" id="CR" checked />
-            <span>CR</span>
-          </label>
+          <h5>STATUS</h5>
+          <p>
+            <label>
+              <input type="checkbox" id="A" onchange="handleChangeStatus()" checked />
+              <span>Approved</span>
+            </label>
+            <label>
+              <input type="checkbox" id="P" onchange="handleChangeStatus()" checked />
+              <span>Pending</span>
+            </label>
+            <br>
+            <label>
+              <input type="checkbox" onchange="handleChangeStatus()" id="WiP" checked />
+              <span>WiP</span>
+            </label>
+            <label>
+              <input type="checkbox" onchange="handleChangeStatus()" id="R" checked />
+              <span>Rejected</span>
+            </label>
+          </p>
           <br>
-          <label>
-            <input type="checkbox" onchange="handleChangeChanges()" id="DD" checked />
-            <span>DD</span>
-          </label>
-          <label>
-            <input type="checkbox" onchange="handleChangeChanges()" id="PA" checked />
-            <span>PA</span>
-          </label>
+          <h5>CHANGE TYPE</h5>
+          <p>
+            <label>
+              <input type="checkbox" onchange="handleChangeChanges()" id="CA" checked />
+              <span>CA</span>
+            </label>
+            <label>
+              <input type="checkbox" onchange="handleChangeChanges()" id="CR" checked />
+              <span>CR</span>
+            </label>
+            <br>
+            <label>
+              <input type="checkbox" onchange="handleChangeChanges()" id="DD" checked />
+              <span>DD</span>
+            </label>
+            <label>
+              <input type="checkbox" onchange="handleChangeChanges()" id="PA" checked />
+              <span>PA</span>
+            </label>
+            <br>
+            <label>
+              <input type="checkbox" onchange="handleChangeChanges()" id="EW" checked />
+              <span>EW</span>
+            </label>
+            <label>
+              <input type="checkbox" onchange="handleChangeChanges()" id="VE" checked />
+              <span>VE</span>
+            </label>
+          </p>
           <br>
-          <label>
-            <input type="checkbox" onchange="handleChangeChanges()" id="EW" checked />
-            <span>EW</span>
-          </label>
-          <label>
-            <input type="checkbox" onchange="handleChangeChanges()" id="VE" checked />
-            <span>VE</span>
-          </label>
-        </p>
-        <br>
-        <h5>PERIOD (last 30 days)</h5>
-        <p>
-          <label>
-            <input type="checkbox" id="periodNew" />
-            <span>New</span>
-          </label>
-          <label>
-            <input type="checkbox" id="periodChange" />
-            <span>Changes</span>
-          </label>
-        </p>
-      </form>
+          <h5>PERIOD (last 30 days)</h5>
+          <p>
+            <label>
+              <input type="checkbox" id="periodNew" />
+              <span>New</span>
+            </label>
+            <label>
+              <input type="checkbox" id="periodChange" />
+              <span>Changes</span>
+            </label>
+          </p>
+        </form>
+      {% endif %}
 
     </div>
     <div class="col s9 section_main">

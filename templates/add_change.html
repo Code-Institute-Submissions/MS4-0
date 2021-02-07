@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% if session.user %}
 
 <!-- Use of Materialize Forms -->
 <!-- top row -->
@@ -139,6 +140,7 @@
   </div>
 </div>
 
+{% endif %}
 {% endblock %}
 
 

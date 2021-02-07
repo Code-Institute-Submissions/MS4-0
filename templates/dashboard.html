@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% if session.user %}
 
 <table class="" id="tableDashboard">
   <thead>
@@ -70,6 +71,7 @@
   </tbody>
 </table>
 
+{% endif %}
 {% endblock %}
 
 
