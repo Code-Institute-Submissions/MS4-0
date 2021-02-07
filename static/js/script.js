@@ -74,6 +74,7 @@ $(window).on('load', function () {
     dataType: 'json',
     async: true,
     success: function (result) {
+      console.log(result)
       for (i = 0; i < result.length; i++) {
         arr[result[i].status] = result[i].changeType
       };

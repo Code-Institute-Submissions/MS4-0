@@ -2,6 +2,7 @@
 
 html {
   height: 100%;
+  background-color: #e3f2fd;
 }
 
 body {
@@ -53,7 +54,7 @@ nav .fa-bars {
 /* Filter sidebar */
 
 .filter {
-  height: 110vh;
+  min-height: 90vh;
 }
 
 .filter .switch label {
@@ -85,7 +86,6 @@ nav .fa-bars {
 
 .section_main {
   margin: 0px;
-  height: 110vh;
   background-color: #e3f2fd;
 }
 
@@ -152,7 +152,7 @@ nav .fa-bars {
 
 #tableDashboard {
   width: 60%;
-  margin-top: 15px;
+  margin-top: 30px;
   margin-left: 50%;
   transform: translate(-50%, 0);
   border-collapse: separate !important;
@@ -160,6 +160,11 @@ nav .fa-bars {
 
 #tableDashboard tbody tr {
   background-color: #c4c4c4;
+}
+
+#tableDashboard th,
+#tableDashboard td {
+  border: 2px solid #e3f2fd;
 }
 
 .blankCell {
