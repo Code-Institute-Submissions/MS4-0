@@ -53,8 +53,8 @@ nav .fa-bars {
 
 /* Filter sidebar */
 
-.filter {
-  min-height: 90vh;
+.filterRow {
+  display: flex;
 }
 
 .filter .switch label {

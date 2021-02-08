@@ -29,19 +29,19 @@
         <tr class="rowOff">
           <td class="center changeNr">{{ change.change_nr }}</td>
           <td class="changeName">{{ change.change_name }}</td>
-          <td class="center costNett">{{ change.cost_nett }}</td>
-          <td class="center costGross hideCost">{{ change.cost_gross }}</td>
+          <td class="center costNett">{{ "{:,}".format(change.cost_nett) }}</td>
+          <td class="center costGross hideCost">{{ "{:,}".format(change.cost_gross) }}</td>
           <td class="center giaNett">
             {% if change.GIA_ft2|int > 0 %}
-            {{ change.cost_nett|int // change.GIA_ft2 }}
+              {{ "{:,}".format(change.cost_nett|int // change.GIA_ft2) }}
             {% endif %}
           </td>
           <td class="center giaGross hideCost">
             {% if change.GIA_ft2|int > 0 %}
-            {{ change.cost_gross|int // change.GIA_ft2 }}
+            {{ "{:,}".format(change.cost_gross|int // change.GIA_ft2) }}
             {% endif %}
           </td>
-          <td class="center GIA">{{ change.GIA_ft2 }}</td>
+          <td class="center GIA">{{ "{:,}".format(change.GIA_ft2) }}</td>
           <td class="center changeType">{{ change.change_type }}</td>
           <td class="center changeStatus">{{ change.status }}</td>
           <td class="dateAdded dateHidden">{{ change.date_added }}</td>
