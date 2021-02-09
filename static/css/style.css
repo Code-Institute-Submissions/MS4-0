@@ -55,6 +55,7 @@ nav .fa-bars {
 
 .filterRow {
   display: flex;
+  min-height: calc(100vh - 186px)
 }
 
 .filter .switch label {

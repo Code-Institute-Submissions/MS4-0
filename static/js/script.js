@@ -622,7 +622,75 @@ $(document).ready(function () {
 })
 
 
-// Calculate gross total
+
+// Calculate gross total for Budget
+
+function updateBudget() {
+  if (window.location.pathname == '/budget'){
+    let v1 = ((num) => {
+      num = $('#budget_cost_nett').val();
+      num = num.replace(",", "")
+      num = +num
+      if (Number.isInteger(num)) {
+        return num
+      }
+      else {
+        return 0
+      }
+    })();
+    let v2 = ((num) => {
+      num = $('#budget_cont_design_total').val();
+      num = num.replace(",", "")
+      num = +num
+      if (Number.isInteger(num)) {
+        return num
+      }
+      else {
+        return 0
+      }
+    })();
+    let v3 = ((num) => {
+      num = $('#budget_cont_const_total').val();
+      num = num.replace(",", "")
+      num = +num
+      if (Number.isInteger(num)) {
+        return num
+      }
+      else {
+        return 0
+      }
+    })();
+    let v4 = ((num) => {
+      num = $('#budget_prelims_total').val();
+      num = num.replace(",", "")
+      num = +num
+      if (Number.isInteger(num)) {
+        return num
+      }
+      else {
+        return 0
+      }
+    })();
+    let v5 = ((num) => {
+      num = $('#budget_ohp_total').val();
+      num = num.replace(",", "")
+      num = +num
+      if (Number.isInteger(num)) {
+        return num
+      }
+      else {
+        return 0
+      }
+    })();
+    let gross = new Intl.NumberFormat('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(v1 + v2 + v3 + v4 + v5)
+    $('#budget_cost_gross').val(gross);
+  }
+}
+// Calculate gross total for Changes
 
 function updateTotal() {
   if (window.location.pathname.indexOf('edit_change') > -1 || window.location.pathname == '/add_change'){
@@ -704,6 +772,7 @@ $('.btnEdit').on('click', function () {
   $('.enableReadOnly').prop('readonly', true)
   $('select').formSelect();
   $('#date_changed').val(new Date().toISOString().split('T')[0]);
+  $('#date_modified').val(new Date().toISOString().split('T')[0]);
   $('.btnHide').show()
 })
 

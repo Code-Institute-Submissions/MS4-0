@@ -198,6 +198,28 @@ def get_filter():
   return jsonify(arr)
 
 
+@app.route("/budget", methods=["GET", "POST"])
+def budget():
+  if request.method == "POST":
+    update = {
+      "date_modified": request.form.get("date_modified"),
+      "cost_nett": request.form.get("budget_cost_nett", type=int),
+      "cost_gross": request.form.get("budget_cost_gross", type=int),
+      "cont_design_total": request.form.get("budget_cont_design_total", type=int),
+      "cont_const_total": request.form.get("budget_cont_const_total", type=int),
+      "prelims_total": request.form.get("budget_prelims_total", type=int),
+      "ohp_total": request.form.get("budget_ohp_total", type=int),
+      "NIA_ft2": request.form.get("budget_NIA_ft2", type=int),
+      "GIA_ft2": request.form.get("budget_GIA_ft2", type=int)
+    }
+    mongo.db.budget.update({"_id": ObjectId("6022ed6805fc505f69844c36")}, update)
+    return redirect(url_for('dashboard'))
+
+  budget = mongo.db.budget.find_one()
+
+  return render_template("budget.html", budget=budget)
+
+
 @app.route("/add_change", methods=["GET", "POST"])
 def add_change():
   if request.method == "POST":
