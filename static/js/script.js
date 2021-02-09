@@ -613,8 +613,6 @@ $(document).ready(function () {
 });
 
 
-
-
 // <<----- ADD / EDIT ITEMS ----->
 
 // New Item - input today's date (Dated Added + Last Change)
@@ -625,12 +623,14 @@ $(document).ready(function () {
   }
 })
 
+
 // Calculate gross total
 
 function updateTotal() {
-  (function calculateGross() {
+  if (window.location.pathname == '/edit_change' || window.location.pathname == '/add_change'){
     let v1 = ((num) => {
       num = $('#cost_nett').val();
+      num = num.replace(",", "")
       num = +num
       if (Number.isInteger(num)) {
         return num
@@ -641,6 +641,7 @@ function updateTotal() {
     })();
     let v2 = ((num) => {
       num = $('#cont_design_total').val();
+      num = num.replace(",", "")
       num = +num
       if (Number.isInteger(num)) {
         return num
@@ -651,6 +652,7 @@ function updateTotal() {
     })();
     let v3 = ((num) => {
       num = $('#cont_const_total').val();
+      num = num.replace(",", "")
       num = +num
       if (Number.isInteger(num)) {
         return num
@@ -661,6 +663,7 @@ function updateTotal() {
     })();
     let v4 = ((num) => {
       num = $('#prelims_total').val();
+      num = num.replace(",", "")
       num = +num
       if (Number.isInteger(num)) {
         return num
@@ -670,7 +673,8 @@ function updateTotal() {
       }
     })();
     let v5 = ((num) => {
-      num = $('#ohp_t0tal').val();
+      num = $('#ohp_total').val();
+      num = num.replace(",", "")
       num = +num
       if (Number.isInteger(num)) {
         return num
@@ -679,17 +683,22 @@ function updateTotal() {
         return 0
       }
     })();
-    let gross = v1 + v2 + v3 + v4 + v5
+    let gross = new Intl.NumberFormat('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(v1 + v2 + v3 + v4 + v5)
     $('#cost_gross').val(gross);
-    $('#cost_gross_show').val(gross);
-  })()
+  }
 }
 
 // Calculate gross when Row clicked to view/edit change
 $(document).ready(function () {
-  updateTotal();
+  setTimeout(() => {
+    updateTotal();
+  }, 500);
 })
-
+// 
 
 // Enable Edit in View Item
 $('.btnEdit').on('click', function () {
@@ -699,3 +708,39 @@ $('.btnEdit').on('click', function () {
   $('#date_changed').val(new Date().toISOString().split('T')[0]);
   $('.btnHide').show()
 })
+
+$('#editForm,#addForm').submit(function (event) {
+  event.preventDefault();
+
+  $('.formatNum').each(function () {
+    $(this).text(function () {
+      let x = $(this).val().replace(",", "")
+      $(this).val(x)
+    })
+  })
+
+  $(this).unbind('submit').submit();
+
+})
+
+
+$('.formatNum').on('focus', function () {
+  $(this).text(function () {
+    let x = $(this).val().replace(",", "")
+    $(this).val(x)
+  })
+})
+
+$('.formatNum').focusout(function () {
+  $(this).text(function () {
+    let x = $(this).val().replace(",", "")
+    let y = new Intl.NumberFormat('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(x)
+    $(this).val(y)
+  })
+})
+
+
