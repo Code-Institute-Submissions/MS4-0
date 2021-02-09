@@ -65,6 +65,9 @@ $('#password2').on('keyup', function () {
 
 
 // <----- DASHBOARD ----->
+
+
+
 let arr = []
 
 $(window).on('load', function () {
@@ -74,7 +77,6 @@ $(window).on('load', function () {
     dataType: 'json',
     async: true,
     success: function (result) {
-      console.log(result)
       for (i = 0; i < result.length; i++) {
         arr[result[i].status] = result[i].changeType
       };
@@ -85,18 +87,6 @@ $(window).on('load', function () {
 
 let checkedStatus = ["A", "P", "WiP", "R"]
 let checkedChanges = ["CA", "CR", "DD", "PA", "EW", "VE"]
-
-// let budgetGross = 10000000
-// let budgetGIA = 11000
-// let approvedGross
-// let approvedNett
-// let approvedGIA
-
-// let pendingGross = getTotal("P")
-
-// setTimeout(() => {
-//   getTotal('totalGross', 'P');
-// }, 1000);
 
 
 // https://learn.co/lessons/js-looping-and-iteration-traversing-nested-objects-readme
@@ -396,9 +386,17 @@ function pushValues(checkedStatus) {
         $(this).text("-")
       }
     })
-
   }, 1000);
 }
+
+// Hide Period/Changes Filter on Dashboard
+
+$(document).ready(function() {
+  if (window.location.pathname == '/dashboard') {
+    console.log('yes')
+    $('#period').hide();
+  }
+})
 
 
 // https://stackoverflow.com/questions/30788531/use-checkboxes-to-filter-to-a-new-array-of-objects-javascript
