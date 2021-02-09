@@ -627,7 +627,7 @@ $(document).ready(function () {
 // Calculate gross total
 
 function updateTotal() {
-  if (window.location.pathname == '/edit_change' || window.location.pathname == '/add_change'){
+  if (window.location.pathname.indexOf('edit_change') > -1 || window.location.pathname == '/add_change'){
     let v1 = ((num) => {
       num = $('#cost_nett').val();
       num = num.replace(",", "")
