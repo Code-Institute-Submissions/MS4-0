@@ -1,6 +1,6 @@
 // <----- MATERIALIZE TRIGGERS ----->
 
-$(".dropdown-trigger").dropdown();
+$(".dropdown-trigger").dropdown({constrainWidth: false});
 
 $(document).ready(function () {
   $('select').formSelect();
@@ -73,7 +73,7 @@ let arr = []
 $(window).on('load', function () {
   $.ajax({
     url: 'filter',
-    type: 'POST',
+    type: 'GET',
     dataType: 'json',
     async: true,
     success: function (result) {
@@ -124,6 +124,15 @@ pushValues()
 function pushValues(checkedStatus) {
   setTimeout(() => {
     // Budget Row
+    // $.ajax({
+    //   url: 'budget',
+    //   type: 'GET',
+    //   dataType: 'json',
+    //   async: 'true',
+    //   success: function() {
+    //     console.log('YESYES')
+    //   }
+    // })
     let budgetTotalGross = 20000000
     let budgetTotalNett = 18000000
     let budgetTotal = (function () {

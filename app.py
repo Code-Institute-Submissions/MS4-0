@@ -103,6 +103,9 @@ def register():
   return render_template("register.html", register=register)
 
 
+
+
+
 @app.route("/filter", methods=["GET", "POST"])
 def get_filter():
   db = mongo.db.register
@@ -150,48 +153,6 @@ def get_filter():
                   }
                 }
               }]
-
-
-  # pipeline = [{
-  #             '$group': {
-  #                 '_id': {
-  #                   'changeType': '$change_type'
-  #                 },
-  #                 'data': {
-  #                   '$push': {
-  #                     'totalGross' : {'$sum': '$cost_gross'},
-  #                     'totalNett' : {'$sum': '$cost_nett'},
-  #                     'totalGIA' : {'$sum': '$GIA_ft2'}
-  #                     }
-  #                   }
-  #                 }
-  #               }, {
-  #               '$group': {
-  #                 '_id': 'null',
-  #                 'change': {
-  #                   '$push': {
-  #                     'changeTypes': '$_id.changeType',
-  #                     'data': '$data'
-  #                     }
-  #                   }
-  #                 }
-  #               }, {
-  #                 '$project': {
-  #                   '_id': 0,
-  #                   'array': {
-  #                     '$arrayToObject': {
-  #                       '$map': {
-  #                         'input': '$change',
-  #                         'as': 'el',
-  #                         'in': {
-  #                           'k': '$$el.changeTypes',
-  #                           'v': { "$arrayElemAt": ["$$el.data", 0] }
-  #                           }
-  #                         }
-  #                       }
-  #                     }
-  #                   }
-  #             }]
 
   arr = list(db.aggregate(pipeline))
 
