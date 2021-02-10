@@ -20,9 +20,21 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 @app.route("/")
-@app.route("/dashboard")
+@app.route("/dashboard", methods=["GET"])
 def dashboard():
   return render_template("dashboard.html")
+
+
+@app.route("/getbudget", methods=["GET"])
+def get_budget():
+  db = mongo.db.budget
+  
+  pipeline = [{
+                '$project': {'_id': 0}
+  }]
+
+  budget_list = list(db.aggregate(pipeline))
+  return jsonify(budget_list)
 
 
 @app.route("/registration", methods=["GET", "POST"])
@@ -101,9 +113,6 @@ def logout():
 def register():
   register = mongo.db.register.find()
   return render_template("register.html", register=register)
-
-
-
 
 
 @app.route("/filter", methods=["GET", "POST"])

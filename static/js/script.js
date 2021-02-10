@@ -120,21 +120,26 @@ $('#costSwitch').click(function () {
   }
 })
 
+let budget = []
+
+$(window).on('load', function() {
+  $.ajax({
+    url: 'getbudget',
+    type: 'GET',
+    dataType: 'json',
+    async: 'true',
+    success: function(results) {
+      budget = results
+    }
+  })
+})
+
 pushValues()
 function pushValues(checkedStatus) {
   setTimeout(() => {
     // Budget Row
-    // $.ajax({
-    //   url: 'budget',
-    //   type: 'GET',
-    //   dataType: 'json',
-    //   async: 'true',
-    //   success: function() {
-    //     console.log('YESYES')
-    //   }
-    // })
-    let budgetTotalGross = 20000000
-    let budgetTotalNett = 18000000
+    let budgetTotalGross = budget[0].cost_gross
+    let budgetTotalNett = budget[0].cost_nett
     let budgetTotal = (function () {
       if (checkedStatus == 'Nett') {
         return budgetTotalNett
@@ -161,7 +166,7 @@ function pushValues(checkedStatus) {
     }).format(budgetAreaChange);
     $('#budgetRow').children('.areaChange').text(budgetAreaChangeDisplay)
 
-    let budgetAreaTotal = 15000;
+    let budgetAreaTotal = budget[0].GIA_ft2;
     let budgetAreaTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -402,7 +407,6 @@ function pushValues(checkedStatus) {
 
 $(document).ready(function() {
   if (window.location.pathname == '/dashboard') {
-    console.log('yes')
     $('#period').hide();
   }
 })
