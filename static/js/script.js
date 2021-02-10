@@ -68,21 +68,6 @@ $('#password2').on('keyup', function () {
 
 
 
-let arr = []
-
-$(window).on('load', function () {
-  $.ajax({
-    url: 'filter',
-    type: 'GET',
-    dataType: 'json',
-    async: true,
-    success: function (result) {
-      for (i = 0; i < result.length; i++) {
-        arr[result[i].status] = result[i].changeType
-      };
-    }
-  });
-})
 
 
 let checkedStatus = ["A", "P", "WiP", "R"]
@@ -121,20 +106,34 @@ $('#costSwitch').click(function () {
 })
 
 let budget = []
+let arr = []
 
-$(window).on('load', function() {
-  $.ajax({
-    url: 'getbudget',
-    type: 'GET',
-    dataType: 'json',
-    async: 'true',
-    success: function(results) {
-      budget = results
-    }
-  })
+$(document).ready(function () {
+  if (window.location.pathname == '/dashboard'){
+    $.ajax({
+      url: 'filter',
+      type: 'GET',
+      dataType: 'json',
+      async: true,
+      success: function (result) {
+        for (i = 0; i < result.length; i++) {
+          arr[result[i].status] = result[i].changeType
+        };
+      }
+    });
+    $.ajax({
+      url: 'getbudget',
+      type: 'GET',
+      dataType: 'json',
+      async: 'true',
+      success: function(results) {
+        budget = results
+      }
+    });
+    pushValues();
+  }
 })
 
-pushValues()
 function pushValues(checkedStatus) {
   setTimeout(() => {
     // Budget Row

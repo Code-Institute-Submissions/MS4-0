@@ -28,13 +28,16 @@ def dashboard():
 @app.route("/getbudget", methods=["GET"])
 def get_budget():
   db = mongo.db.budget
-  
-  pipeline = [{
-                '$project': {'_id': 0}
-  }]
+
+  pipeline = [{ '$project': {'_id': 0} }]
 
   budget_list = list(db.aggregate(pipeline))
-  return jsonify(budget_list)
+
+  if not session.get('user') is None:
+    return jsonify(budget_list)
+
+  else:
+    return redirect(url_for("login"))
 
 
 @app.route("/registration", methods=["GET", "POST"])
@@ -45,7 +48,7 @@ def registration():
     if existing_user:
       flash("User already exists")
       return redirect(url_for("registration"))
-      
+
     registration = {
       "email": request.form.get("email"),
       "password": generate_password_hash(request.form.get("password1")),
@@ -165,7 +168,11 @@ def get_filter():
 
   arr = list(db.aggregate(pipeline))
 
-  return jsonify(arr)
+  if not session.get('user') is None:
+    return jsonify(arr)
+
+  else:
+    return redirect(url_for('login'))
 
 
 @app.route("/budget", methods=["GET", "POST"])
