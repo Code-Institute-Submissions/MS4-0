@@ -11,7 +11,8 @@
         <div class="col s9">
           <div class="row">
             <div class="input-field col s2">
-              <input value="{{ change.change_nr }}" class="enableEdit validate" id="change_nr" name="change_nr" type="number" minlength="1" maxlength="3" disabled>
+              <input value="{{ change.change_nr }}" class="enableEdit validate" id="change_nr" name="change_nr"
+                type="number" minlength="1" maxlength="3" disabled>
               <label for="change_nr">Change Nr</label>
             </div>
             <div class="input-field col s4 offset-s1">
@@ -87,58 +88,60 @@
           <div class="row">
             <div class="itemHeading">Total Costs</div>
             <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(change.cost_nett) }}" class="enableEdit validate formatNum" id="cost_nett" name="cost_nett" type="text"
-                onchange="updateTotal()" disabled>
+              <input value="{{ '{:,}'.format(change.cost_nett) }}" class="enableEdit validate formatNum" id="cost_nett"
+                name="cost_nett" type="text" onchange="updateTotal()" disabled>
               <label for="cost_nett">Nett Cost</label>
             </div>
             <div class="input-field col s6">
-              <input value="0" id="cost_gross" name="cost_gross" type="text" class="enableEdit enableReadOnly formatNum" disabled>
+              <input value="0" id="cost_gross" name="cost_gross" type="text" class="enableEdit enableReadOnly formatNum"
+                disabled>
               <label for="cost_gross">Gross Cost</label>
             </div>
           </div>
           <div class="row">
             <div class="itemHeading">Contingency</div>
             <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(change.cont_design_total) }}" class="enableEdit validate formatNum" id="cont_design_total"
-                name="cont_design_total" type="text" onchange="updateTotal()" disabled>
+              <input value="{{ '{:,}'.format(change.cont_design_total) }}" class="enableEdit validate formatNum"
+                id="cont_design_total" name="cont_design_total" type="text" onchange="updateTotal()" disabled>
               <label for="cont_design_total">Design</label>
             </div>
             <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(change.cont_const_total) }}" class="enableEdit validate formatNum" id="cont_const_total"
-                name="cont_const_total" type="text" onchange="updateTotal()" disabled>
+              <input value="{{ '{:,}'.format(change.cont_const_total) }}" class="enableEdit validate formatNum"
+                id="cont_const_total" name="cont_const_total" type="text" onchange="updateTotal()" disabled>
               <label for="cont_const_total">Construction</label>
             </div>
           </div>
           <div class="row">
             <div class="itemHeading">Main Contractor On-Costs</div>
             <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(change.prelims_total) }}" class="enableEdit validate formatNum" id="prelims_total" name="prelims_total"
-                type="text" onchange="updateTotal()" disabled>
+              <input value="{{ '{:,}'.format(change.prelims_total) }}" class="enableEdit validate formatNum"
+                id="prelims_total" name="prelims_total" type="text" onchange="updateTotal()" disabled>
               <label for="prelims_total">Preliminaries</label>
             </div>
             <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(change.ohp_total) }}" class="enableEdit validate formatNum" id="ohp_total" name="ohp_total" type="text"
-                onchange="updateTotal()" disabled>
+              <input value="{{ '{:,}'.format(change.ohp_total) }}" class="enableEdit validate formatNum" id="ohp_total"
+                name="ohp_total" type="text" onchange="updateTotal()" disabled>
               <label for="ohp_total">OH&P</label>
             </div>
           </div>
           <div class="row">
             <div class="itemHeading">Areas</div>
             <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(change.NIA_ft2) }}" class="enableEdit validate formatNum" id="NIA_ft2" name="NIA_ft2" type="text"
-                disabled>
+              <input value="{{ '{:,}'.format(change.NIA_ft2) }}" class="enableEdit validate formatNum" id="NIA_ft2"
+                name="NIA_ft2" type="text" disabled>
               <label for="NIA_ft2">NIA</label>
             </div>
             <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(change.GIA_ft2) }}" class="enableEdit validate formatNum" id="GIA_ft2" name="GIA_ft2" type="text"
-                disabled>
+              <input value="{{ '{:,}'.format(change.GIA_ft2) }}" class="enableEdit validate formatNum" id="GIA_ft2"
+                name="GIA_ft2" type="text" disabled>
               <label for="GIA_ft2">GIA</label>
             </div>
           </div>
           <div class="row">
             <div class="fixed-action-btn">
               <div class="col s12 right-align">
-                <button type="submit" id="btnSubmit" class="btn-floating btn-large waves-effect waves-light blue btnHide">
+                <button type="submit" id="btnSubmit"
+                  class="btn-floating btn-large waves-effect waves-light blue btnHide">
                   <i class="fas fa-check"></i>
                 </button>
                 <button type="button" onclick="window.location.href='{{ url_for('register') }}';"
@@ -152,8 +155,17 @@
       </div>
       <div class="row btnDelRow">
         <div class="col s12">
-          <a href="{{ url_for('delete_change', change_id=change._id) }}"
-            class="waves-effect waves-light blue lighten-4 btn-flat btnDelete">Delete</a>
+          <a href="#modal1" class="waves-effect waves-light blue lighten-4 btn-flat btnDelete modal-trigger">Delete</a>
+        </div>
+      </div>
+      <div id="modal1" class="modal">
+        <div class="modal-content center-align">
+          <h5>Confirmation to Delete Change</h5>
+          <p>Be aware that deletion is permanent and irreversible<br> if 'Confirm Delete' is selected</p>
+        </div>
+        <div class="modal-close modal-footer">
+          <a class="modal-close waves-effect waves btn-flat">Cancel</a>
+          <a href="{{ url_for('delete_change', change_id=change._id) }}" class="waves-effect waves-red btn-flat">Confirm Delete</a>
         </div>
       </div>
     </form>

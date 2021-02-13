@@ -7,6 +7,7 @@ $(".dropdown-trigger").dropdown({constrainWidth: false});
 $(document).ready(function () {
   $('select').formSelect();
   $('.fixed-action-btn').floatingActionButton();
+  $('.modal').modal();
 
   // validation as per Code Institute Mini Project for Materialize - https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/04-AddingATask-WritingToTheDatabase/02-materialize-select-validation/static/js/script.js
   validateMaterializeSelect();
