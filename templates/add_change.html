@@ -81,49 +81,44 @@
           <div class="row">
             <div class="itemHeading">Total Costs</div>
             <div class="input-field col s6">
-              <input value="" id="cost_nett" name="cost_nett" type="number" class="validate" onchange="updateTotal()">
+              <input value="" id="cost_nett" name="cost_nett" type="text" class="validate formatNum" onchange="updateTotal()">
               <label for="cost_nett">Nett Cost</label>
             </div>
             <div class="input-field col s6">
-              <input disabled placeholder="-" value="" id="cost_gross_show" name="cost_gross_show" type="number" class="validate">
+              <input value="0" id="cost_gross" name="cost_gross" type="text" class="validate formatNum" tabindex="-1" readonly>
               <label for="cost_gross">Gross Cost</label>
-            </div>
-            <!-- Hidden cost_gross so that retrieved values will be sent to with POST -->
-            <div class="input-field col s6 hideInput">
-              <input value="" id="cost_gross" name="cost_gross" type="number" class="validate">
-              <label for="cost_gross">Hidden Gross Cost</label>
             </div>
           </div>
           <div class="row">
             <div class="itemHeading">Contingency</div>
             <div class="input-field col s6">
-              <input value="" id="cont_design_total" name="cont_design_total" type="number" class="validate" onchange="updateTotal()">
+              <input value="" id="cont_design_total" name="cont_design_total" type="text" class="validate formatNum" onchange="updateTotal()">
               <label for="cont_design_total">Design</label>
             </div>
             <div class="input-field col s6">
-              <input value="" id="cont_const_total" name="cont_const_total" type="number" class="validate" onchange="updateTotal()">
+              <input value="" id="cont_const_total" name="cont_const_total" type="text" class="validate formatNum" onchange="updateTotal()">
               <label for="cont_const_total">Construction</label>
             </div>
           </div>
           <div class="row">
             <div class="itemHeading">Main Contractor On-Costs</div>
             <div class="input-field col s6">
-              <input value="" id="prelims_total" name="prelims_total" type="number" class="validate" onchange="updateTotal()">
+              <input value="" id="prelims_total" name="prelims_total" type="text" class="validate formatNum" onchange="updateTotal()">
               <label for="prelims_total">Preliminaries</label>
             </div>
             <div class="input-field col s6">
-              <input value="" id="ohp_total" name="ohp_total" type="number" class="validate" onchange="updateTotal()">
+              <input value="" id="ohp_total" name="ohp_total" type="text" class="validate formatNum" onchange="updateTotal()">
               <label for="ohp_total">OH&P</label>
             </div>
           </div>
           <div class="row">
             <div class="itemHeading">Areas</div>
             <div class="input-field col s6">
-              <input value="" id="NIA_ft2" name="NIA_ft2" type="number" class="validate">
+              <input value="" id="NIA_ft2" name="NIA_ft2" type="text" class="validate formatNum">
               <label for="NIA_ft2">NIA</label>
             </div>
             <div class="input-field col s6">
-              <input value="" id="GIA_ft2" name="GIA_ft2" type="number" class="validate">
+              <input value="" id="GIA_ft2" name="GIA_ft2" type="text" class="validate formatNum">
               <label for="GIA_ft2">GIA</label>
             </div>
           </div>

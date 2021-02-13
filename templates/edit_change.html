@@ -11,8 +11,7 @@
         <div class="col s9">
           <div class="row">
             <div class="input-field col s2">
-              <input value="{{ change.change_nr }}" class="enableEdit" id="change_nr" name="change_nr" type="number"
-                class="validate" minlength="1" maxlength="3" disabled>
+              <input value="{{ change.change_nr }}" class="enableEdit validate" id="change_nr" name="change_nr" type="number" minlength="1" maxlength="3" disabled>
               <label for="change_nr">Change Nr</label>
             </div>
             <div class="input-field col s4 offset-s1">
@@ -92,12 +91,6 @@
                 onchange="updateTotal()" disabled>
               <label for="cost_nett">Nett Cost</label>
             </div>
-            <!-- <div class="input-field col s6">
-              <input disabled placeholder="-" value="" id="cost_gross_show" name="cost_gross_show" type="text"
-                class="validate">
-              <label for="cost_gross" disabled>Gross Cost</label>
-            </div> -->
-            <!-- Hidden cost_gross so that retrieved values will be sent to with POST -->
             <div class="input-field col s6">
               <input value="0" id="cost_gross" name="cost_gross" type="text" class="enableEdit enableReadOnly formatNum" disabled>
               <label for="cost_gross">Gross Cost</label>

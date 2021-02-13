@@ -117,7 +117,7 @@ def logout():
 
 @app.route("/register")
 def register():
-  register = mongo.db.register.find()
+  register = mongo.db.register.find().sort("change_nr")
   return render_template("register.html", register=register)
 
 
