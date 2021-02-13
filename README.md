@@ -283,25 +283,26 @@ ____________
 
 ### Validators
 
-The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
+The W3C Markup Validator and W3C CSS Validator Services were used to validate the main pages of the project to ensure there were no syntax errors in the project.
 
 **[W3C Markup Validator](https://validator.w3.org/) - [Results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdkeddie.github.io%2FMS2%2F)**
 
-The following errors were raised on the validator on first pass:-
+**Results**
+  - [Dashboard](https://validator.w3.org/nu/?doc=http%3A%2F%2Fms3dkeddie.herokuapp.com%2Fdashboard)
+  - [Register](https://validator.w3.org/nu/?doc=http%3A%2F%2Fms3dkeddie.herokuapp.com%2Fregister)
+  - [Add Change](https://validator.w3.org/nu/?doc=http%3A%2F%2Fms3dkeddie.herokuapp.com%2Fadd_change)
+  - [Edit Change](https://validator.w3.org/nu/?doc=http%3A%2F%2Fms3dkeddie.herokuapp.com%2Fedit_change%2F6022351a011f5063ed3c0ba7)
 
-![HTML Validator Errors](README-attachments/ValidatorErrors.jpg "HTML Validator Errors")  
-
-These errors were associated with the blank headings / fields which will be populated once the Javascript app has run, following the input of the user information and full load of the page.  
-
-In order to overcome this issue, a non-breaking space, *"&nbsp"*, has been added to the headings as a temporary input until the Javasript runs, and a placeholder image has been used for the 'src' attribute (from [Placeholder.com](https://placeholder.com/)).
-
-**There are now no errors remaining on the HTML validator**
 
 <br>
 
-**[W3C CSS Validator](https://jigsaw.w3.org/css-validator/) - [Results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fdkeddie.github.io%2FMS2%2Fassets%2Fcss%2Fstyle.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)**
+**[W3C CSS Validator](https://jigsaw.w3.org/css-validator/)**
 
-There are no errors found on the validation service for CSS.
+**Results**
+  - [Dashboard](https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fms3dkeddie.herokuapp.com%2Fdashboard&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+  - [Register](https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fms3dkeddie.herokuapp.com%2Fregister&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+  - [Add Change](https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fms3dkeddie.herokuapp.com%2Fadd_change&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+  - [Edit Change](https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fms3dkeddie.herokuapp.com%2Fedit_change%2F6022351a011f5063ed3c0ba7&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 
 ### Javascript Code Quality - JSHint
 

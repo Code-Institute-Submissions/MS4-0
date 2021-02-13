@@ -1,3 +1,5 @@
+/*jshint esversion: 10*/
+
 // <----- MATERIALIZE TRIGGERS ----->
 
 $(".dropdown-trigger").dropdown({constrainWidth: false});
@@ -42,7 +44,7 @@ $(document).ready(function () {
 // Inspired and adapted from: https://www.w3schools.com/howto/howto_js_snackbar.asp
 
 function closeSnack() {
-  $('#snackbar').hide('slow')
+  $('#snackbar').hide('slow');
 }
 
 
@@ -50,18 +52,18 @@ function closeSnack() {
 // <----- LOGIN / REGISTRATION ----->
 
 $('#password2').on('keyup', function () {
-  const var1 = $('#password1').val()
-  const var2 = $('#password2').val()
+  const var1 = $('#password1').val();
+  const var2 = $('#password2').val();
   if (var2 == '') {
-    $('.passwordMatch').html("")
+    $('.passwordMatch').html("");
   }
   else if (var1 == var2) {
-    $('.passwordMatch').html("Password match!")
+    $('.passwordMatch').html("Password match!");
   }
   else {
-    $('.passwordMatch').html("Password does not match")
+    $('.passwordMatch').html("Password does not match");
   }
-})
+});
 
 
 // <----- DASHBOARD ----->
@@ -70,14 +72,14 @@ $('#password2').on('keyup', function () {
 
 
 
-let checkedStatus = ["A", "P", "WiP", "R"]
-let checkedChanges = ["CA", "CR", "DD", "PA", "EW", "VE"]
+let checkedStatus = ["A", "P", "WiP", "R"];
+let checkedChanges = ["CA", "CR", "DD", "PA", "EW", "VE"];
 
 
 // https://learn.co/lessons/js-looping-and-iteration-traversing-nested-objects-readme
 
 function getTotal(val, stat) {
-  let total = 0
+  let total = 0;
   Object.keys(arr).forEach((status) => {
     for (const key1 in newStatus) {
       if (newStatus[key1] === status) {
@@ -85,28 +87,28 @@ function getTotal(val, stat) {
           for (const key2 in newChanges) {
             if (newChanges[key2] === change) {
               if (status === stat) {
-                total = total + arr[status][change][val]
+                total = total + arr[status][change][val];
               }
             }
           }
-        })
+        });
       }
     }
-  })
-  return total
-};
+  });
+  return total;
+}
 
 $('#costSwitch').click(function () {
   if ($(this).is(':checked')) {
-    pushValues('Gross')
+    pushValues('Gross');
   }
   else if ($(this).not(':checked')) {
-    pushValues('Nett')
+    pushValues('Nett');
   }
-})
+});
 
-let budget = []
-let arr = []
+let budget = [];
+let arr = [];
 
 $(document).ready(function () {
   if (window.location.pathname == '/dashboard'){
@@ -117,8 +119,8 @@ $(document).ready(function () {
       async: true,
       success: function (result) {
         for (i = 0; i < result.length; i++) {
-          arr[result[i].status] = result[i].changeType
-        };
+          arr[result[i].status] = result[i].changeType;
+        }
       }
     });
     $.ajax({
@@ -127,27 +129,27 @@ $(document).ready(function () {
       dataType: 'json',
       async: 'true',
       success: function(results) {
-        budget = results
+        budget = results;
       }
     });
     pushValues();
   }
-})
+});
 
 function pushValues(checkedStatus) {
   setTimeout(() => {
     // Budget Row
-    let budgetTotalGross = budget[0].cost_gross
-    let budgetTotalNett = budget[0].cost_nett
+    let budgetTotalGross = budget[0].cost_gross;
+    let budgetTotalNett = budget[0].cost_nett;
     let budgetTotal = (function () {
       if (checkedStatus == 'Nett') {
-        return budgetTotalNett
+        return budgetTotalNett;
       }
       else if (checkedStatus == 'Gross') {
-        return budgetTotalGross
+        return budgetTotalGross;
       }
       else {
-        return budgetTotalNett
+        return budgetTotalNett;
       }
     })();
     let budgeTotalDisplay = new Intl.NumberFormat('en-US', {
@@ -155,7 +157,7 @@ function pushValues(checkedStatus) {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(budgetTotal);
-    $('#budgetRow').children('.total').text(budgeTotalDisplay)
+    $('#budgetRow').children('.total').text(budgeTotalDisplay);
 
     let budgetAreaChange = 0;
     let budgetAreaChangeDisplay = new Intl.NumberFormat('en-US', {
@@ -163,7 +165,7 @@ function pushValues(checkedStatus) {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(budgetAreaChange);
-    $('#budgetRow').children('.areaChange').text(budgetAreaChangeDisplay)
+    $('#budgetRow').children('.areaChange').text(budgetAreaChangeDisplay);
 
     let budgetAreaTotal = budget[0].GIA_ft2;
     let budgetAreaTotalDisplay = new Intl.NumberFormat('en-US', {
@@ -171,36 +173,36 @@ function pushValues(checkedStatus) {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(budgetAreaTotal);
-    $('#budgetRow').children('.areaTotal').text(budgetAreaTotalDisplay)
+    $('#budgetRow').children('.areaTotal').text(budgetAreaTotalDisplay);
 
     let budgetRate = budgetTotal / budgetAreaTotal;
     let budgetRateDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
-    }).format(budgetRate);;
-    $('#budgetRow').children('.rate').text(budgetRateDisplay)
+    }).format(budgetRate);
+    $('#budgetRow').children('.rate').text(budgetRateDisplay);
 
     // Approved Row
     let approvedTotalGross = getTotal('totalGross', 'A');
     let approvedTotalNett = getTotal('totalNett', 'A');
     let approvedTotal = (function () {
       if (checkedStatus == 'Nett') {
-        return approvedTotalNett
+        return approvedTotalNett;
       }
       else if (checkedStatus == 'Gross') {
-        return approvedTotalGross
+        return approvedTotalGross;
       }
       else {
-        return approvedTotalNett
+        return approvedTotalNett;
       }
     })();
     let approvedTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
-    }).format(approvedTotal);;
-    $('#approvedRow').children('.total').text(approvedTotalDisplay)
+    }).format(approvedTotal);
+    $('#approvedRow').children('.total').text(approvedTotalDisplay);
 
     let approvedAreaChange = getTotal('totalGIA', 'A');
     let approvedAreaChangeDisplay = new Intl.NumberFormat('en-US', {
@@ -208,7 +210,7 @@ function pushValues(checkedStatus) {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(approvedAreaChange);
-    $('#approvedRow').children('.areaChange').text(approvedAreaChangeDisplay)
+    $('#approvedRow').children('.areaChange').text(approvedAreaChangeDisplay);
 
     let approvedAreaTotal = budgetAreaTotal + approvedAreaChange;
     let approevedAreaTotalDisplay = new Intl.NumberFormat('en-US', {
@@ -216,36 +218,36 @@ function pushValues(checkedStatus) {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(approvedAreaTotal);
-    $('#approvedRow').children('.areaTotal').text(approevedAreaTotalDisplay)
+    $('#approvedRow').children('.areaTotal').text(approevedAreaTotalDisplay);
 
     let approvedRate = ((budgetTotal + approvedTotal) / approvedAreaTotal) - budgetRate;
     let approvedRateDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
-    }).format(approvedRate);;
-    $('#approvedRow').children('.rate').text(approvedRateDisplay)
+    }).format(approvedRate);
+    $('#approvedRow').children('.rate').text(approvedRateDisplay);
 
     // Pending Row
     let pendingTotalGross = getTotal('totalGross', 'P');
     let pendingTotalNett = getTotal('totalNett', 'P');
     let pendingTotal = (function () {
       if (checkedStatus == 'Nett') {
-        return pendingTotalNett
+        return pendingTotalNett;
       }
       else if (checkedStatus == 'Gross') {
-        return pendingTotalGross
+        return pendingTotalGross;
       }
       else {
-        return pendingTotalNett
+        return pendingTotalNett;
       }
     })();
     let pendingTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
-    }).format(pendingTotal);;
-    $('#pendingRow').children('.total').text(pendingTotalDisplay)
+    }).format(pendingTotal);
+    $('#pendingRow').children('.total').text(pendingTotalDisplay);
 
     let pendingAreaChange = getTotal('totalGIA', 'P');
     let pendingAreaChangeDisplay = new Intl.NumberFormat('en-US', {
@@ -253,44 +255,44 @@ function pushValues(checkedStatus) {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(pendingAreaChange);
-    $('#pendingRow').children('.areaChange').text(pendingAreaChangeDisplay)
+    $('#pendingRow').children('.areaChange').text(pendingAreaChangeDisplay);
 
-    let pendingAreaTotal = approvedAreaTotal + pendingAreaChange
+    let pendingAreaTotal = approvedAreaTotal + pendingAreaChange;
     let pendingAreaTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(pendingAreaTotal);
-    $('#pendingRow').children('.areaTotal').text(pendingAreaTotalDisplay)
+    $('#pendingRow').children('.areaTotal').text(pendingAreaTotalDisplay);
 
     let pendingRate = ((budgetTotal + approvedTotal + pendingTotal) / pendingAreaTotal) - budgetRate - approvedRate;
     let pendingRateDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
-    }).format(pendingRate);;
-    $('#pendingRow').children('.rate').text(pendingRateDisplay)
+    }).format(pendingRate);
+    $('#pendingRow').children('.rate').text(pendingRateDisplay);
 
     // WiP Row
     let wipTotalGross = getTotal('totalGross', 'WiP');
     let wipTotalNett = getTotal('totalNett', 'WiP');
     let wipTotal = (function () {
       if (checkedStatus == 'Nett') {
-        return wipTotalNett
+        return wipTotalNett;
       }
       else if (checkedStatus == 'Gross') {
-        return wipTotalGross
+        return wipTotalGross;
       }
       else {
-        return wipTotalNett
+        return wipTotalNett;
       }
     })();
     let wipTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
-    }).format(wipTotal);;
-    $('#wipRow').children('.total').text(wipTotalDisplay)
+    }).format(wipTotal);
+    $('#wipRow').children('.total').text(wipTotalDisplay);
 
     let wipAreaChange = getTotal('totalGIA', 'WiP');
     let wipAreaChangeDisplay = new Intl.NumberFormat('en-US', {
@@ -298,23 +300,23 @@ function pushValues(checkedStatus) {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(wipAreaChange);
-    $('#wipRow').children('.areaChange').text(wipAreaChangeDisplay)
+    $('#wipRow').children('.areaChange').text(wipAreaChangeDisplay);
 
-    let wipAreaTotal = pendingAreaTotal + wipAreaChange
+    let wipAreaTotal = pendingAreaTotal + wipAreaChange;
     let wipAreaTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(wipAreaTotal);
-    $('#wipRow').children('.areaTotal').text(wipAreaTotalDisplay)
+    $('#wipRow').children('.areaTotal').text(wipAreaTotalDisplay);
 
     let wipRate = ((budgetTotal + approvedTotal + pendingTotal + wipTotal) / wipAreaTotal) - budgetRate - approvedRate - pendingRate;
     let wipRateDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
-    }).format(wipRate);;
-    $('#wipRow').children('.rate').text(wipRateDisplay)
+    }).format(wipRate);
+    $('#wipRow').children('.rate').text(wipRateDisplay);
 
     // Revised Estimate Row
     let revisedTotal = budgetTotal + approvedTotal + pendingTotal + wipTotal;
@@ -322,53 +324,53 @@ function pushValues(checkedStatus) {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
-    }).format(revisedTotal);;
-    $('#revisedRow').children('.total').text(revisedTotalDisplay)
+    }).format(revisedTotal);
+    $('#revisedRow').children('.total').text(revisedTotalDisplay);
 
-    let revisedAreaChange = approvedAreaChange + pendingAreaChange + wipAreaChange
+    let revisedAreaChange = approvedAreaChange + pendingAreaChange + wipAreaChange;
     let revisedAreaChangeDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(revisedAreaChange);
-    $('#revisedRow').children('.areaChange').text(revisedAreaChangeDisplay)
+    $('#revisedRow').children('.areaChange').text(revisedAreaChangeDisplay);
 
-    let revisedAreaTotal = budgetAreaTotal + revisedAreaChange
+    let revisedAreaTotal = budgetAreaTotal + revisedAreaChange;
     let revisedAreaTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(revisedAreaTotal);
-    $('#revisedRow').children('.areaTotal').text(revisedAreaTotalDisplay)
+    $('#revisedRow').children('.areaTotal').text(revisedAreaTotalDisplay);
 
     let revisedRate = revisedTotal / revisedAreaTotal;
     let revisedRateDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
-    }).format(revisedRate);;
-    $('#revisedRow').children('.rate').text(revisedRateDisplay)
+    }).format(revisedRate);
+    $('#revisedRow').children('.rate').text(revisedRateDisplay);
 
     // Rejected Total
     let rejectedTotalGross = getTotal('totalGross', 'R');
     let rejectedTotalNett = getTotal('totalNett', 'R');
     let rejectedTotal = (function () {
       if (checkedStatus == 'Nett') {
-        return rejectedTotalNett
+        return rejectedTotalNett;
       }
       else if (checkedStatus == 'Gross') {
-        return rejectedTotalGross
+        return rejectedTotalGross;
       }
       else {
-        return rejectedTotalNett
+        return rejectedTotalNett;
       }
     })();
     let rejectedTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
-    }).format(rejectedTotal);;
-    $('#rejectedRow').children('.total').text(rejectedTotalDisplay)
+    }).format(rejectedTotal);
+    $('#rejectedRow').children('.total').text(rejectedTotalDisplay);
 
     let rejectedAreaChange = getTotal('totalGIA', 'R');
     let rejectedAreaChangeDisplay = new Intl.NumberFormat('en-US', {
@@ -376,29 +378,29 @@ function pushValues(checkedStatus) {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(rejectedAreaChange);
-    $('#rejectedRow').children('.areaChange').text(rejectedAreaChangeDisplay)
+    $('#rejectedRow').children('.areaChange').text(rejectedAreaChangeDisplay);
 
-    let rejectedAreaTotal = revisedAreaTotal + rejectedAreaChange
+    let rejectedAreaTotal = revisedAreaTotal + rejectedAreaChange;
     let rejectedAreaTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(rejectedAreaTotal);
-    $('#rejectedRow').children('.areaTotal').text(rejectedAreaTotalDisplay)
+    $('#rejectedRow').children('.areaTotal').text(rejectedAreaTotalDisplay);
 
     let rejectedRate = ((revisedTotal + rejectedTotal) / rejectedAreaTotal) - revisedRate;
     let rejectedRateDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
-    }).format(rejectedRate);;
-    $('#rejectedRow').children('.rate').text(rejectedRateDisplay)
+    }).format(rejectedRate);
+    $('#rejectedRow').children('.rate').text(rejectedRateDisplay);
 
     $('td').each(function () {
       if ($(this).text().length === 1 && $(this).text() === "0") {
-        $(this).text("-")
+        $(this).text("-");
       }
-    })
+    });
   }, 1000);
 }
 
@@ -408,7 +410,7 @@ $(document).ready(function() {
   if (window.location.pathname == '/dashboard') {
     $('#period').hide();
   }
-})
+});
 
 
 // https://stackoverflow.com/questions/30788531/use-checkboxes-to-filter-to-a-new-array-of-objects-javascript
@@ -455,12 +457,12 @@ $('#costSwitch').click(function () {
     $('.costGross, .giaGross').addClass('hideCost');
     $('.costNett, .giaNett').removeClass('hideCost');
   }
-})
+});
 
 // Accepted Filter
 $("#A").click(function () {
   if ($(this).is(':checked') && $('.changeStatus').text().match('A')) {
-    $('.changeStatus:contains("A")').filter(function () { return $(this).text() === 'A' }).parent('tr').removeClass('hideRowStatus')
+    $('.changeStatus:contains("A")').filter(function () { return $(this).text() === 'A' }).parent('tr').removeClass('hideRowStatus');
   }
   else if ($(this).not(':checked') && $('.changeStatus').text().match('A')) {
     $('.changeStatus:contains("A")').filter(function () { return $(this).text() === 'A' }).parent('tr').addClass('hideRowStatus');
@@ -470,7 +472,7 @@ $("#A").click(function () {
 // Pending Filter
 $("#P").click(function () {
   if ($(this).is(':checked') && $('.changeStatus').text().match('P')) {
-    $('.changeStatus:contains("P")').filter(function () { return $(this).text() === 'P' }).parent('tr').removeClass('hideRowStatus')
+    $('.changeStatus:contains("P")').filter(function () { return $(this).text() === 'P' }).parent('tr').removeClass('hideRowStatus');
   }
   else if ($(this).not(':checked') && $('.changeStatus').text().match('P')) {
     $('.changeStatus:contains("P")').filter(function () { return $(this).text() === 'P' }).parent('tr').addClass('hideRowStatus');
@@ -480,7 +482,7 @@ $("#P").click(function () {
 // WiP Filter
 $("#WiP").click(function () {
   if ($(this).is(':checked') && $('.changeStatus').text().match('WiP')) {
-    $('.changeStatus:contains("WiP")').parent('tr').removeClass('hideRowStatus')
+    $('.changeStatus:contains("WiP")').parent('tr').removeClass('hideRowStatus');
   }
   else if ($(this).not(':checked') && $('.changeStatus').text().match('WiP')) {
     $('.changeStatus:contains("WiP")').parent('tr').addClass('hideRowStatus');
@@ -490,7 +492,7 @@ $("#WiP").click(function () {
 // Rejected Filter
 $("#R").click(function () {
   if ($(this).is(':checked') && $('.changeStatus').text().match('R')) {
-    $('.changeStatus:contains("R")').filter(function () { return $(this).text() === 'R' }).parent('tr').removeClass('hideRowStatus')
+    $('.changeStatus:contains("R")').filter(function () { return $(this).text() === 'R' }).parent('tr').removeClass('hideRowStatus');
   }
   else if ($(this).not(':checked') && $('.changeStatus').text().match('R')) {
     $('.changeStatus:contains("R")').filter(function () { return $(this).text() === 'R' }).parent('tr').addClass('hideRowStatus');
@@ -500,7 +502,7 @@ $("#R").click(function () {
 // CA Filter
 $("#CA").click(function () {
   if ($(this).is(':checked') && $('.changeType').text().match('CA')) {
-    $('.changeType:contains("CA")').parent('tr').removeClass('hideRowType')
+    $('.changeType:contains("CA")').parent('tr').removeClass('hideRowType');
   }
   else if ($(this).not(':checked') && $('.changeType').text().match('CA')) {
     $('.changeType:contains("CA")').parent('tr').addClass('hideRowType');
@@ -510,7 +512,7 @@ $("#CA").click(function () {
 // CR Filter
 $("#CR").click(function () {
   if ($(this).is(':checked') && $('.changeType').text().match('CR')) {
-    $('.changeType:contains("CR")').parent('tr').removeClass('hideRowType')
+    $('.changeType:contains("CR")').parent('tr').removeClass('hideRowType');
   }
   else if ($(this).not(':checked') && $('.changeType').text().match('CR')) {
     $('.changeType:contains("CR")').parent('tr').addClass('hideRowType');
@@ -520,7 +522,7 @@ $("#CR").click(function () {
 // DD Filter
 $("#DD").click(function () {
   if ($(this).is(':checked') && $('.changeType').text().match('DD')) {
-    $('.changeType:contains("DD")').parent('tr').removeClass('hideRowType')
+    $('.changeType:contains("DD")').parent('tr').removeClass('hideRowType');
   }
   else if ($(this).not(':checked') && $('.changeType').text().match('DD')) {
     $('.changeType:contains("DD")').parent('tr').addClass('hideRowType');
@@ -530,7 +532,7 @@ $("#DD").click(function () {
 // PA Filter
 $("#PA").click(function () {
   if ($(this).is(':checked') && $('.changeType').text().match('PA')) {
-    $('.changeType:contains("PA")').parent('tr').removeClass('hideRowType')
+    $('.changeType:contains("PA")').parent('tr').removeClass('hideRowType');
   }
   else if ($(this).not(':checked') && $('.changeType').text().match('PA')) {
     $('.changeType:contains("PA")').parent('tr').addClass('hideRowType');
@@ -540,7 +542,7 @@ $("#PA").click(function () {
 // EW Filter
 $("#EW").click(function () {
   if ($(this).is(':checked') && $('.changeType').text().match('EW')) {
-    $('.changeType:contains("EW")').parent('tr').removeClass('hideRowType')
+    $('.changeType:contains("EW")').parent('tr').removeClass('hideRowType');
   }
   else if ($(this).not(':checked') && $('.changeType').text().match('P')) {
     $('.changeType:contains("EW")').parent('tr').addClass('hideRowType');
@@ -550,7 +552,7 @@ $("#EW").click(function () {
 // VE Filter
 $("#VE").click(function () {
   if ($(this).is(':checked') && $('.changeType').text().match('VE')) {
-    $('.changeType:contains("VE")').parent('tr').removeClass('hideRowType')
+    $('.changeType:contains("VE")').parent('tr').removeClass('hideRowType');
   }
   else if ($(this).not(':checked') && $('.changeType').text().match('VE')) {
     $('.changeType:contains("VE")').parent('tr').addClass('hideRowType');
@@ -563,25 +565,25 @@ $("#VE").click(function () {
 $(document).ready(function () {
   $('tr > .dateAdded').each(function (i) {
     const date = new Date($('.dateAdded').eq(i).text());
-    const today = new Date;
+    const today = new Date();
     const ThirtyDaysInMSecs = 1000 * 60 * 60 * 24 * 30;
     if (today - date < ThirtyDaysInMSecs) {
-      $('.periodN').eq(i).text("Y")
+      $('.periodN').eq(i).text("Y");
     }
     else {
-      $('.periodN').eq(i).text("N")
+      $('.periodN').eq(i).text("N");
     }
-  })
-})
+  });
+});
 
 $('#periodNew').click(function () {
   if ($(this).is(':checked') && $('.periodN').text().match('N')) {
-    $('.periodN:contains("N")').parent('tr').addClass('hideNewRow')
+    $('.periodN:contains("N")').parent('tr').addClass('hideNewRow');
   }
   else if ($(this).not(':checked') && $('.periodN').text().match('N')) {
-    $('.periodN:contains("N")').parent('tr').removeClass('hideNewRow')
+    $('.periodN:contains("N")').parent('tr').removeClass('hideNewRow');
   }
-})
+});
 
 // Period Filter - Changed in last 30 days 
 
@@ -591,22 +593,22 @@ $(document).ready(function () {
     const today = new Date();
     const ThirtyDaysInMSecs = 1000 * 60 * 60 * 24 * 30;
     if (today - date < ThirtyDaysInMSecs) {
-      $('.periodC').eq(i).text("Y")
+      $('.periodC').eq(i).text("Y");
     }
     else {
-      $('.periodC').eq(i).text("N")
+      $('.periodC').eq(i).text("N");
     }
-  })
-})
+  });
+});
 
 $('#periodChange').click(function () {
   if ($(this).is(':checked') && $('.periodC').text().match('N')) {
-    $('.periodC:contains("N")').parent('tr').addClass('hideNewRow')
+    $('.periodC:contains("N")').parent('tr').addClass('hideNewRow');
   }
   else if ($(this).not(':checked') && $('.periodC').text().match('N')) {
-    $('.periodC:contains("N")').parent('tr').removeClass('hideNewRow')
+    $('.periodC:contains("N")').parent('tr').removeClass('hideNewRow');
   }
-})
+});
 
 
 // <----- REGISTER TABLE ----->
@@ -631,7 +633,7 @@ $(document).ready(function () {
     $('#date_added').val(new Date().toISOString().split('T')[0]);
     $('#date_changed').val(new Date().toISOString().split('T')[0]);
   }
-})
+});
 
 
 
@@ -641,64 +643,64 @@ function updateBudget() {
   if (window.location.pathname == '/budget'){
     let v1 = ((num) => {
       num = $('#budget_cost_nett').val();
-      num = num.replace(",", "")
-      num = +num
+      num = num.replace(",", "");
+      num = +num;
       if (Number.isInteger(num)) {
-        return num
+        return num;
       }
       else {
-        return 0
+        return 0;
       }
     })();
     let v2 = ((num) => {
       num = $('#budget_cont_design_total').val();
-      num = num.replace(",", "")
-      num = +num
+      num = num.replace(",", "");
+      num = +num;
       if (Number.isInteger(num)) {
-        return num
+        return num;
       }
       else {
-        return 0
+        return 0;
       }
     })();
     let v3 = ((num) => {
       num = $('#budget_cont_const_total').val();
-      num = num.replace(",", "")
-      num = +num
+      num = num.replace(",", "");
+      num = +num;
       if (Number.isInteger(num)) {
-        return num
+        return num;
       }
       else {
-        return 0
+        return 0;
       }
     })();
     let v4 = ((num) => {
       num = $('#budget_prelims_total').val();
-      num = num.replace(",", "")
-      num = +num
+      num = num.replace(",", "");
+      num = +num;
       if (Number.isInteger(num)) {
-        return num
+        return num;
       }
       else {
-        return 0
+        return 0;
       }
     })();
     let v5 = ((num) => {
       num = $('#budget_ohp_total').val();
-      num = num.replace(",", "")
-      num = +num
+      num = num.replace(",", "");
+      num = +num;
       if (Number.isInteger(num)) {
-        return num
+        return num;
       }
       else {
-        return 0
+        return 0;
       }
     })();
     let gross = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
-    }).format(v1 + v2 + v3 + v4 + v5)
+    }).format(v1 + v2 + v3 + v4 + v5);
     $('#budget_cost_gross').val(gross);
   }
 }
@@ -708,64 +710,64 @@ function updateTotal() {
   if (window.location.pathname.indexOf('edit_change') > -1 || window.location.pathname == '/add_change'){
     let v1 = ((num) => {
       num = $('#cost_nett').val();
-      num = num.replace(",", "")
-      num = +num
+      num = num.replace(",", "");
+      num = +num;
       if (Number.isInteger(num)) {
-        return num
+        return num;
       }
       else {
-        return 0
+        return 0;
       }
     })();
     let v2 = ((num) => {
       num = $('#cont_design_total').val();
-      num = num.replace(",", "")
-      num = +num
+      num = num.replace(",", "");
+      num = +num;
       if (Number.isInteger(num)) {
-        return num
+        return num;
       }
       else {
-        return 0
+        return 0;
       }
     })();
     let v3 = ((num) => {
       num = $('#cont_const_total').val();
-      num = num.replace(",", "")
-      num = +num
+      num = num.replace(",", "");
+      num = +num;
       if (Number.isInteger(num)) {
-        return num
+        return num;
       }
       else {
-        return 0
+        return 0;
       }
     })();
     let v4 = ((num) => {
       num = $('#prelims_total').val();
-      num = num.replace(",", "")
-      num = +num
+      num = num.replace(",", "");
+      num = +num;
       if (Number.isInteger(num)) {
-        return num
+        return num;
       }
       else {
-        return 0
+        return 0;
       }
     })();
     let v5 = ((num) => {
       num = $('#ohp_total').val();
-      num = num.replace(",", "")
-      num = +num
+      num = num.replace(",", "");
+      num = +num;
       if (Number.isInteger(num)) {
-        return num
+        return num;
       }
       else {
-        return 0
+        return 0;
       }
     })();
     let gross = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
-    }).format(v1 + v2 + v3 + v4 + v5)
+    }).format(v1 + v2 + v3 + v4 + v5);
     $('#cost_gross').val(gross);
   }
 }
@@ -775,51 +777,51 @@ $(document).ready(function () {
   setTimeout(() => {
     updateTotal();
   }, 500);
-})
-// 
+});
+
 
 // Enable Edit in View Item
 $('.btnEdit').on('click', function () {
-  $('.enableEdit').prop('disabled', false)
-  $('.enableReadOnly').prop('readonly', true)
+  $('.enableEdit').prop('disabled', false);
+  $('.enableReadOnly').prop('readonly', true);
   $('select').formSelect();
   $('#date_changed').val(new Date().toISOString().split('T')[0]);
   $('#date_modified').val(new Date().toISOString().split('T')[0]);
-  $('.btnHide').show()
-})
+  $('.btnHide').show();
+});
 
 $('#editForm,#addForm').submit(function (event) {
   event.preventDefault();
 
   $('.formatNum').each(function () {
     $(this).text(function () {
-      let x = $(this).val().replace(",", "")
-      $(this).val(x)
-    })
-  })
+      let x = $(this).val().replace(",", "");
+      $(this).val(x);
+    });
+  });
 
   $(this).unbind('submit').submit();
 
-})
+});
 
 
 $('.formatNum').on('focus', function () {
   $(this).text(function () {
-    let x = $(this).val().replace(",", "")
-    $(this).val(x)
-  })
-})
+    let x = $(this).val().replace(",", "");
+    $(this).val(x);
+  });
+});
 
 $('.formatNum').focusout(function () {
   $(this).text(function () {
-    let x = $(this).val().replace(",", "")
+    let x = $(this).val().replace(",", "");
     let y = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
-    }).format(x)
-    $(this).val(y)
-  })
-})
+    }).format(x);
+    $(this).val(y);
+  });
+});
 
 
