@@ -1,56 +1,71 @@
-![Responsive website images](/README-attachments/responsive-screenshots.JPG "Responsive website images")
+![Responsive website images](/READMEinfo/banner.jpeg "Responsive website images")
 
-# **MILESTONE PROJECT TWO**
+# **MILESTONE PROJECT THREE**
 
-For Milestone Project Two, which requires the development of an interactive front-end site, users can may retrieve weather and other travel related information for a chosen destinations.
+For Milestone Project Three, which requires the development of a full stack site that allows users to manage a common dataset, users can manage the cost tracking of a building development through the design and/or construction phases.  The site allows users to view the current estimated cost and a list of changes which are impacting the cost movement from the original budget.
 
-The website utilises APIs from various sources, sometimes sharing that data to retrieve data from other sources, and then presents the data in a simple UI based on a series of tiles.
-
-The website can be viewed [here](https://dkeddie.github.io/MS2/)
+The website can be viewed [here](xxxxxxxxxxxxxxxxxxxxxxxxxxxxx)
 
 ## **UX**
 
 ### **Who is the Website for?**
 
-The user of the site will be a prospective traveller looking to determine a suitable travel destination.  
+Ultimately, the site serves the purpose of the developer, to:-
+
+**1. View the current cost position**<br>
+The website shall enable the developer, and other persons involved and with access, the ability to view the live, current cost position of the development.
+
+Whilst the developer will probably be most interested in the Total Cost, other users may be more interested in the list of changes - and their individual cost impact.
+
+**2. Implement Consistent, Best Practice Cost Control**<br>
+The website shall enable the Cost Managers - those responsible for managing and reporting the current cost position of the development - to report costs immediately as they arise on a project.
+
+The website will provide a consistent approach in the reporting of costs and changes, from project to project.  This will support familiarity and understanding for users.
+
 <br>
 
 ### **User Stories**
 
-As a user, I want to be able to see the likely weather of a chosen destination to help me decide if it is the correct decision.
+On any property development, there will be methods for tracking and reporting costs.  A cost manager will normally implement a simple cost tracker utilising an Excel spreadsheet to list the changes and report this back to the Developer/Client.
+
+I currently work for a developer and we require our cost managers to implement these procedures. The cost managers utilise the Excel cost tracker which can be viewed [here](XXXXXXXXXXX)
+
+My aspiration is to incorporate the principles of this template into a more robust data management system which can be used for different construction projects by different developers / clients.
+
+As such, the fundamentals and principles are crystalised in the User Stories below, which will be translated into the final website.
+
+*As a developer, I want to implement best practice cost control on my construction projects.*
 
  **Item** | **Experience** | **Objectives**
 ---------|----------------|---------------
-1 | As a user, I want to be able to find a possible travel destination | Provide a search field to retrieve information on destinations
-2 | As a user, I want to be able check the location of the travel destination | Provide a visual map reference to determine the location of the destination chosen
-3 | As a user of the site, I want to be able to see typical weather conditions of that destination | Provide the typical temperature for each month of the year
-4 | As a user, I want to be able to determine the best months to visit the destination | Provide users with a chart of the weather showing the typical temperature and rainfall over a year
-5 | As a user, I want to see the current weather in the chosen destination | Provide the current temperature and conditions for the chosen destination
-6 | As a user, I would like to find out the cost of travelling to this destination | Provide the cost of a flight to the destination.
-7 | As a user, I would like to see what the place I would like to visit looks like | Provide images of the destination
+&nbsp; | *As a developer / user, I want to:-* | &nbsp;
+1 | Clearly see the current cost position of the project | Provide a Summary that is concise and easy to interpret
+2 | Determine the cost movement from start to current/forecast position | Include the original budget, summary of changes and revised total estimate on the Summary
+3 | View a full list of the changes impacting the development | Provide a list of the changes on the website
+4 | Determine what changes in the latest period (30 days) have added to the revised total estimate | Provide a filter of the cost for the past 30 days
+5 | Depending on the purpose of my visit to the site, view only Accepted or Pending/WiP changes | Provide a filter for 'Status' categories
+6 | View changes / cost impacts by the type of change to understand their impact on the development | Provide a filter for the 'Change Type' categories
+&nbsp; | &nbsp; | &nbsp;
+&nbsp; | *As a Cost Manager, I want to:-* | &nbsp;
+7 | Add new changes to the Cost Tracker with a breakdown of the cost | Provide an 'Add' function which updates the database and list of changes which can be viewed
+8 | Edit changes as details are updated or when the Status changes | Enable an edit function of the change which will update the database
+
 <br>
 
 
 ### **Functions of the Website**
 
-The functions of the website are to:-    
-    
-1. Provide weather information for travel destinations around the world.
-    - Users can see the average temperatures and rainfall for each month across a 12 month period.  This weather a retrieved from the [Meteostat API](https://meteostat.net/en) which provides historic, average weather data, and presented in a Chart.js graph.
-    - Users can also scroll through the months and see the Average Temperative of the selected month.  This is the same information provided the Meteostat API.
-    - Users can also see the current weather of the destination.  This information is provided from [Weatherapi.com](https://www.weatherapi.com/).
+The functions of the website are to:-
 
-2.  Retrieve flight prices for those destinations from the users current location.
+1. Provide a visual summary of the current cost position of the development project.  This is represented in a Dashboard.
+    - XXXXXXXXXXXXXx
 
-    - As the intention of the site is to determine the best months to travel to a particular destination, this information will provide the lowest price from which flights start from to the destination in that particular month.  This information is provided from the [Skycanner.net API](https://rapidapi.com/skyscanner/api/skyscanner-flight-search).
+2.  View a list of all the changes impacting on the cost of a construction project.  This is represented on the Register.
+    - XXXXXXXXXXXXXXXXXX
 
-3. Show users where in the world the selected destination is located.
+3. Ability to Add (create) / View (read) / Edit (update) / Delete changes which affect a construction project.
+    - XXXXXXXX
 
-    - Users can see where in the world the selected destination is located.  This is provided by the [Google Maps Static API](https://developers.google.com/maps/documentation/maps-static/overview).
-
-4. Retrieve images of 'Places of Interest' of the selected destination.
-
-    - Provide a selection of images which may by Points of Interest for visitors to the chosen destination.  This is provided by Google Places by means of the [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/overview).  
 <br>
 
 ___
@@ -58,42 +73,39 @@ ___
 
 ## **Design**
 
-### **Mobile v. Desktop**
+### **Desktop-only** (for now)
 
-By designing the web app around a tile system, the intention is that the app will work on any screen size by adjusting the number of tiles per row.  The tiles are a fixed size, and wrap as required to suit the screen resolution.  As such, the page is fully responsive.  
+The website is optimised for desktops only at this stage, as mobile versions will necessitate a 'lite' version.
+
+Whilst the website / app is in development, the focus is on establishing all the desired functionality of the desktop version in order that there are no constraints are introduced.
+
+Once all the desired features are fully developed, a 'Lite' version will be deployed.
 <br>
 
 
 ### **Key concepts**
-The primary purpose of the web app is simply to provide weather data for chosen destinations.  As such, the intention of the user interface is to be simple and uncluttered so that it does not detract from this information, albeit supplementary tiles may make the web app more useful.  
+The primary purpose of website is to show the current cost of a construction project and a list of the changes that have affected the cost since the establishment of the budget.
+
+The intention of the site is to give this information in a clear, concise manner.  By giving users control of certain filters, it is envisaged that this will assist users understanding of the numbers being presented without the need for explanation.  The filters should give users a better insight on the information and numbers being presented, and in turn control of the project by being able to make more informed decisions.
+
+Whilst the website has reached a point of deployment for presentation, feedback and testing with users, the page requires further development before being deployed in a live situation.  
 
 As such, the page is developed along certain principles:-
 
-  1. Not to provide multiple pages that might detract from this core set of information;
-  2. Additional functionality and more detailed information may be added to the web app in time through the Tiles (see **Features to Implement in the Future** below).  
 <br>
 
 ### **Wireframe**
 
 Figma was used to develop a key concept into framework for developing the web page / app.  Only a desktop framework was formulated at this stage.
 
-A copy of the original wireframe can be found here: [Figma](https://www.figma.com/file/3Yqx3U9HCWVm7PZprEhVEt/MS2?node-id=0%3A1) or [PDF](README-attachments/Wireframe.pdf)
+A copy of the original wireframe can be found here: [Figma](https://www.figma.com/file/NCiIRZCyfNSYk62uRwCqu3/MS3?node-id=0%3A1) or [PDF](READMEinfo/Figma.pdf)
 
-The PDF contains additional explanation on the intention of each Tile.
-
-Whilst my wireframe did not incorporate the footer, I knew that I would likely want to add this at a later point.  The contents would be minimal and yet to be decided, as it would be subsidiary to the other information provided.  
 <br>
 
 ### Typography
 
-The [Rubik](https://fonts.google.com/specimen/Rubik) font (from Google Fonts) is the only font used throughout the whole website with Sans Serif as the fallback font in case for any reason the font isn't being imported into the site correctly. 
+The [Montserrat](https://fonts.google.com/specimen/Montserrat) font (from Google Fonts) is the only font used throughout the whole website with Sans Serif as the fallback font in case for any reason the font isn't being imported into the site correctly.
 
-Rubik was selected as a super-clean, legible front that display clearly on the Tiles.  
-<br>
-
-### Imagery
-
-Imagery is limited to the Photo tile.  The imagery is sourced from Google Places via the Maps Javascript API (as opposed to the Places API, which places restrictions on search without upgrading to the paid version and also does not function with Javascript API retrieval methods due to header conflicts).  
 <br>
 
 ___
@@ -102,8 +114,8 @@ ___
 
 ### Responsive
 
-The site is suitable for mobile through desktop displays.
-https://fonts.google.com/specimen/Rubik
+XXXXXXXXXXXXXXXXXXXXXXXXXX
+
 ![Responsive Screen](/README-attachments/responsiveScreen.gif "Responsive Screen")
 
 
@@ -111,59 +123,55 @@ https://fonts.google.com/specimen/Rubik
 
 The web page is interactive in the following ways:-
 
-* Three steps to fully load the page with user inputs.  The page transitions between each:-
-  1. Current Location (initial):  User inputs their current location.  Confirming the current location transitions the input field away and the destination field appears.
-  2. Destination: User inputs their chosen destination.  Confirming the destination transitions the page to load the Tiles.
-  3. Tiles (Full Page Load): The page loads information to the Tiles based on the current location and destination inputs.
+* Filter - on the Dashboard and Register, the Filter acts to filter and change the data presented on screen.
+  1. Cost - option to switch between 'Nett' and 'Gross' total figures
+  2. Status - selection of Status will update totals or filter the register for only those selected
+  3. Change Type - selection of Change Type will update totals or filter the register for only those selected
+  4. Period - selecting will update the totals to only include the changes within the period selected.
 
-* Month Tile - the tile will load on the current month.  The months can be changed back and forth and this affects two other tiles:-
-  1. Average Temperature - the average temperature for each month will be shown to match the corresponding month.
-  2. Flight Prices - the lowest price to the destination will be shown for the month shown .(if one can be retrieved from the API)
+* Add / Edit Changes - users can add or edit changes, affecting the database accordingly.
 
-* Photo Tile - photos displaying Points of Interest can be changed by clicking forward/back.
-
-* The interactive elements can be seen below:-  
-![Interactive Overview](/README-attachments/interactive.gif "Interactive Overview")
+* Auto-update input information on the Add / Edit pages:-
+  1. Numbers auto-format with thousand separators when fields entered/updated;
+  2. Gross total auto-calculates to ensure that it is the sum of the preceding numbers.
 
 
-### Existing Features  
+### Existing Features
 
-The following features load on the page after inputting the Current Location and Destination:-
+An overview of the features on the website are listed below:
 
-* **Weather Chart Tile**: average temperatures and rainfall for the destination selected for a 12 month period
+* **Dashboard**: XXXXXXXXXXXXXXX
 ![Weather Chart](/README-attachments/ChartTile.jpg "Weather Chart")
 
-* **Month Tile**: controls the month for the tiles that are 'month specific'  
-![Month Tile](/README-attachments/MonthTile.jpg "Month Tile")
+* **Register**: XXXXXXXXXXXXXXX
+![Weather Chart](/README-attachments/ChartTile.jpg "Weather Chart")
 
-* **Average Temperature Tile**: displays the average temperate (and high / low) for the month selected  
-![Average Temp Tile](/README-attachments/AveTempTile.jpg "Average Temp Tile")
+* **Add Change**: XXXXXXXXXXXXXXX
+![Weather Chart](/README-attachments/ChartTile.jpg "Weather Chart")
 
-* **Current Weather Tile**: displays the current weather conditions in the destination  
-![Current Weather Tile](/README-attachments/CurrentTempTile.jpg "Current Weather Tile")
+* **View / Edit Change**: XXXXXXXXXXXXXXX
+![Weather Chart](/README-attachments/ChartTile.jpg "Weather Chart")
 
-* **Map Tile**: shows the location of the destination selected  
-![Map Tile](/README-attachments/MapTile.jpg "Map Tile")
+* **Registration**: XXXXXXXXXXXXXXX
+![Weather Chart](/README-attachments/ChartTile.jpg "Weather Chart")
 
-* **Flight Price Tile**: shows the lowest price for a flight to the destination (if available) and by clicking, takes users to Skyscanner.net  
-![Flight Price Tile](/README-attachments/FlightPriceTile.jpg "Flight Price Tile")
+* **Log In**: XXXXXXXXXXXXXXX
+![Weather Chart](/README-attachments/ChartTile.jpg "Weather Chart")
 
-* **Photo Tile**: displays a selection of images (points of interest) of the destination  
-![Photo Tile](/README-attachments/PhotoTile.jpg "Photo Tile")
+* **Budget**: XXXXXXXXXXXXXXX
+![Weather Chart](/README-attachments/ChartTile.jpg "Weather Chart")
+
+* **Log Out**: XXXXXXXXXXXXXXX
+![Weather Chart](/README-attachments/ChartTile.jpg "Weather Chart")
 
 
 ### Features to Implement in the Future
 
-In the future, I will give consideration to implementing the following features to enhance the user experience and functionality of the site:-
+The functions implemented on this website are for demonstration purposes only at this stage, there is further development required before the website can be deployed for a live development.  Those features required before live deployment include:-
 
-* **Weather Tiles - Celsius / Farhenheight:** Option to switch between Celsius and Farhenheit.
-* **Map Tile - Current Location and Travel Time:** On-click, the tile will enlarge to show Current Location and Destination, and estimated travel time to the destination.
-* **Flight Price Tile - Currency selection:** Option to switch between currencies.
-* **Flight Price Tile - Improve functionality to deliver prices:** With further refinement, and possibly use of the full Skyscanner API (currently only accessed through RapidAPI), this could be improved.  Steps to be explored:-
-  1. Searching for local airports and returning results based on that parameter, rather than the current place parameter.
-  2. Providing option to select the preferred airport.  Particularly for the current location, and in places with more than one airport (e.g. London), this could provide more tailored results for the user.
-* **Photo Tile - Improve photos returned:** The current API is a free Google facility, but the quality of pictures returned is not great.  In order to get better quality pictures of destinations, then a paid for API would have to integrated into the site.
-* **Photo Tile - Enlarge Images with details:** On-click, the images will enlarge and provide details of the image (e.g. attraction name).
+* **Authorisation of Registration:** After a user has registered, access will not be granted until an Administrator approves access and sets privileges.
+* **Access privileges:** Users will be granted different rights and viewer privileges dependent upon their role on the project. For example, a cost manager will be able to add and edit changes, whereas other users will only be able to view them.  An Adminstrator role will also be introduced for controlling these access privileges.
+* **Graphical Representation:** To enhance and make the user experience more engaging, the Dashboard can benefit from graphs or other figurative representations of the data in a more visually absorbing way.
 
 <br>
 
@@ -174,21 +182,18 @@ In the future, I will give consideration to implementing the following features 
 * [HTML5](https://en.wikipedia.org/wiki/HTML5)
 * [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 
 * [Javascript](https://en.wikipedia.org/wiki/JavaScript)
+* [Python](https://www.python.org/)
 
 ### Frameworks, Libraries and Programmes Used 
 
-* [Bootstrap 4](https://getbootstrap.com/)  
-Bootstrap is generally used to assist with the responsiveness and layout of the website.  By utilising the 'flex-wrap' feature, the Tiles on the page adjust from a desktop screen configuration of 5 squares wide x 2 squares high to an appropriate width and height to suit the device resolution settings.
+* [MaterializeCSS](https://materializecss.com/)  
+Materialize is generally used to assist with the layout, utilising the in-built grid system, and design functionality.
 
 * [Google fonts](https://fonts.google.com/)  
-Google fonts is used to import the 'Rubik' font into the style.css file which is used throughout the project.
-
-* [Chart.js](https://www.chartjs.org/)  
-Chart.js is used to display the monthly average temperatures and rainfalls.
+Google fonts is used to import the 'Montserrat' font into the style.css file which is used throughout the project.
 
 * [jQuery, incl UI](https://jquery.com/)  
-jQuery is used for Javascript DOM manipulation.  The UI 
-is also library is also for effects to enable smooth transitions for the Tiles.
+jQuery is used for Javascript DOM manipulation.
 
 * [Git](https://git-scm.com/)  
 Git was used for version control by utilizing the terminal in VSCode terminal to commit and push changes to GitHub.  
@@ -210,27 +215,6 @@ Kapwing used for editing videos and creating GIFs used in this README file.
 * [Screen Recorder](https://chrome.google.com/webstore/detail/screen-recorder/hniebljpgcogalllopnjokppmgbhaden)  
 Screen Recorder used for creating videos (edited in Kapwing) of website features in operation.
 
-### Third Party APIs Used
-
-* [Algolia Places](https://github.com/algolia/places) 
-The API is used to provide place search autocomplete when inputting the Current Location and Destination fields on the page startup.
-
-* [Meteostat](https://meteostat.net/en) 
-Meteostat provides historic weather and climate information that is used to display the information contained on the Weather Chart and Average Temperature Tiles.  
-
-* [Weatherapi.com](https://www.weatherapi.com/) 
-Weatherapi.com provides the information used in the Current Weather Tile.  The API provides the current temperature (actual and 'feels like') and the current conditions (including the image as well as the description).  
-
-* [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/overview) 
-The Javascript API was used for its access to the Google Places library in order to return access to images of the destination.  
-
-* [Google Maps Static API](https://developers.google.com/maps/documentation/maps-static/overview)  
-A static map is used for the Map Tile in order to provide users with a visual reference of where their destination is located.  
-
-* [Skyscanner API via RapidAPI](https://rapidapi.com/skyscanner/api/skyscanner-flight-search)  
-As the principle Skyscanner API is restricted to 'Partners', the results have been accessed through RapidAPI.  The API returns the lowest price between the Current Location and Destination.  
-
-**Async / Await and Fetch()** - In order to retrieve the API/JSON information, the Fetch() function was used in conjunction with Async / Await.  The Async / Await method enables a simple method to aynchronously load the data before the Tiles are loaded and displayed.
 
 ## Testing
 
