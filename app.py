@@ -22,15 +22,18 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/dashboard", methods=["GET"])
 def dashboard():
-  return render_template("dashboard.html")
+
+  if not session.get('user') is None:
+    return render_template("dashboard.html")
+
+  else:
+    return redirect(url_for("login"))
 
 
 @app.route("/getbudget", methods=["GET"])
 def get_budget():
   db = mongo.db.budget
-
   pipeline = [{ '$project': {'_id': 0} }]
-
   budget_list = list(db.aggregate(pipeline))
 
   if not session.get('user') is None:
