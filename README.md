@@ -58,13 +58,13 @@ As such, the fundamentals and principles are crystalised in the User Stories bel
 The functions of the website are to:-
 
 1. Provide a visual summary of the current cost position of the development project.  This is represented in a Dashboard.
-    - XXXXXXXXXXXXXx
+    ![Dashboard](/READMEinfo/function_dashboard.jpg "Dashboard")
 
 2.  View a list of all the changes impacting on the cost of a construction project.  This is represented on the Register.
-    - XXXXXXXXXXXXXXXXXX
+    ![Register](/READMEinfo/function_register.jpg "Register")
 
 3. Ability to Add (create) / View (read) / Edit (update) / Delete changes which affect a construction project.
-    - XXXXXXXX
+    ![Change](/READMEinfo/function_change.jpg "Change")
 
 <br>
 
@@ -88,9 +88,7 @@ The primary purpose of website is to show the current cost of a construction pro
 
 The intention of the site is to give this information in a clear, concise manner.  By giving users control of certain filters, it is envisaged that this will assist users understanding of the numbers being presented without the need for explanation.  The filters should give users a better insight on the information and numbers being presented, and in turn control of the project by being able to make more informed decisions.
 
-Whilst the website has reached a point of deployment for presentation, feedback and testing with users, the page requires further development before being deployed in a live situation.  
-
-As such, the page is developed along certain principles:-
+Whilst the website has reached a point of deployment for presentation, feedback and testing with users, the page requires further development before being deployed in a live situation.
 
 <br>
 
@@ -111,13 +109,6 @@ The [Montserrat](https://fonts.google.com/specimen/Montserrat) font (from Google
 ___
 
 ## Features
-
-### Responsive
-
-XXXXXXXXXXXXXXXXXXXXXXXXXX
-
-![Responsive Screen](/README-attachments/responsiveScreen.gif "Responsive Screen")
-
 
 ### Interactive Elements
 
@@ -140,29 +131,47 @@ The web page is interactive in the following ways:-
 
 An overview of the features on the website are listed below:
 
-* **Dashboard**: XXXXXXXXXXXXXXX
-![Weather Chart](/README-attachments/ChartTile.jpg "Weather Chart")
+* **Dashboard**: The Dasboard provides a summary of the Cost Position of the project, providing users with a view of the Budget, accepted (Approved) and potential changes (Pending, WiP) and the Revised Estimate.  
 
-* **Register**: XXXXXXXXXXXXXXX
-![Weather Chart](/README-attachments/ChartTile.jpg "Weather Chart")
+  Users can use the Filter to switch between Nett or Gross costs, or include / exclude changes depending on the Status or Change Type.  By enabling users to carry out this function themselves, they will have a deeper understanding of the cost.
 
-* **Add Change**: XXXXXXXXXXXXXXX
-![Weather Chart](/README-attachments/ChartTile.jpg "Weather Chart")
+  ![Dashboard](/READMEinfo/existingF_dashboard.jpg "Add Change")
 
-* **View / Edit Change**: XXXXXXXXXXXXXXX
-![Weather Chart](/README-attachments/ChartTile.jpg "Weather Chart")
+* **Register**: The Register is a complete list of all Changes stored in the DB.  Like the Dashboard, the Filter will hide from view changes which are not selected.
 
-* **Registration**: XXXXXXXXXXXXXXX
-![Weather Chart](/README-attachments/ChartTile.jpg "Weather Chart")
+  By clicking on a row, the Change will open to View/Edit.
 
-* **Log In**: XXXXXXXXXXXXXXX
-![Weather Chart](/README-attachments/ChartTile.jpg "Weather Chart")
+  ![Register](/READMEinfo/existingF_register.jpg "Register")
 
-* **Budget**: XXXXXXXXXXXXXXX
-![Weather Chart](/README-attachments/ChartTile.jpg "Weather Chart")
+* **Add Change**: Users can add a change by clicking on the '+' button on the Register page, which will bring them to this input page.
 
-* **Log Out**: XXXXXXXXXXXXXXX
-![Weather Chart](/README-attachments/ChartTile.jpg "Weather Chart")
+  The dates auto-populate to the current date and are not editable.  The Gross Cost also auto-calculates, and is the sum of the Nett Cost, Contingencies and Main Contractor On-Costs.  This ensures that there is no manual error in the calculation.
+
+  ![Add Change](/READMEinfo/existingF_addChange.jpg "Add Change")
+
+* **View / Edit Change**: Users can View/Edit a change by clicking on the row on the Register, which will bring them to this page.
+
+  On load, the input fields are Read Only, but on clicking the 'Edit' button, the editable fields will become active.
+
+  A delete button is also included on this page.  Deletion is permanent and therefore a warning pop-up is utilised to confirm the action before committing.
+
+  ![Edit Change](/READMEinfo/existingF_editChange.jpg "Edit Change")
+
+* **Budget**: This page allows users to amend the Approved Budget.
+
+  ![Budget](/READMEinfo/existingF_budget.jpg "Budget")
+
+* **Registration**: This page allows users to Register for access to the web page.
+
+  ![Registration](/READMEinfo/existingF_registration.jpg "Registration")
+
+* **Log In**
+
+  ![Log In](/READMEinfo/existingF_login.jpg "Log In")
+
+* **Log Out**: Removes all session cookies and ensures that pages / APIs cannot be accessed when not logged in.
+
+  ![Log Out](/READMEinfo/existingF_logout.jpg "Log Out")
 
 
 ### Features to Implement in the Future
@@ -206,11 +215,11 @@ In addition, in order to track the purpose of commits, the following pre-fixes h
 * [GitHub](https://github.com/)  
 GitHub is used to store the projects code after being pushed from Git.
 
+* [Heroku](https://www.heroku.com/)  
+Heroku is used for deployment of the website / application.
+
 * [Figma](https://www.figma.com/)  
 Figma was used to create the wireframes during the design process.
-
-* [Kapwing](https://www.kapwing.com/)
-Kapwing used for editing videos and creating GIFs used in this README file.
 
 * [Screen Recorder](https://chrome.google.com/webstore/detail/screen-recorder/hniebljpgcogalllopnjokppmgbhaden)  
 Screen Recorder used for creating videos (edited in Kapwing) of website features in operation.
@@ -220,63 +229,50 @@ Screen Recorder used for creating videos (edited in Kapwing) of website features
 
 ### User Story Feedback and Testing
 
-**1** | **As a user, I want to be able to find a possible travel destination**
+**1** | **Clearly see the current cost position of the project**
 ---------|----------------
-(a) | Users can load destinations into the search bar to select destinations.  
-(b) | The search bar is restricted to towns and cities, so the search bar can be specific and not over-loaded with the likes of street names.
-(c) | ![Destination Search](/README-attachments/Destination.gif "Destination Search")
+**2** | **Determine the cost movement from start (budget) to current / forecast position**
+(a) | Users can view the current cost position of the project on the Dashboard, including the Approved Budget and the Revised Estimate
+(b) | Users can see the build-up to the Revised Estimate, so they know what changes are included in it
+(c) | By switching the Nett and Gross Cost filter, users can be sure they know the basis of the cost.
+(d) | ![Cost Position](/READMEinfo/US_1CurrentCostPosition.gif "Cost Position")
 ________________
 
 <br>
 
-**2** | **As a user, I want to be able check the location of the travel destination**
+**3** | **View a full list of the changes impacting the development**
 ---------|----------------
-(a) | In order for users to be able to confirm that the correct destination has been selected, a map is included on the panel.
-(b) | A cross-hair indicates the location of the destination selected.
-(c) | Users can see the country, and surrounding countries, of the destination selected.
-(d) | ![Map](/README-attachments/Map.jpg "Map")
+**4** | **Determine what changes in the latest period (30 days) have added to the revised total estimate**
+(a) | The Register has a list of all changes being recorded on the project
+(b) | As users will be particularly interested in 'new' or 'updated' changes, the Register can be filtered accordingly to show only those 'new' or 'updated' changes within the last 30 days.
+(c) |![Full list](/READMEinfo/US_3+4Register+Period.gif "Full list")
 _____________
 
 <br>
 
-**3** | **As a user of the site, I want to be able to see typical weather conditions of that destination**
+**5** | **Depending on the purpose of my visit to the site, view only Accepted / Pending / WiP changes**
 ---------|----------------
-**4** | **As a user, I want to be able to determine the best months to visit the destination**
-(a) | Once the destination is loaded, the panel displays two past trends of weather for that place, the average temperature and rainfall for each month in the form of a Line Chart.
-(b) | The Chart will show the warmest and driest months to visit a destination, two factors which help to determine the best months to visit a destination.
-(c) | To see the average temperature of each month, scroll through the months to read the temperature in degrees Celsius.
-(d) |![Typical Weather](/README-attachments/TypicalWeather.gif "Typical Weather")
+**6** | **View changes / cost impacts by the type of change to understand their impact on the development**
+(a) | On the Dashboard, the Filter can be used to show only those costs which are Selected.  This may be useful where, for example, a Client only wishes to know their *committed* costs, I the budget and those changes which are approved.  As such, Pending and WiP changes would not be included in the Revised Estimate and would be unchecked.
+(b) | ![Dashboard Filter](/READMEinfo/US_5Filter.gif "Dashboard Filter")
+(c) | Similarly on the Register, the Filter can be used in a similar way.  For example, a Client may wish to review only thos Pending changes for authorisation / acceptance.
+(d) | ![Register Filter](/READMEinfo/US_5Filter_Register.gif  "Register Filter")
 _____________
 
 <br>
 
-**5** | **As a user, I want to see the current weather in the chosen destination**
+**6** | **Add new changes to the Cost Tracker with a breakdown of the cost**
 ---------|----------------
-(a) | A Current Weather tile is included on the page.
-(b) | ![Current Weather](/README-attachments/CurrentWeather.jpg  "Current Weather")
+(a) | New changes may be added to the DB with a breakdown of the Cost.
+(b) | ![Add change](READMEinfo/US_6AddChange.gif "Add change")
 _____________
 
 <br>
 
-**6** | **As a user, I would like to find out the cost of travelling to this destination**
+**7** | **Edit changes as details are updated or when the Status of a change is made**
 ---------|----------------
-(a) | A flight price tile is included on the page.
-(b) | ![Flight Price](README-attachments/FlightPrice.jpg "Flight Price")
-(c) | The price of the flight of is the lowest price returned from Skyscanner for the destination.
-(d) | The price is based on the current month selected
-(e) | ![Flight Price by Month](README-attachments/FlightPriceMonth.gif "Flight Price by Month")
-(f) | Users can click on the Flight Price Tile to go to Skyscanner and search flight prices in more detail
-(g) | ![Link to Skyscanner](README-attachments/LinkToSkyscanner.gif "Link to Skyscanner")
-(h) | Where it is not possible to return flight prices, users can still click on the Flight Price Tile to direct them to Skyscanner.net.
-(i) | ![No Flight Price Available](README-attachments/NoFlightPrices.gif "No Flight Price Available")
-_____________
-
-<br>
-
-**7** | **As a user, I would like to see what the place I want like to visit looks like** 
----------|----------------
-(a) | The Photo Tile shows a selection of photos that are 'Points of Interest' at the destination.  
-(b) | ![Photo Tile](README-attachments/Photos.gif "Photo Tile") 
+(a) | Changes listed on the Register can be made by clicking on the row to View / Edit the item
+(b) | ![Edit Change](READMEinfo/US_7EditChange.gif "Edit Change") 
 ____________
 
 <br>
@@ -318,44 +314,20 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate th
 
 The following tests were carried out to ensure functionality before deployment:-
 
-**Test**: Check that page fully loads with different Current Locations and Destinations
-* Steps followed:  
-  * Static Current Location of Dublin for 10 different Destinations tested
-  * 10 different Current Locations with static Destination of Dublin tested
-  * 10 different locations used were:-  
-    * New York
-    * Shanghai
-    * Milan  
-    * London
-    * Abu Dhabi
-    * Los Cristianos
-    * Florence
-    * Perth
-    * Wellington
-    * Cape Town
-  * Check that all Tiles load
-  * Check that map shows correct Destination
-  * Check that Months Tile rotates when clicked, and Ave Temp and Flight Price changes
-  * Check that images can be rotated on Photos Tile
-* Results:  Page loads in all scenarios but the following limitations are sometimes observed when carrying out the full test  
-    * Flight Prices may not always be returned.  That can be for a number of reasons, including:-  
-        1. The place name returned by Algolia is not recognised by Skyscanner.net.  For example, London is called City of London in Algolia and is therefore not recognised by Skyscanner.  
-        2. Requests to Skyscanner API may be exceeded if used too much or to quickly.  This is a limitation of the open API available.  
-        3. There may be no Flights available in that month.  
+**Test**: Changes can be added and filtered for each Status and Change Type
+* Steps followed:
+  * Add a change which correlates to each Status/Change Type option (ie 4 x 6 = 24 changes)
+  * Rotate through each status and change type to add a change
+  * Check Dashboard and Register functions for each Status and Change Type on the Filter
+* Results:  Dashboard and Register load as anticipated, with Status and Change Type filter operating to include / exclude applicable changes in the Totals on the Dashboard and list of changes on the Register.
 
-        A Catch statement has been put in place for when the above 3 items occur, so that Users are directed to Skyscanner.net to be able to check prices manually.  The Tile may also toggle as appropriate when rotating through the months to show prices.
-    * **[Bug now fixed]** *Some city or town names may be the same in different countries, e.g. Perth.  The web page defaults only to the top selection, Perth, WA.  This is a current bug which will need to be rectified.* **[Bug now fixed]**
-
-**Test**: Test the page with invalid inputs
+**Test**: Test the Period Filter
 * Steps followed:-
-  1. Current Location of 'Dublin' and Destination of 'Asdfasdfasdf' used to test page.
-  2. Current Location of 'Asdfasdfasdf' and Destination of 'Dublin' used to test page.
-  3.  Destination and Current Location of 'Asdfasdfasdf' used to test page.
+  1. Manually amend two Changes in the MongoDB collection, one for the 'date_added' field and the other for the 'date_changed' field.  The dates should be one year earlier than the current date, ie more than 30 days ago.
+  2. Check the dates have been updated on the website / Register by selecting each item in turn and clicking the item to View.
+  3. Return to the Register and select the Period filters to check that the Filter operates as intended
 * Results:-
-  * Steps 1 and 3 return expected Error alert.
-  ![Invalid Input - Fail](README-attachments/InvalidInputs-Fail.jpg "Invalid Input - Fail")
-  * The page loads under Step 2, however this is to be expected as the Current Location is only required for the Flight Price Tile, which has an option if no prices are returned from the API
-  ![Invalid Input - Still Pass](README-attachments/InvalidInputs-StillPass.jpg "Invalid Input - Still Pass")
+  * The period filter operated as expected, but removing the Changes with dates outwith the 30 day period.
 
 During the on-going testing and development of the site, bugs were discovered and resolved.  These can be reviewed in the list of Git commits, specifically those with the 'fix' prefix.
 
@@ -367,7 +339,7 @@ For a list of the Git Commit history, this can be viewed [here](https://github.c
 During the development of the website, and again as a final, comprehensive and in-depth review, the following testing was carried out:-
 
 * The Website was tested on Google Chrome, Internet Explorer, Microsoft Edge and Safari browsers.
-* The website was viewed on a variety of devices: Desktop, Laptop, iPhone 8 & iPhoneX.
+* The website was viewed on a variety of devices: Desktop, Laptop, iPad.
 * Buttons were checked to ensure when hovered or active that they are responsive and operate uniformly.
 
 
@@ -375,15 +347,9 @@ During the development of the website, and again as a final, comprehensive and i
 
 The following issues were identified during development of the site.  Some of them have been fixed during the final checking, testing and deployment phase:-
 
-1. The following error occurs in the console when both the Current Location and Destination have been inputted, and the Tiles are loaded:-  
-!['defaultView' Error](README-attachments/Error-defaultView.jpg "'defaultView' Error")
-No known negative effect has been detected.
-2. The following error can occur at times in the console when rotating through the images in the Photo Tile:-  
-!['Undefined Property' Error](README-attachments/Error-propertyUndefined.jpg "'Undefined Property' Error")
-Although the image does not change when the Error arises, the images will continue to rotate when the forward/back options are selected.  
-**[Bug now fixed]** *This error has now been resolved by creating a new array which only contains places with photos, excluding those items which do not contain photos from the original API array* **[Bug now fixed]**
-3. A city or town with the same name in different locations will only return information on the top return.  For example, Perth will only return Perth, WA.  
-**[Bug now fixed]** *This fault has now been resolved by modifying the Algolia API.  The global variables now set according to the full place name and country as opposed to just the city name, which rectifies this issue.* **[Bug now fixed]**
+1. 
+2. 
+3. 
 
 
 ## Deployment
@@ -396,37 +362,43 @@ The development of the website has been undertaken on VSCode.
 
 The steps from start to present were:-
 
-1. Creation of repository on GitHub, utilising Code Institute template.
+**Connection to GitHub repository**
 
-2. Clone of GitHub repository to local machine but utilising GitBash to implement the command:-  
-`git clone https://github.com/dkeddie/MS2.git`
+  1. Creation of repository on GitHub, utilising Code Institute template.
 
-3. Utilise Git via the VSCode terminal to push content back to GitHub.  This was undertaken at regular intervals throughout the development of the website.
+  2. Clone of GitHub repository to local machine but utilising GitBash to implement the command:-  
+  `git clone https://github.com/dkeddie/MS3.git`
 
-4. Deployment of the webpage was implemented by
-    * Going to the 'Settings' of the repository,
-    * Scrolling to 'GitHub Pages' section,
-    * Selecting 'master branch' of the Source dropdown menu
-        
+**Deployment to Heroku**
+
+  3. Creation of a new App on Heroku
+  4. Go to 'Deployment Method' -> Select 'GitHub' and search for the repository that you want to deploy via Heroku from GitHub.
+  ![Deployment](/READMEinfo/deploy_heroku.jpg "Deployment")
+  5. Go to 'Settings' and 'Reveal Config Vars' -> Input the settings required to deploy the website and connect to the Mongo Database as shown below ()
+  ![Settings](/READMEinfo/deploy_heroku2.jpg "Settings")
+  ![Config Vars](/READMEinfo/deploy_heroku3.jpg "Config Vars")
+  6. Go to 'Deploy' and select to Enable Automatic Deploys
+  ![Auto Deploy](/READMEinfo/deploy_heroku4.jpg "Auto Deploy")
+
 The website is now deployed and can be viewed at:
-    [https://dkeddie.github.io/MS2/](https://https://dkeddie.github.io/MS2/)  
+    [https://ms3dkeddie.herokuapp.com/](https://ms3dkeddie.herokuapp.com/)  
 <br>
 
 ### Cloning of the Repository
 
 Should you wish to deploy your own version of the website, the following steps may be followed to host your own version on GitHub:-
 
-1. Visit my GitHub Repository: [MS2](https://github.com/dkeddie/MS2)
+1. Visit my GitHub Repository: [MS3](https://github.com/dkeddie/MS3)
 
 2. Click dropdown 'Code' and copy url to 'Clone with HTTPS'  
-![Clone](README-attachments/clone.png)
+![Clone](READMEinfo/clone.png)
 
 3. Select 'Import Repository' from the Menu dropdown, paste the url, give your new repository a name and click 'Begin Import'
-![Clone instructions](README-attachments/clone2.png)
+![Clone instructions](READMEinfo/clone2.png)
 
 4. Go to your new Repository.  You may chose to launch the repository in an IDE of your chosing in order to make changes to the website, and customise it to your requirements.
 
-5. To deploy the website, follow step 4 of the **Deployment** section immediately above.
+5. To deploy the website, follow step 3 of the **Deployment** section immediately above.
 
 
 ## Credits
