@@ -49,7 +49,6 @@ function closeSnack() {
 }
 
 
-
 // <----- LOGIN / REGISTRATION ----->
 
 $('#password2').on('keyup', function () {
@@ -68,9 +67,6 @@ $('#password2').on('keyup', function () {
 
 
 // <----- DASHBOARD ----->
-
-
-
 
 
 let checkedStatus = ["A", "P", "WiP", "R"];
@@ -405,6 +401,7 @@ function pushValues(checkedStatus) {
   }, 1000);
 }
 
+
 // Hide Period/Changes Filter on Dashboard
 
 $(document).ready(function() {
@@ -441,8 +438,6 @@ function handleChangeChanges() {
 function filterByJob(e) {
   return document.getElementById(e).checked;
 }
-
-
 
 
 // <----- FILTER ON REGISTER ----->
@@ -586,7 +581,7 @@ $('#periodNew').click(function () {
   }
 });
 
-// Period Filter - Changed in last 30 days 
+// Period Filter - Changed in last 30 days
 
 $(document).ready(function () {
   $('tr > .dateChanged').each(function (i) {
@@ -705,6 +700,7 @@ function updateBudget() {
     $('#budget_cost_gross').val(gross);
   }
 }
+
 // Calculate gross total for Changes
 
 function updateTotal() {
@@ -772,6 +768,7 @@ function updateTotal() {
     $('#cost_gross').val(gross);
   }
 }
+
 
 // Calculate gross when Row clicked to view/edit change
 $(document).ready(function () {
