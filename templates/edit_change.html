@@ -16,13 +16,12 @@
               <label for="change_nr">Change Nr</label>
             </div>
             <div class="input-field col s4 offset-s1">
-              <input value="{{ change.date_added }}" id="date_added" name="date_added" type="date" class="validate"
-                disabled>
+              <input value="{{ change.date_added }}" id="date_added" name="date_added" type="date" class="enableEdit enableReadOnly" tabindex="-1" disabled>
               <label for="date_added">Date Added</label>
             </div>
             <div class="input-field col s4 offset-s1">
               <input value="{{ change.date_changed }}" id="date_changed" name="date_changed" type="date"
-                class="validate enableEdit enableReadOnly" tabindex="-1" disabled>
+                class="enableEdit enableReadOnly" tabindex="-1" disabled>
               <label for="date_changed">Last Change</label>
             </div>
           </div>
