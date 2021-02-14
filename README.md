@@ -373,12 +373,12 @@ The steps from start to present were:-
 
   3. Creation of a new App on Heroku
   4. Go to 'Deployment Method' -> Select 'GitHub' and search for the repository that you want to deploy via Heroku from GitHub.
-  ![Deployment](/READMEinfo/deploy_heroku.jpg "Deployment")
+  ![Deployment](/READMEinfo/deploy_Heroku.jpg "Deployment")
   5. Go to 'Settings' and 'Reveal Config Vars' -> Input the settings required to deploy the website and connect to the Mongo Database as shown below ()
-  ![Settings](/READMEinfo/deploy_heroku2.jpg "Settings")
-  ![Config Vars](/READMEinfo/deploy_heroku3.jpg "Config Vars")
+  ![Settings](/READMEinfo/deploy_Heroku2.jpg "Settings")
+  ![Config Vars](/READMEinfo/deploy_Heroku3.jpg "Config Vars")
   6. Go to 'Deploy' and select to Enable Automatic Deploys
-  ![Auto Deploy](/READMEinfo/deploy_heroku4.jpg "Auto Deploy")
+  ![Auto Deploy](/READMEinfo/deploy_Heroku4.jpg "Auto Deploy")
 
 The website is now deployed and can be viewed at:
     [https://ms3dkeddie.herokuapp.com/](https://ms3dkeddie.herokuapp.com/)  
