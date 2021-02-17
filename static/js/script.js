@@ -199,7 +199,7 @@ function pushValues(checkedStatus) {
     }).format(budgetAreaChange);
     $('#budgetRow').children('.areaChange').text(budgetAreaChangeDisplay);
 
-    let budgetAreaTotal = budget[0].GIA_ft2;
+    let budgetAreaTotal = budget[0].GIA_ft2
     let budgetAreaTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -207,7 +207,14 @@ function pushValues(checkedStatus) {
     }).format(budgetAreaTotal);
     $('#budgetRow').children('.areaTotal').text(budgetAreaTotalDisplay);
 
-    let budgetRate = budgetTotal / budgetAreaTotal;
+    let budgetRate = (function() {
+      if (budgetTotal === 0 && budgetAreaTotal === 0) {
+        return 0
+      }
+      else {
+        return budgetTotal / budgetAreaTotal
+      }
+    }) ();
     let budgetRateDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
