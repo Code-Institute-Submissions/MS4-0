@@ -1,6 +1,7 @@
 /*jshint esversion: 10*/
 
 // <----- MATERIALIZE TRIGGERS ----->
+// The following jQuery scipts are required to implement some of the Materialize functionality and styling, and are provided as part of the guidance at https://materializecss.com/
 
 $(".dropdown-trigger").dropdown({constrainWidth: false});
 
@@ -44,13 +45,16 @@ $(document).ready(function () {
 // <----- SNACKBAR POP-UP ----->
 // Inspired and adapted from: https://www.w3schools.com/howto/howto_js_snackbar.asp
 
+// Flash messages from Python are inserted into the base.html template
 function closeSnack() {
   $('#snackbar').hide('slow');
 }
 
 
-// <----- LOGIN / REGISTRATION ----->
+// <----- PAGE:  LOGIN / REGISTRATION ----->
 
+// Function checks if passwords match
+// Submit button activates if passwords match, so that Registration can't be submitted if they don't match
 $('#password2').on('keyup', function () {
   const var1 = $('#password1').val();
   const var2 = $('#password2').val();
@@ -59,6 +63,7 @@ $('#password2').on('keyup', function () {
   }
   else if (var1 == var2) {
     $('.passwordMatch').html("Password match!");
+    $('#btnReg').prop('disabled', false);
   }
   else {
     $('.passwordMatch').html("Password does not match");
@@ -66,14 +71,43 @@ $('#password2').on('keyup', function () {
 });
 
 
-// <----- DASHBOARD ----->
+// <----- PAGE:  DASHBOARD ----->
 
-
+// Javascript arrays are used in functions which follow on the DASHBOARD page
 let checkedStatus = ["A", "P", "WiP", "R"];
 let checkedChanges = ["CA", "CR", "DD", "PA", "EW", "VE"];
+let budget = []; // Ajax call to Python - returns 'budget' collection information on MongoDB
+let arr = []; //Ajax call to Python - returns 'register' collection information - which has been processed - on MongoDB
 
+// Steps to determine current Filter settings of Status and Change Type
+// Adpated from: https://stackoverflow.com/questions/30788531/use-checkboxes-to-filter-to-a-new-array-of-objects-javascript
 
-// https://learn.co/lessons/js-looping-and-iteration-traversing-nested-objects-readme
+// Status changes
+let newStatus = checkedStatus.slice();
+
+function handleChangeStatus() {
+  newStatus = checkedStatus.filter(filterByJob);
+  pushValues();
+}
+
+function filterByJob(e) {
+  return document.getElementById(e).checked;
+}
+
+// Change Type changes
+let newChanges = checkedChanges.slice();
+
+function handleChangeChanges() {
+  newChanges = checkedChanges.filter(filterByJob);
+  pushValues();
+}
+
+function filterByJob(e) {
+  return document.getElementById(e).checked;
+}
+
+// Function to iterate through 'arr' to return the value, dependent upon filters selected.
+// Adapted from: https://learn.co/lessons/js-looping-and-iteration-traversing-nested-objects-readme
 
 function getTotal(val, stat) {
   let total = 0;
@@ -95,6 +129,7 @@ function getTotal(val, stat) {
   return total;
 }
 
+// To determine checked status of 'Cost' Filter
 $('#costSwitch').click(function () {
   if ($(this).is(':checked')) {
     pushValues('Gross');
@@ -104,9 +139,8 @@ $('#costSwitch').click(function () {
   }
 });
 
-let budget = [];
-let arr = [];
-
+// Ajax calls to get cost information to populate the Dashboard
+// Utilised Ajax in lieu of Jinja so that page is responsive without having to reload to get data
 $(document).ready(function () {
   if (window.location.pathname == '/dashboard'){
     $.ajax({
@@ -133,6 +167,7 @@ $(document).ready(function () {
   }
 });
 
+// Function to populate the Dashboard - the above functions / arrays are called within this function
 function pushValues(checkedStatus) {
   setTimeout(() => {
     // Budget Row
@@ -209,7 +244,14 @@ function pushValues(checkedStatus) {
     }).format(approvedAreaChange);
     $('#approvedRow').children('.areaChange').text(approvedAreaChangeDisplay);
 
-    let approvedAreaTotal = budgetAreaTotal + approvedAreaChange;
+    let approvedAreaTotal = (function () {
+      if (approvedAreaChange === 0 && approvedTotal === 0) {
+        return 0
+      }
+      else {
+        return budgetAreaTotal + approvedAreaChange;
+      }
+    }) ();
     let approevedAreaTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -217,7 +259,7 @@ function pushValues(checkedStatus) {
     }).format(approvedAreaTotal);
     $('#approvedRow').children('.areaTotal').text(approevedAreaTotalDisplay);
 
-    let approvedRate = ((budgetTotal + approvedTotal) / approvedAreaTotal) - budgetRate;
+    let approvedRate = ((budgetTotal + approvedTotal) / (budgetAreaTotal + approvedAreaChange)) - budgetRate;
     let approvedRateDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -254,7 +296,14 @@ function pushValues(checkedStatus) {
     }).format(pendingAreaChange);
     $('#pendingRow').children('.areaChange').text(pendingAreaChangeDisplay);
 
-    let pendingAreaTotal = approvedAreaTotal + pendingAreaChange;
+    let pendingAreaTotal = (function () {
+      if (pendingAreaChange === 0 && pendingTotal === 0) {
+        return 0
+      }
+      else {
+        return budgetAreaTotal + approvedAreaChange + pendingAreaChange;
+      }
+    }) ();
     let pendingAreaTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -262,7 +311,7 @@ function pushValues(checkedStatus) {
     }).format(pendingAreaTotal);
     $('#pendingRow').children('.areaTotal').text(pendingAreaTotalDisplay);
 
-    let pendingRate = ((budgetTotal + approvedTotal + pendingTotal) / pendingAreaTotal) - budgetRate - approvedRate;
+    let pendingRate = ((budgetTotal + approvedTotal + pendingTotal) / (budgetAreaTotal + approvedAreaChange + pendingAreaChange)) - budgetRate - approvedRate;
     let pendingRateDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -299,7 +348,14 @@ function pushValues(checkedStatus) {
     }).format(wipAreaChange);
     $('#wipRow').children('.areaChange').text(wipAreaChangeDisplay);
 
-    let wipAreaTotal = pendingAreaTotal + wipAreaChange;
+    let wipAreaTotal = (function () {
+      if (wipAreaChange === 0 && wipTotal === 0) {
+        return 0
+      }
+      else {
+        return budgetAreaTotal + approvedAreaChange + pendingAreaChange + wipAreaChange;
+      }
+    }) ();
     let wipAreaTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -307,7 +363,7 @@ function pushValues(checkedStatus) {
     }).format(wipAreaTotal);
     $('#wipRow').children('.areaTotal').text(wipAreaTotalDisplay);
 
-    let wipRate = ((budgetTotal + approvedTotal + pendingTotal + wipTotal) / wipAreaTotal) - budgetRate - approvedRate - pendingRate;
+    let wipRate = ((budgetTotal + approvedTotal + pendingTotal + wipTotal) / (budgetAreaTotal + approvedAreaChange + pendingAreaChange + wipAreaChange)) - budgetRate - approvedRate - pendingRate;
     let wipRateDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -377,7 +433,14 @@ function pushValues(checkedStatus) {
     }).format(rejectedAreaChange);
     $('#rejectedRow').children('.areaChange').text(rejectedAreaChangeDisplay);
 
-    let rejectedAreaTotal = revisedAreaTotal + rejectedAreaChange;
+    let rejectedAreaTotal = (function () {
+      if (rejectedAreaChange === 0 && rejectedTotal === 0) {
+        return 0
+      }
+      else {
+        return revisedAreaTotal + rejectedAreaChange;
+      }
+    }) ();
     let rejectedAreaTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -385,7 +448,7 @@ function pushValues(checkedStatus) {
     }).format(rejectedAreaTotal);
     $('#rejectedRow').children('.areaTotal').text(rejectedAreaTotalDisplay);
 
-    let rejectedRate = ((revisedTotal + rejectedTotal) / rejectedAreaTotal) - revisedRate;
+    let rejectedRate = ((revisedTotal + rejectedTotal) / (revisedAreaTotal + rejectedAreaChange)) - revisedRate;
     let rejectedRateDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -403,6 +466,7 @@ function pushValues(checkedStatus) {
 
 
 // Hide Period/Changes Filter on Dashboard
+// Further development required to be able to filter Period on Dashboard
 
 $(document).ready(function() {
   if (window.location.pathname == '/dashboard') {
@@ -411,39 +475,11 @@ $(document).ready(function() {
 });
 
 
-// https://stackoverflow.com/questions/30788531/use-checkboxes-to-filter-to-a-new-array-of-objects-javascript
+// <----- PAGE: REGISTER ----->
 
-// Status changes
+// Operation of Filter on the Register by showing / hiding rows/columns dependent upon checked status of filters
 
-let newStatus = checkedStatus.slice();
-
-function handleChangeStatus() {
-  newStatus = checkedStatus.filter(filterByJob);
-  pushValues();
-}
-
-function filterByJob(e) {
-  return document.getElementById(e).checked;
-}
-
-// Change Type changes
-
-let newChanges = checkedChanges.slice();
-
-function handleChangeChanges() {
-  newChanges = checkedChanges.filter(filterByJob);
-  pushValues();
-}
-
-function filterByJob(e) {
-  return document.getElementById(e).checked;
-}
-
-
-// <----- FILTER ON REGISTER ----->
-
-// Nett / Gross Switch
-
+// Nett / Gross Switch (hides/shows relevant column)
 $('#costSwitch').click(function () {
   if ($(this).is(':checked')) {
     $('.costGross, .giaGross').removeClass('hideCost');
@@ -556,8 +592,9 @@ $("#VE").click(function () {
 });
 
 
-// Period Filter - New in last 30 days
+// Period Filter - function to determine which changes have been added / changed within the last 30 days by comparing to today's date
 
+// New
 $(document).ready(function () {
   $('tr > .dateAdded').each(function (i) {
     const date = new Date($('.dateAdded').eq(i).text());
@@ -581,8 +618,7 @@ $('#periodNew').click(function () {
   }
 });
 
-// Period Filter - Changed in last 30 days
-
+// Changed
 $(document).ready(function () {
   $('tr > .dateChanged').each(function (i) {
     const date = new Date($('.dateChanged').eq(i).text());
@@ -607,9 +643,7 @@ $('#periodChange').click(function () {
 });
 
 
-// <----- REGISTER TABLE ----->
-
-// Make row a link
+// Make the row 'clickable' to open the Change to view/edit details
 // https://electrictoolbox.com/jquey-make-entire-table-row-clickable/
 $(document).ready(function () {
   $('tr').click(function () {
@@ -621,9 +655,9 @@ $(document).ready(function () {
 });
 
 
-// <<----- ADD / EDIT ITEMS ----->
+// <<----- PAGES: ADD / EDIT / BUDGET ----->
 
-// New Item - input today's date (Dated Added + Last Change)
+// New Item - input today's date automatically (Dated Added + Last Change)
 $(document).ready(function () {
   if (window.location.pathname == '/add_change') {
     $('#date_added').val(new Date().toISOString().split('T')[0]);
@@ -632,9 +666,7 @@ $(document).ready(function () {
 });
 
 
-
-// Calculate gross total for Budget
-
+// Automatic calculation of Gross Total for Budget
 function updateBudget() {
   if (window.location.pathname == '/budget'){
     let v1 = ((num) => {
@@ -701,8 +733,7 @@ function updateBudget() {
   }
 }
 
-// Calculate gross total for Changes
-
+// Automatic calculation of Gross Total for Add / Edit
 function updateTotal() {
   if (window.location.pathname.indexOf('edit_change') > -1 || window.location.pathname == '/add_change'){
     let v1 = ((num) => {
@@ -770,7 +801,7 @@ function updateTotal() {
 }
 
 
-// Calculate gross when Row clicked to view/edit change
+// Calculate Gross Total when Row clicked to view/edit change
 $(document).ready(function () {
   setTimeout(() => {
     updateTotal();
@@ -778,16 +809,18 @@ $(document).ready(function () {
 });
 
 
-// Enable Edit in View Item
+// Enables Change to be Editable (all fields disabled / View mode)
 $('.btnEdit').on('click', function () {
   $('.enableEdit').prop('disabled', false);
-  $('.enableReadOnly').prop('readonly', true);
+  $('.enableReadOnly').prop('readonly', true); // required to enable values to be Posted to Python / MongoDB, remains uneditable
   $('select').formSelect();
-  $('#date_changed').val(new Date().toISOString().split('T')[0]);
+  $('#date_changed').val(new Date().toISOString().split('T')[0]); // updates date authomatically
   $('#date_modified').val(new Date().toISOString().split('T')[0]);
-  $('.btnHide').show();
+  $('.btnHide').show(); // Tick button hid on initial page load, as would 'Post' empty Update to Python
 });
 
+// Holds submit of data until values converted
+// Converts values with thousand separators - removes all ','
 $('#editForm,#addForm').submit(function (event) {
   event.preventDefault();
 
@@ -802,7 +835,7 @@ $('#editForm,#addForm').submit(function (event) {
 
 });
 
-
+// As above but when cursor enters field
 $('.formatNum').on('focus', function () {
   $(this).text(function () {
     let x = $(this).val().replace(",", "");
@@ -810,6 +843,7 @@ $('.formatNum').on('focus', function () {
   });
 });
 
+// Converts numbers back to be with thousand separators
 $('.formatNum').focusout(function () {
   $(this).text(function () {
     let x = $(this).val().replace(",", "");

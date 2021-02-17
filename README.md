@@ -310,6 +310,12 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate th
 - Unused variables - these variables are required for the running of external APIs.
 <br>
 
+### Python compliance with PEP8
+
+[PEP8 online](http://pep8online.com/) has been used to check compliance of the app.py file used in this application with PEP8 requirements.  The file was updated in line with non-compliance results that were initally returned.
+
+There are no non-compliance remaining in the app.py file.
+
 ### Manual Testing of the Site
 
 The following tests were carried out to ensure functionality before deployment:-
@@ -406,10 +412,6 @@ Should you wish to deploy your own version of the website, the following steps m
 ### Content
 
 All content and code was written by the developer, except where taken from libraries or documented within this file or the Code files.
-
-### Media
-
-The Media Content utilised for this site is taken from Google Places via the Google Maps Javascript API, which is available for public use.
 
 ### Acknowledgements
 
