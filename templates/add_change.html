@@ -11,15 +11,15 @@
         <div class="col s9">
           <div class="row">
             <div class="input-field col s2">
-              <input value="{{ counter }}" id="change_nr" name="change_nr" type="number" class="validate" minlength="1" maxlength="3">
+              <input value="{{ counter }}" id="change_nr" name="change_nr" type="number" class="validate" minlength="1" maxlength="3" required>
               <label for="change_nr">Change Nr</label>
             </div>
             <div class="input-field col s4 offset-s1">
-              <input id="date_added" name="date_added" type="date" class="validate" tabindex="-1" readonly>
+              <input id="date_added" name="date_added" type="date" class="" tabindex="-1" readonly>
               <label for="date_added">Date Added</label>
             </div>
             <div class="input-field col s4 offset-s1">
-              <input id="date_changed" name="date_changed" type="date" class="validate" tabindex="-1" readonly>
+              <input id="date_changed" name="date_changed" type="date" class="" tabindex="-1" readonly>
               <label for="date_changed">Last Change</label>
             </div>
           </div>
@@ -38,7 +38,7 @@
           <div class="row">
             <div class="itemHeading">Change Details</div>
             <div class="input-field col s12">
-              <input value="" id="change_name" name="change_name" type="text" class="validate" minlength="1" maxlength="30">
+              <input value="" id="change_name" name="change_name" type="text" class="validate" minlength="1" maxlength="30" required>
               <label for="change_name">Change Name</label>
             </div>
           </div>
