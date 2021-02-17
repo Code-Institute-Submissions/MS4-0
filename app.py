@@ -249,7 +249,9 @@ def add_change():
             "GIA_ft2": request.form.get("GIA_ft2", type=int)}
         mongo.db.register.insert_one(change)
         return redirect(url_for('register'))
-    return render_template("add_change.html")
+    else:
+        counter = mongo.db.register.count() + 1
+    return render_template("add_change.html", counter=counter)
 
 
 @app.route("/edit_change/<change_id>", methods=["GET", "POST"])
