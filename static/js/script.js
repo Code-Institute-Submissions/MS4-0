@@ -662,6 +662,51 @@ $(document).ready(function () {
 });
 
 
+// Pagination functionality
+// Forward/Backward arrows - disable on first/last page
+$(document).ready(function() {
+  if (window.location.pathname.indexOf('/register/1/') !== 0) {
+    $('.pagination li').removeClass('disabled')
+  }
+});
+
+$(document).ready(function() {
+  const x = $('.pagination > li:nth-last-child(2)').text()
+  const y  = "/register/"
+  const path = window.location.pathname;
+  if (path.includes(y+x)) {
+    $('.pagination li:last-child').addClass('disabled')
+  }
+})
+
+// Highlight active page on pagination list
+// Populate forward/backward hrefs
+$(document).ready(function() {
+  $('.pagination > li').each(function(i, element) {
+    let x = "/register/"+i;
+    const path = window.location.pathname;
+    if (path.includes(x)) {
+        // highlight active page
+        $(element).addClass('active blue lighten-2');
+        // backward chevron
+        const prevP = $(element).prev().find('a').attr('href')
+        $('.pagination > li:first-child').find('a').attr('href', prevP);
+        // forward chevron
+        const nextP = $(element).next().find('a').attr('href')
+        $('.pagination > li:last-child').find('a').attr('href', nextP);
+      }
+  });
+});
+
+// Switch to full list view
+$(document).ready(function() {
+  if (window.location.pathname.includes('register/1/0')) {
+    $('#pages').hide();
+    $('#backToPages').show();
+  }
+})
+
+
 // <<----- PAGES: ADD / EDIT / BUDGET ----->
 
 // New Item - input today's date automatically (Dated Added + Last Change)

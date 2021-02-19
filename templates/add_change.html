@@ -126,7 +126,7 @@
             <div class="fixed-action-btn">
               <div class="col s12 right-align">
                 <button type="submit" class="btn-floating btn-large waves-effect waves-light blue"><i class="fas fa-check"></i></a>
-                <button type="button" onclick="window.location.href='{{ url_for('register') }}';" type="submit" class="btn-floating btn-large waves-effect waves-light blue"><i class="fas fa-times"></i></a>
+                <button type="button" onclick="window.location.href='{{ url_for('register', page_size=1, page_num=10) }}';" type="submit" class="btn-floating btn-large waves-effect waves-light blue"><i class="fas fa-times"></i></a>
               </div>
           </div>
         </div>

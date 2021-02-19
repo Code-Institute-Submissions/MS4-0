@@ -274,6 +274,25 @@ tr:hover {
   cursor: pointer;
 }
 
+.showAll {
+  margin-top: 18px !important;
+}
+
+.showAll>a {
+  padding: 5px;
+}
+
+.showAll>a:hover {
+  border-radius: 3px;
+  background-color: #bbdefb;
+}
+
+#backToPages {
+  display: none;
+  transform: translate(0, -30px);
+}
+
+
 /* <----- Item Layout -----> */
 
 .itemContainer {

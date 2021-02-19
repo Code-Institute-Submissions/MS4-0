@@ -130,11 +130,19 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/register")
-def register():
+@app.route("/register/<int:page_size>/<int:page_num>",)
+def register(page_size=1, page_num=10):
     # retrieve information from register DB collection
-    register = mongo.db.register.find().sort("change_nr")
-    return render_template("register.html", register=register)
+
+    skips = page_num * (page_size -1)
+    register = mongo.db.register.find().sort("change_nr").skip(skips).limit(page_num)
+
+    if mongo.db.register.count() % 10 > 0:
+        records = int(mongo.db.register.count() / 10) + 1
+    else:
+        records = int(mongo.db.register.count() / 10)
+
+    return render_template("register.html", register=register, records=records)
 
 
 @app.route("/filter", methods=["GET", "POST"])
