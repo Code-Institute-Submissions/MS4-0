@@ -723,7 +723,7 @@ function updateBudget() {
   if (window.location.pathname == '/budget'){
     let v1 = ((num) => {
       num = $('#budget_cost_nett').val();
-      num = num.replace(",", "");
+      num = num.replace(/,/g, "");
       num = +num;
       if (Number.isInteger(num)) {
         return num;
@@ -734,7 +734,7 @@ function updateBudget() {
     })();
     let v2 = ((num) => {
       num = $('#budget_cont_design_total').val();
-      num = num.replace(",", "");
+      num = num.replace(/,/g, "");
       num = +num;
       if (Number.isInteger(num)) {
         return num;
@@ -745,7 +745,7 @@ function updateBudget() {
     })();
     let v3 = ((num) => {
       num = $('#budget_cont_const_total').val();
-      num = num.replace(",", "");
+      num = num.replace(/,/g, "");
       num = +num;
       if (Number.isInteger(num)) {
         return num;
@@ -756,7 +756,7 @@ function updateBudget() {
     })();
     let v4 = ((num) => {
       num = $('#budget_prelims_total').val();
-      num = num.replace(",", "");
+      num = num.replace(/,/g, "");
       num = +num;
       if (Number.isInteger(num)) {
         return num;
@@ -767,7 +767,7 @@ function updateBudget() {
     })();
     let v5 = ((num) => {
       num = $('#budget_ohp_total').val();
-      num = num.replace(",", "");
+      num = num.replace(/,/g, "");
       num = +num;
       if (Number.isInteger(num)) {
         return num;
@@ -790,7 +790,7 @@ function updateTotal() {
   if (window.location.pathname.indexOf('edit_change') > -1 || window.location.pathname == '/add_change'){
     let v1 = ((num) => {
       num = $('#cost_nett').val();
-      num = num.replace(",", "");
+      num = num.replace(/,/g, "");
       num = +num;
       if (Number.isInteger(num)) {
         return num;
@@ -801,7 +801,7 @@ function updateTotal() {
     })();
     let v2 = ((num) => {
       num = $('#cont_design_total').val();
-      num = num.replace(",", "");
+      num = num.replace(/,/g, "");
       num = +num;
       if (Number.isInteger(num)) {
         return num;
@@ -812,7 +812,7 @@ function updateTotal() {
     })();
     let v3 = ((num) => {
       num = $('#cont_const_total').val();
-      num = num.replace(",", "");
+      num = num.replace(/,/g, "");
       num = +num;
       if (Number.isInteger(num)) {
         return num;
@@ -823,7 +823,7 @@ function updateTotal() {
     })();
     let v4 = ((num) => {
       num = $('#prelims_total').val();
-      num = num.replace(",", "");
+      num = num.replace(/,/g, "");
       num = +num;
       if (Number.isInteger(num)) {
         return num;
@@ -834,7 +834,7 @@ function updateTotal() {
     })();
     let v5 = ((num) => {
       num = $('#ohp_total').val();
-      num = num.replace(",", "");
+      num = num.replace(/,/g, "");
       num = +num;
       if (Number.isInteger(num)) {
         return num;
@@ -873,12 +873,12 @@ $('.btnEdit').on('click', function () {
 
 // Holds submit of data until values converted
 // Converts values with thousand separators - removes all ','
-$('#editForm,#addForm').submit(function (event) {
+$('#editForm,#addForm,#editBudget').submit(function (event) {
   event.preventDefault();
 
   $('.formatNum').each(function () {
     $(this).text(function () {
-      let x = $(this).val().replace(",", "");
+      let x = $(this).val().replace(/,/g, "");
       $(this).val(x);
     });
   });
@@ -890,7 +890,7 @@ $('#editForm,#addForm').submit(function (event) {
 // As above but when cursor enters field
 $('.formatNum').on('focus', function () {
   $(this).text(function () {
-    let x = $(this).val().replace(",", "");
+    let x = $(this).val().replace(/,/g, "");
     $(this).val(x);
   });
 });
@@ -898,7 +898,7 @@ $('.formatNum').on('focus', function () {
 // Converts numbers back to be with thousand separators
 $('.formatNum').focusout(function () {
   $(this).text(function () {
-    let x = $(this).val().replace(",", "");
+    let x = $(this).val().replace(/,/g, "");
     let y = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
