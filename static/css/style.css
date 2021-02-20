@@ -42,14 +42,8 @@ nav .fa-bars {
   line-height: 120px;
 }
 
-nav .fa-bars {
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
-}
-
 #dropdown1 {
-  top: -100px;
+  top: -60px;
 }
 
 /* Submenu */
