@@ -9,6 +9,7 @@ $(document).ready(function () {
   $('select').formSelect();
   $('.fixed-action-btn').floatingActionButton();
   $('.modal').modal();
+  $('.sidenav').sidenav();
 
   // validation as per Code Institute Mini Project for Materialize - https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/04-AddingATask-WritingToTheDatabase/02-materialize-select-validation/static/js/script.js
   validateMaterializeSelect();
@@ -874,18 +875,18 @@ $('.btnEdit').on('click', function () {
 
 
 
-// Holds submit of data until values converted
+// Holds submit of data until values converted or given default value of "0"
 // Converts values with thousand separators - removes all ','
 $('#editForm,#addForm,#editBudget').submit(function (event) {
   event.preventDefault();
 
   $('.formatNum').each(function () {
+    // Default value of "0" if no value entered
     if (!$(this).val()) {
-      // $(this).text(function () {
         let y = "0"
         $(this).val(y)
-      // })
     }
+    // Ommits "," from numbers prior to submit
     else {
       $(this).text(function () {
         let x = $(this).val().replace(/,/g, "");
