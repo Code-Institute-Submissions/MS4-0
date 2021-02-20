@@ -3,10 +3,31 @@
 
 <div class="containerLogin">
   <div class="row">
-    <div class="col s8 offset-s2">
-      <div class="card-panel blue lighten-4">
-        <h3 class="center-align">{{ username }}'s Profile</h3>
-      </div>
+      <form class="col s8 offset-s2">
+        <div class="card-panel blue lighten-4">
+          <h3 class="center-align">{{ username.first_name }}'s Profile</h3>
+          <div class="row">
+            <div class="input-field col s6">
+              <input value="{{ username.first_name }}" type="text" name="fname" id="fname" minlength="2" maxlength="15" readonly>
+              <label for="fname">First Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input value="{{ username.last_name }}" type="text" name="lname" id="lname" minlength="2" maxlength="15" readonly>
+              <label for="lname">Surname</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input value="{{ username.company_name }}" type="text" name="cname" id="cname" readonly>
+              <label for="cname">Company</label>
+            </div>
+            <div class="input-field col s6">
+              <input value="{{ username.email }}" type="email" name="email" id="email" minlength="2" readonly>
+              <label for="email">Email Address</label>
+            </div>
+          </div>
+        </div>
+      </form>  
     </div>
   </div>
 </div>

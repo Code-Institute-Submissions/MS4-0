@@ -114,7 +114,8 @@ def registration():
 def profile(username):
     # grab the sessions user's username from db
     username = mongo.db.users.find_one(
-        {"email": session["user"]})["first_name"]
+        {"email": session["user"]})
+    
 
     if session["user"]:
         return render_template("profile.html", username=username)
