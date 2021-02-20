@@ -11,11 +11,11 @@
           <th>Change</th>
           <th class="width_l center costNett">Nett<br>£ Total</th>
           <th class="width_l center costGross hideCost">Gross<br>£ Total</th>
-          <th class="width_m center giaNett">Nett<br>£/ft2</th>
-          <th class="width_m center giaGross hideCost">Gross<br>£/ft2</th>
-          <th class="width_m center">+/-<br>Area ft2</th>
-          <th class="width_s center">Change<br>Type</th>
-          <th class="width_s center">Status</th>
+          <th class="width_m center giaNett hideSmall">Nett<br>£/ft2</th>
+          <th class="width_m center giaGross hideCost hideSmall">Gross<br>£/ft2</th>
+          <th class="width_m center hideSmall">+/-<br>Area ft2</th>
+          <th class="width_s center hideSmall">Change<br>Type</th>
+          <th class="width_s center hideSmall">Status</th>
           <th class="dateHidden">Date<br>Added</th>
           <th class="dateHidden">New?</th>
           <th class="dateHidden">Date<br>Changed</th>
@@ -31,19 +31,19 @@
           <td class="changeName">{{ change.change_name }}</td>
           <td class="center costNett">{{ "{:,}".format(change.cost_nett) }}</td>
           <td class="center costGross hideCost">{{ "{:,}".format(change.cost_gross) }}</td>
-          <td class="center giaNett">
+          <td class="center giaNett hideSmall">
             {% if change.GIA_ft2|int > 0 %}
               {{ "{:,}".format(change.cost_nett|int // change.GIA_ft2) }}
             {% endif %}
           </td>
-          <td class="center giaGross hideCost">
+          <td class="center giaGross hideCost hideSmall">
             {% if change.GIA_ft2|int > 0 %}
               {{ "{:,}".format(change.cost_gross|int // change.GIA_ft2) }}
             {% endif %}
           </td>
-          <td class="center GIA">{{ "{:,}".format(change.GIA_ft2) }}</td>
-          <td class="center changeType">{{ change.change_type }}</td>
-          <td class="center changeStatus">{{ change.status }}</td>
+          <td class="center GIA hideSmall">{{ "{:,}".format(change.GIA_ft2) }}</td>
+          <td class="center changeType hideSmall">{{ change.change_type }}</td>
+          <td class="center changeStatus hideSmall">{{ change.status }}</td>
           <td class="dateAdded dateHidden">{{ change.date_added }}</td>
           <td class="periodN dateHidden"></td>
           <td class="dateChanged dateHidden">{{ change.date_changed }}</td>
