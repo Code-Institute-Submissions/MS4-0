@@ -38,7 +38,7 @@
           </td>
           <td class="center giaGross hideCost">
             {% if change.GIA_ft2|int > 0 %}
-            {{ "{:,}".format(change.cost_gross|int // change.GIA_ft2) }}
+              {{ "{:,}".format(change.cost_gross|int // change.GIA_ft2) }}
             {% endif %}
           </td>
           <td class="center GIA">{{ "{:,}".format(change.GIA_ft2) }}</td>

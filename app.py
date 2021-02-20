@@ -115,7 +115,6 @@ def profile(username):
     # grab the sessions user's username from db
     username = mongo.db.users.find_one(
         {"email": session["user"]})
-    
 
     if session["user"]:
         return render_template("profile.html", username=username)
@@ -257,7 +256,7 @@ def add_change():
             "NIA_ft2": request.form.get("NIA_ft2", type=int),
             "GIA_ft2": request.form.get("GIA_ft2", type=int)}
         mongo.db.register.insert_one(change)
-        return redirect(url_for('register'))
+        return redirect(url_for('register', page_size=1, page_num=10))
     else:
         counter = mongo.db.register.count() + 1
     return render_template("add_change.html", counter=counter)
@@ -286,7 +285,7 @@ def edit_change(change_id):
             "GIA_ft2": request.form.get("GIA_ft2", type=int)
         }
         mongo.db.register.update({"_id": ObjectId(change_id)}, submit)
-        return redirect(url_for('register'))
+        return redirect(url_for('register', page_size=1, page_num=10))
 
     status = mongo.db.status.find()
     change_type = mongo.db.change_type.find()
@@ -300,7 +299,7 @@ def edit_change(change_id):
 @app.route("/delete_change/<change_id>")
 def delete_change(change_id):
     mongo.db.register.remove({"_id": ObjectId(change_id)})
-    return redirect(url_for("register"))
+    return redirect(url_for('register', page_size=1, page_num=10))
 
 
 if __name__ == "__main__":

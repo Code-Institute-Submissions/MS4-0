@@ -36,7 +36,6 @@ nav .fa-bars {
 
 #dropdown1 {
   top: -100px;
-  padding-right: 25px;
 }
 
 /* Submenu */
@@ -338,8 +337,4 @@ tr:hover {
 #date_added,
 #date_changed {
   cursor: not-allowed;
-}
-
-#modal1 {
-  
 }

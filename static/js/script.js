@@ -3,7 +3,7 @@
 // <----- MATERIALIZE TRIGGERS ----->
 // The following jQuery scipts are required to implement some of the Materialize functionality and styling, and are provided as part of the guidance at https://materializecss.com/
 
-$(".dropdown-trigger").dropdown({constrainWidth: false});
+$(".dropdown-trigger").dropdown({ constrainWidth: false });
 
 $(document).ready(function () {
   $('select').formSelect();
@@ -142,7 +142,7 @@ $('#costSwitch').click(function () {
 // Ajax calls to get cost information to populate the Dashboard
 // Utilised Ajax in lieu of Jinja so that page is responsive without having to reload to get data
 $(document).ready(function () {
-  if (window.location.pathname == '/dashboard'){
+  if (window.location.pathname == '/dashboard') {
     $.ajax({
       url: 'filter',
       type: 'GET',
@@ -159,7 +159,7 @@ $(document).ready(function () {
       type: 'GET',
       dataType: 'json',
       async: 'true',
-      success: function(results) {
+      success: function (results) {
         budget = results;
       }
     });
@@ -207,14 +207,14 @@ function pushValues(checkedStatus) {
     }).format(budgetAreaTotal);
     $('#budgetRow').children('.areaTotal').text(budgetAreaTotalDisplay);
 
-    let budgetRate = (function() {
+    let budgetRate = (function () {
       if (budgetTotal === 0 && budgetAreaTotal === 0) {
         return 0
       }
       else {
         return budgetTotal / budgetAreaTotal
       }
-    }) ();
+    })();
     let budgetRateDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -258,7 +258,7 @@ function pushValues(checkedStatus) {
       else {
         return budgetAreaTotal + approvedAreaChange;
       }
-    }) ();
+    })();
     let approevedAreaTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -310,7 +310,7 @@ function pushValues(checkedStatus) {
       else {
         return budgetAreaTotal + approvedAreaChange + pendingAreaChange;
       }
-    }) ();
+    })();
     let pendingAreaTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -362,7 +362,7 @@ function pushValues(checkedStatus) {
       else {
         return budgetAreaTotal + approvedAreaChange + pendingAreaChange + wipAreaChange;
       }
-    }) ();
+    })();
     let wipAreaTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -447,7 +447,7 @@ function pushValues(checkedStatus) {
       else {
         return revisedAreaTotal + rejectedAreaChange;
       }
-    }) ();
+    })();
     let rejectedAreaTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -475,7 +475,7 @@ function pushValues(checkedStatus) {
 // Hide Period/Changes Filter on Dashboard
 // Further development required to be able to filter Period on Dashboard
 
-$(document).ready(function() {
+$(document).ready(function () {
   if (window.location.pathname == '/dashboard') {
     $('#period').hide();
   }
@@ -664,42 +664,42 @@ $(document).ready(function () {
 
 // Pagination functionality
 // Forward/Backward arrows - disable on first/last page
-$(document).ready(function() {
+$(document).ready(function () {
   if (window.location.pathname.indexOf('/register/1/') !== 0) {
     $('.pagination li').removeClass('disabled')
   }
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
   const x = $('.pagination > li:nth-last-child(2)').text()
-  const y  = "/register/"
+  const y = "/register/"
   const path = window.location.pathname;
-  if (path.includes(y+x)) {
+  if (path.includes(y + x)) {
     $('.pagination li:last-child').addClass('disabled')
   }
 })
 
 // Highlight active page on pagination list
 // Populate forward/backward hrefs
-$(document).ready(function() {
-  $('.pagination > li').each(function(i, element) {
-    let x = "/register/"+i;
+$(document).ready(function () {
+  $('.pagination > li').each(function (i, element) {
+    let x = "/register/" + i;
     const path = window.location.pathname;
     if (path.includes(x)) {
-        // highlight active page
-        $(element).addClass('active blue lighten-2');
-        // backward chevron
-        const prevP = $(element).prev().find('a').attr('href')
-        $('.pagination > li:first-child').find('a').attr('href', prevP);
-        // forward chevron
-        const nextP = $(element).next().find('a').attr('href')
-        $('.pagination > li:last-child').find('a').attr('href', nextP);
-      }
+      // highlight active page
+      $(element).addClass('active blue lighten-2');
+      // backward chevron
+      const prevP = $(element).prev().find('a').attr('href')
+      $('.pagination > li:first-child').find('a').attr('href', prevP);
+      // forward chevron
+      const nextP = $(element).next().find('a').attr('href')
+      $('.pagination > li:last-child').find('a').attr('href', nextP);
+    }
   });
 });
 
 // Switch to full list view
-$(document).ready(function() {
+$(document).ready(function () {
   if (window.location.pathname.includes('register/1/0')) {
     $('#pages').hide();
     $('#backToPages').show();
@@ -720,7 +720,7 @@ $(document).ready(function () {
 
 // Automatic calculation of Gross Total for Budget
 function updateBudget() {
-  if (window.location.pathname == '/budget'){
+  if (window.location.pathname == '/budget') {
     let v1 = ((num) => {
       num = $('#budget_cost_nett').val();
       num = num.replace(/,/g, "");
@@ -787,7 +787,7 @@ function updateBudget() {
 
 // Automatic calculation of Gross Total for Add / Edit
 function updateTotal() {
-  if (window.location.pathname.indexOf('edit_change') > -1 || window.location.pathname == '/add_change'){
+  if (window.location.pathname.indexOf('edit_change') > -1 || window.location.pathname == '/add_change') {
     let v1 = ((num) => {
       num = $('#cost_nett').val();
       num = num.replace(/,/g, "");
@@ -866,10 +866,13 @@ $('.btnEdit').on('click', function () {
   $('.enableEdit').prop('disabled', false);
   $('.enableReadOnly').prop('readonly', true); // required to enable values to be Posted to Python / MongoDB, remains uneditable
   $('select').formSelect();
-  $('#date_changed').val(new Date().toISOString().split('T')[0]); // updates date authomatically
+  $('#date_changed, #date_changed_display').val(new Date().toISOString().split('T')[0]); // updates date authomatically
   $('#date_modified').val(new Date().toISOString().split('T')[0]);
   $('.btnHide').show(); // Tick button hid on initial page load, as would 'Post' empty Update to Python
 });
+
+
+
 
 // Holds submit of data until values converted
 // Converts values with thousand separators - removes all ','
@@ -877,11 +880,27 @@ $('#editForm,#addForm,#editBudget').submit(function (event) {
   event.preventDefault();
 
   $('.formatNum').each(function () {
-    $(this).text(function () {
-      let x = $(this).val().replace(/,/g, "");
-      $(this).val(x);
-    });
-  });
+    if (!$(this).val()) {
+      // $(this).text(function () {
+        let y = "0"
+        $(this).val(y)
+      // })
+    }
+    else {
+      $(this).text(function () {
+        let x = $(this).val().replace(/,/g, "");
+        $(this).val(x);
+      });
+    }
+  })
+
+  // $('.formatNum').each(function () {
+  //   let y = $(this).val()
+  //   if (y === "") {
+  //     y = 0;
+  //     $(this).val(y)
+  //   }
+  // });
 
   $(this).unbind('submit').submit();
 
