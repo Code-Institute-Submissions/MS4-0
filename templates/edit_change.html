@@ -8,44 +8,42 @@
   <div class="row">
     <form id="editForm" class="col s12" method="POST" action="{{ url_for('edit_change', change_id=change._id) }}">
       <div class="row">
-        <div class="col s9">
+        <div class="col s12">
           <div class="row">
-            <div class="input-field col s2">
+            <div class="col s9 l2 right-align push-s2 push-l10">
+              <a class="waves-effect waves-light blue btn-small btnEdit">Edit</a>
+            </div>
+            <div class="input-field col s3 m2 l2 pull-s9 pull-m9 pull-l2">
               <input value="{{ change.change_nr }}" class="enableEdit validate" id="change_nr" name="change_nr"
                 type="number" minlength="1" maxlength="3" disabled>
               <label for="change_nr">Change Nr</label>
             </div>
-            <div class="input-field col s4 offset-s1">
-              <input value="{{ change.date_added }}" id="date_added_display" name="date_added_display" type="date" class="" tabindex="-1" disabled>
+            <div class="input-field col m4 l4 hide-on-small-only pull-l2">
+              <input value="{{ change.date_added }}" id="date_added_display" name="date_added_display" type="date"
+                class="" tabindex="-1" disabled>
               <label for="date_added">Date Added</label>
             </div>
-            <div class="input-field col s4 offset-s1 hideInput"> 
-              <input value="{{ change.date_added }}" id="date_added" name="date_added" type="date" class="" tabindex="-1">
+            <div class="input-field col s4 hideInput">
+              <input value="{{ change.date_added }}" id="date_added" name="date_added" type="date" class=""
+                tabindex="-1">
               <label for="date_added">Date Added - Hidden for POST</label>
             </div>
-            <div class="input-field col s4 offset-s1">
+            <div class="input-field col m4 l4 hide-on-small-only offset-m1 pull-l2">
               <input value="{{ change.date_changed }}" id="date_changed_display" name="date_changed_display" type="date"
                 class="" tabindex="-1" disabled>
               <label for="date_changed">Last Change</label>
             </div>
-            <div class="input-field col s4 offset-s1 hideInput">
-              <input value="{{ change.date_changed }}" id="date_changed" name="date_changed" type="date"
-                class="" tabindex="-1">
+            <div class="input-field col s4 hideInput">
+              <input value="{{ change.date_changed }}" id="date_changed" name="date_changed" type="date" class=""
+                tabindex="-1">
               <label for="date_changed">Last Change - Hidden for POST</label>
             </div>
           </div>
         </div>
-        <div class="col s3">
-          <div class="row">
-            <div class="col s10 right-align">
-              <a class="waves-effect waves-light blue btn-small btnEdit">Edit</a>
-            </div>
-          </div>
-        </div>
       </div>
+      <!-- column 1 data -->
       <div class="row">
-        <!-- column 1 data -->
-        <div class="col s6">
+        <div class="col s12 m6">
           <div class="row">
             <div class="itemHeading">Change Details</div>
             <div class="input-field col s12">
@@ -89,95 +87,95 @@
               <label for="change_type">Change Type</label>
             </div>
           </div>
-
         </div>
-        <!-- column 2 data -->
-        <div class="col s6">
-          <div class="row">
-            <div class="itemHeading">Total Costs</div>
-            <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(change.cost_nett) }}" class="enableEdit validate formatNum" id="cost_nett"
-                name="cost_nett" type="text" onchange="updateTotal()" disabled>
-              <label for="cost_nett">Nett Cost</label>
-            </div>
-            <div class="input-field col s6">
-              <input value="0" id="cost_gross" name="cost_gross" type="text" class="enableEdit enableReadOnly formatNum"
-                disabled>
-              <label for="cost_gross">Gross Cost</label>
-            </div>
+      <!-- column 2 data -->
+      <div class="col s12 m6">
+        <div class="row">
+          <div class="itemHeading">Total Costs</div>
+          <div class="input-field col s6">
+            <input value="{{ '{:,}'.format(change.cost_nett) }}" class="enableEdit validate formatNum" id="cost_nett"
+              name="cost_nett" type="text" onchange="updateTotal()" disabled>
+            <label for="cost_nett">Nett Cost</label>
           </div>
-          <div class="row">
-            <div class="itemHeading">Contingency</div>
-            <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(change.cont_design_total) }}" class="enableEdit validate formatNum"
-                id="cont_design_total" name="cont_design_total" type="text" onchange="updateTotal()" disabled>
-              <label for="cont_design_total">Design</label>
-            </div>
-            <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(change.cont_const_total) }}" class="enableEdit validate formatNum"
-                id="cont_const_total" name="cont_const_total" type="text" onchange="updateTotal()" disabled>
-              <label for="cont_const_total">Construction</label>
-            </div>
+          <div class="input-field col s6">
+            <input value="0" id="cost_gross" name="cost_gross" type="text" class="enableEdit enableReadOnly formatNum"
+              disabled>
+            <label for="cost_gross">Gross Cost</label>
           </div>
-          <div class="row">
-            <div class="itemHeading">Main Contractor On-Costs</div>
-            <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(change.prelims_total) }}" class="enableEdit validate formatNum"
-                id="prelims_total" name="prelims_total" type="text" onchange="updateTotal()" disabled>
-              <label for="prelims_total">Preliminaries</label>
-            </div>
-            <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(change.ohp_total) }}" class="enableEdit validate formatNum" id="ohp_total"
-                name="ohp_total" type="text" onchange="updateTotal()" disabled>
-              <label for="ohp_total">OH&P</label>
-            </div>
+        </div>
+        <div class="row">
+          <div class="itemHeading">Contingency</div>
+          <div class="input-field col s6">
+            <input value="{{ '{:,}'.format(change.cont_design_total) }}" class="enableEdit validate formatNum"
+              id="cont_design_total" name="cont_design_total" type="text" onchange="updateTotal()" disabled>
+            <label for="cont_design_total">Design</label>
           </div>
-          <div class="row">
-            <div class="itemHeading">Areas</div>
-            <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(change.NIA_ft2) }}" class="enableEdit validate formatNum" id="NIA_ft2"
-                name="NIA_ft2" type="text" disabled>
-              <label for="NIA_ft2">NIA</label>
-            </div>
-            <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(change.GIA_ft2) }}" class="enableEdit validate formatNum" id="GIA_ft2"
-                name="GIA_ft2" type="text" disabled>
-              <label for="GIA_ft2">GIA</label>
-            </div>
+          <div class="input-field col s6">
+            <input value="{{ '{:,}'.format(change.cont_const_total) }}" class="enableEdit validate formatNum"
+              id="cont_const_total" name="cont_const_total" type="text" onchange="updateTotal()" disabled>
+            <label for="cont_const_total">Construction</label>
           </div>
-          <div class="row">
-            <div class="fixed-action-btn">
-              <div class="col s12 right-align">
-                <button type="submit" id="btnSubmit"
-                  class="btn-floating btn-large waves-effect waves-light blue btnHide">
-                  <i class="fas fa-check"></i>
-                </button>
-                <button type="button" onclick="window.location.href='{{ url_for('register', page_size=1, page_num=10) }}';"
-                  class="btn-floating btn-large waves-effect waves-light blue">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
+        </div>
+        <div class="row">
+          <div class="itemHeading">Main Contractor On-Costs</div>
+          <div class="input-field col s6">
+            <input value="{{ '{:,}'.format(change.prelims_total) }}" class="enableEdit validate formatNum"
+              id="prelims_total" name="prelims_total" type="text" onchange="updateTotal()" disabled>
+            <label for="prelims_total">Preliminaries</label>
+          </div>
+          <div class="input-field col s6">
+            <input value="{{ '{:,}'.format(change.ohp_total) }}" class="enableEdit validate formatNum" id="ohp_total"
+              name="ohp_total" type="text" onchange="updateTotal()" disabled>
+            <label for="ohp_total">OH&P</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="itemHeading">Areas</div>
+          <div class="input-field col s6">
+            <input value="{{ '{:,}'.format(change.NIA_ft2) }}" class="enableEdit validate formatNum" id="NIA_ft2"
+              name="NIA_ft2" type="text" disabled>
+            <label for="NIA_ft2">NIA</label>
+          </div>
+          <div class="input-field col s6">
+            <input value="{{ '{:,}'.format(change.GIA_ft2) }}" class="enableEdit validate formatNum" id="GIA_ft2"
+              name="GIA_ft2" type="text" disabled>
+            <label for="GIA_ft2">GIA</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="fixed-action-btn">
+            <div class="col s12 right-align">
+              <button type="submit" id="btnSubmit" class="btn-floating btn-large waves-effect waves-light blue btnHide">
+                <i class="fas fa-check"></i>
+              </button>
+              <button type="button"
+                onclick="window.location.href='{{ url_for('register', page_size=1, page_num=10) }}';"
+                class="btn-floating btn-large waves-effect waves-light blue">
+                <i class="fas fa-times"></i>
+              </button>
             </div>
           </div>
         </div>
       </div>
-      <div class="row btnDelRow">
-        <div class="col s12">
-          <a href="#modal1" class="waves-effect waves-light blue lighten-4 btn-flat btnDelete modal-trigger">Delete</a>
-        </div>
-      </div>
-      <div id="modal1" class="modal">
-        <div class="modal-content center-align">
-          <h5>Confirmation to Delete Change</h5>
-          <p>Be aware that deletion is permanent and irreversible<br> if 'Confirm Delete' is selected</p>
-        </div>
-        <div class="modal-close modal-footer">
-          <a class="modal-close waves-effect waves btn-flat">Cancel</a>
-          <a href="{{ url_for('delete_change', change_id=change._id) }}" class="waves-effect waves-red btn-flat">Confirm Delete</a>
-        </div>
-      </div>
-    </form>
   </div>
+  <div class="row btnDelRow">
+    <div class="col s12">
+      <a href="#modal1" class="waves-effect waves-light blue lighten-4 btn-flat btnDelete modal-trigger">Delete</a>
+    </div>
+  </div>
+  <div id="modal1" class="modal">
+    <div class="modal-content center-align">
+      <h5>Confirmation to Delete Change</h5>
+      <p>Be aware that deletion is permanent and irreversible<br> if 'Confirm Delete' is selected</p>
+    </div>
+    <div class="modal-close modal-footer">
+      <a class="modal-close waves-effect waves btn-flat">Cancel</a>
+      <a href="{{ url_for('delete_change', change_id=change._id) }}" class="waves-effect waves-red btn-flat">Confirm
+        Delete</a>
+    </div>
+  </div>
+  </form>
+</div>
 </div>
 </div>
 

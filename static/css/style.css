@@ -332,12 +332,14 @@ tr:hover {
 
 .btnEdit {
   position: relative;
-  margin-bottom: 50%;
+  /* margin-bottom: 50%; */
   transform: translate(0, 50%);
 }
 
 .btnDelete {
+  position: absolute;
   color: #e3f2fd;
+  transform: translate(0, 60px);
 }
 
 .btnHide {
@@ -360,7 +362,8 @@ tr:hover {
   display: none;
 }
 
-#date_added,
-#date_changed {
+#date_added_display,
+#date_changed_display {
   cursor: not-allowed;
+  z-index: 1151 !important;
 }
