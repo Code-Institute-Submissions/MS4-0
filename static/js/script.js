@@ -926,6 +926,7 @@ $('.formatNum').focusout(function () {
 $(document).ready(function() {
   if (window.location.pathname !== '/dashboard' && window.location.pathname.indexOf('register') == -1) {
     $('.btnFilter').remove();
+    $('.filter').hide();
     $('.section_main').addClass('l12');
     $('.section_main').removeClass('l9');
   }

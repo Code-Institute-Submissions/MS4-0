@@ -119,31 +119,21 @@ nav .fa-bars {
   /* visibility: hidden; Hidden by default. Visible on click */
   min-width: 250px; /* Set a default minimum width */
   margin-left: -125px; /* Divide value of min-width by 2 */
-  background-color: #333; /* Black background color */
-  opacity: 0.5;
-  color: #fff; /* White text color */
+  background-color: #fff; /* Black background color */
+  opacity: 0.8;
+  color: #333; /* White text color */
   text-align: center; /* Centered text */
   border-radius: 5px; /* Rounded borders */
   position: fixed; /* Sit on top of the screen */
   z-index: 1; /* Add a z-index if needed */
-  left: 50%; /* Center the snackbar */
+  margin-left: 50%; /* Center the snackbar */
+  transform: translate(-50%, 0);
   top: 30px; /* 30px from the top */
   letter-spacing: 0.25rem;
-  line-height: 60px;
-  height: 60px;
-  line-height: 60px;
-  height: 60px;
-  padding: 0px 16px;
+  line-height: 30px;
+  min-height: 30px;
+  padding: 16px 16px;
 }
-
-#snackbar i {
-  position: relative;
-  font-size: 30px;
-  top: 10px;
-  color: #fff;
-  cursor: pointer;
-}
-
 
 
 /* <----- LOGIN / REGISTRATION PAGE -----> */

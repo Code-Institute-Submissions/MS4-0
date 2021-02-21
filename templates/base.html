@@ -182,9 +182,8 @@
     {% if messages %}
       {% for message in messages %}
         <!-- The actual snackbar -->
-        <div id="snackbar">
+        <div id="snackbar" onclick="closeSnack()">
             {{ message }}
-            <a onclick="closeSnack()"><i class="material-icons">close</i></a>
         </div>
       {% endfor %}
     {% endif %}
