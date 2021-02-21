@@ -6,7 +6,7 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 /* Main navbar */
@@ -62,44 +62,50 @@ nav .fa-bars {
 
 .filterRow {
   display: flex;
-  min-height: calc(100vh - 186px)
+  min-height: calc(100vh - 186px);
 }
 
 .sideFilter {
   padding-left: 10px;
 }
 
-.filter .switch label, .sideFilter .switch label {
+.filter .switch label,
+.sideFilter .switch label {
   font-size: 1rem;
   color: #0d47a1;
 }
 
-.filter label, .sideFilter label {
+.filter label,
+.sideFilter label {
   margin-right: 20px;
 }
 
-.filter h3, .sideFilter h3 {
+.filter h3,
+.sideFilter h3 {
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.5rem;
   color: #0d47a1;
 }
 
-.filter h5, .sideFilter h5 {
+.filter h5,
+.sideFilter h5 {
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.25rem;
   color: #0d47a1;
 }
 
-.filter p label,, .sideFilter p label {
+.filter p label,
+,
+.sideFilter p label {
   font-size: 1.5rem;
   color: #0d47a1;
   margin-right: 16px;
 }
 
 .btnFilter {
-  transform: translate(-75px,-25px);
+  transform: translate(-75px, -25px);
 }
 
 /* Main Section - Base HTML */
@@ -108,7 +114,6 @@ nav .fa-bars {
   margin: 0px;
   background-color: #e3f2fd;
 }
-
 
 /* <----- SNACKBAR / FLASH MESSAGE TOAST -----> */
 /* Inspired and adapted from:- https://www.w3schools.com/howto/howto_js_snackbar.asp */
@@ -134,7 +139,6 @@ nav .fa-bars {
   min-height: 30px;
   padding: 16px 16px;
 }
-
 
 /* <----- LOGIN / REGISTRATION PAGE -----> */
 
@@ -168,6 +172,12 @@ nav .fa-bars {
   border-collapse: separate !important;
 }
 
+@media only screen and (max-width: 600px) {
+  #tableDashboard {
+    width: 90%;
+  }
+}
+
 #tableDashboard tbody tr {
   background-color: #c4c4c4;
 }
@@ -181,7 +191,7 @@ nav .fa-bars {
   background-color: #e3f2fd;
 }
 
-#blankRow td{
+#blankRow td {
   padding: 5px;
 }
 
@@ -198,14 +208,12 @@ nav .fa-bars {
 }
 
 #rejectedRow td {
-  color: #53667F;
+  color: #53667f;
 }
-
 
 /* <----- REGISTER -----> */
 
 /* Table setup */
-
 
 #tableRegister {
   width: 95%;
@@ -297,11 +305,11 @@ tr:hover {
   margin-top: 18px !important;
 }
 
-.showAll>a {
+.showAll > a {
   padding: 5px;
 }
 
-.showAll>a:hover {
+.showAll > a:hover {
   border-radius: 3px;
   background-color: #bbdefb;
 }
@@ -310,7 +318,6 @@ tr:hover {
   display: none;
   transform: translate(0, -30px);
 }
-
 
 /* <----- Item Layout -----> */
 
@@ -347,11 +354,11 @@ tr:hover {
 }
 
 .btnDelRow {
-  transform: translate(0,-50px);
+  transform: translate(0, -50px);
 }
 
 .addBtn {
-  transform: translate(0,-25px);
+  transform: translate(0, -25px);
 }
 
 .itemContainer .btn-floating {
