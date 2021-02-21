@@ -5,92 +5,78 @@
 <!-- Use of Materialize Forms -->
 <!-- top row -->
 <div class="container itemContainer">
+  <h3 class="center-align">Budget</h3>
+  <br>
   <div class="row">
     <form id="editBudget" class="col s12" method="POST" action="{{ url_for('budget') }}">
       <div class="row">
-        <div class="col s12">
-          <div class="row">
-            <div class="input-field col s3 offset-s3">
-              <input value="{{ budget.date_modified }}" id="date_modified" name="date_modified" type="date"
-                class="validate enableEdit enableReadOnly" tabindex="-1" disabled>
-              <label for="date_modified">Last Modified</label>
-            </div>
-            <div class="col s2 offset-s1 right-align">
-              <a class="waves-effect waves-light blue btn-small btnEdit">Edit</a>
-            </div>
+        <div class="input-field col s6 m3 offset-m2">
+          <input value="{{ budget.date_modified }}" id="date_modified" name="date_modified" type="date"
+            class="validate enableEdit enableReadOnly" tabindex="-1" disabled>
+          <label for="date_modified">Last Modified</label>
+        </div>
+        <div class="col s3 m2 offset-s2 offset-m1 right-align">
+          <a class="waves-effect waves-light blue btn-small btnEdit">Edit</a>
+        </div>
+
+        <div class="col s12 m10 offset-m2 itemHeading">Total Costs</div>
+        <div class="input-field col s6 m3 offset-m2">
+          <input value="{{ '{:,}'.format(budget.cost_nett) }}" class="enableEdit validate formatNum"
+            id="budget_cost_nett" name="budget_cost_nett" type="text" onchange="updateBudget()" disabled>
+          <label for="budget_cost_nett">Nett Cost</label>
+        </div>
+        <div class="input-field col s6 m3">
+          <input value="{{ '{:,}'.format(budget.cost_gross) }}" id="budget_cost_gross" name="budget_cost_gross"
+            type="text" class="enableEdit enableReadOnly formatNum" tabindex="-1" disabled>
+          <label for="budget_cost_gross">Gross Cost</label>
+        </div>
+        <div class="col s12 m10 offset-m2 itemHeading">Contingency</div>
+        <div class="input-field col s6 m3 offset-m2">
+          <input value="{{ '{:,}'.format(budget.cont_design_total) }}" class="enableEdit validate formatNum"
+            id="budget_cont_design_total" name="budget_cont_design_total" type="text" onchange="updateBudget()"
+            disabled>
+          <label for="budget_cont_design_total">Design</label>
+        </div>
+        <div class="input-field col s6 m3">
+          <input value="{{ '{:,}'.format(budget.cont_const_total) }}" class="enableEdit validate formatNum"
+            id="budget_cont_const_total" name="budget_cont_const_total" type="text" onchange="updateBudget()" disabled>
+          <label for="budget_cont_const_total">Construction</label>
+        </div>
+        <div class="col s12 m10 offset-m2 itemHeading">Main Contractor On-Costs</div>
+        <div class="input-field col s6 m3 offset-m2">
+          <input value="{{ '{:,}'.format(budget.prelims_total) }}" class="enableEdit validate formatNum"
+            id="budget_prelims_total" name="budget_prelims_total" type="text" onchange="updateBudget()" disabled>
+          <label for="budget_prelims_total">Preliminaries</label>
+        </div>
+        <div class="input-field col s6 m3">
+          <input value="{{ '{:,}'.format(budget.ohp_total) }}" class="enableEdit validate formatNum"
+            id="budget_ohp_total" name="budget_ohp_total" type="text" onchange="updateTotal()" disabled>
+          <label for="budget_ohp_total">OH&P</label>
+        </div>
+        <div class="col s12 m10 offset-m2 itemHeading">Areas</div>
+        <div class="input-field col s6 m3 offset-m2">
+          <input value="{{ '{:,}'.format(budget.NIA_ft2) }}" class="enableEdit validate formatNum" id="budget_NIA_ft2"
+            name="budget_NIA_ft2" type="text" disabled>
+          <label for="budget_NIA_ft2">NIA</label>
+        </div>
+        <div class="input-field col s6 m3">
+          <input value="{{ '{:,}'.format(budget.GIA_ft2) }}" class="enableEdit validate formatNum" id="budget_GIA_ft2"
+            name="budget_GIA_ft2" type="text" disabled>
+          <label for="budget_GIA_ft2">GIA</label>
+        </div>
+        <div class="fixed-action-btn">
+          <div class="col s12 right-align">
+            <button type="submit" id="btnSubmit" class="btn-floating btn-large waves-effect waves-light blue btnHide">
+              <i class="fas fa-check"></i>
+            </button>
+            <button type="button" onclick="window.location.href='{{ url_for('dashboard') }}';"
+              class="btn-floating btn-large waves-effect waves-light blue">
+              <i class="fas fa-times"></i>
+            </button>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col s6 offset-s3">
-          <div class="row">
-            <div class="itemHeading">Total Costs</div>
-            <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(budget.cost_nett) }}" class="enableEdit validate formatNum" id="budget_cost_nett" name="budget_cost_nett" type="text" onchange="updateBudget()" disabled>
-              <label for="budget_cost_nett">Nett Cost</label>
-            </div>
-            <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(budget.cost_gross) }}" id="budget_cost_gross" name="budget_cost_gross" type="text" class="enableEdit enableReadOnly formatNum" tabindex="-1" disabled>
-              <label for="budget_cost_gross">Gross Cost</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="itemHeading">Contingency</div>
-            <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(budget.cont_design_total) }}" class="enableEdit validate formatNum" id="budget_cont_design_total"
-                name="budget_cont_design_total" type="text" onchange="updateBudget()" disabled>
-              <label for="budget_cont_design_total">Design</label>
-            </div>
-            <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(budget.cont_const_total) }}" class="enableEdit validate formatNum" id="budget_cont_const_total"
-                name="budget_cont_const_total" type="text" onchange="updateBudget()" disabled>
-              <label for="budget_cont_const_total">Construction</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="itemHeading">Main Contractor On-Costs</div>
-            <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(budget.prelims_total) }}" class="enableEdit validate formatNum" id="budget_prelims_total" name="budget_prelims_total"
-                type="text" onchange="updateBudget()" disabled>
-              <label for="budget_prelims_total">Preliminaries</label>
-            </div>
-            <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(budget.ohp_total) }}" class="enableEdit validate formatNum" id="budget_ohp_total" name="budget_ohp_total" type="text"
-                onchange="updateTotal()" disabled>
-              <label for="budget_ohp_total">OH&P</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="itemHeading">Areas</div>
-            <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(budget.NIA_ft2) }}" class="enableEdit validate formatNum" id="budget_NIA_ft2" name="budget_NIA_ft2" type="text"
-                disabled>
-              <label for="budget_NIA_ft2">NIA</label>
-            </div>
-            <div class="input-field col s6">
-              <input value="{{ '{:,}'.format(budget.GIA_ft2) }}" class="enableEdit validate formatNum" id="budget_GIA_ft2" name="budget_GIA_ft2" type="text"
-                disabled>
-              <label for="budget_GIA_ft2">GIA</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="fixed-action-btn">
-              <div class="col s12 right-align">
-                <button type="submit" id="btnSubmit" class="btn-floating btn-large waves-effect waves-light blue btnHide">
-                  <i class="fas fa-check"></i>
-                </button>
-                <button type="button" onclick="window.location.href='{{ url_for('dashboard') }}';"
-                  class="btn-floating btn-large waves-effect waves-light blue">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </form>
   </div>
-</div>
 </div>
 
 {% endif %}

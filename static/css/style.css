@@ -330,6 +330,12 @@ tr:hover {
   /* height: 100%; */
 }
 
+.itemContainer h3 {
+  color: #0d47a1;
+  font-size: 2.5rem;
+  letter-spacing: 0.5rem;
+}
+
 .itemHeading {
   margin-left: 0.75rem;
 }
