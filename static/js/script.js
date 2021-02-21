@@ -923,7 +923,7 @@ $('.formatNum').focusout(function () {
 
 // HIDE FILTER ON PAGE IF NOT DASHBOARD OR REGISTERS
 
-$(document).ready(function() {
+$(document).resize(function() {
   if (window.location.pathname !== '/dashboard' && window.location.pathname.indexOf('register') == -1) {
     $('#sideFilterDiv').hide();
     $('.filter').addClass('hide-on-large-only')
@@ -933,4 +933,19 @@ $(document).ready(function() {
   }
 })
 
-// if (window.location.pathname.indexOf('edit_change') > -1 || window.location.pathname == '/add_change')
+// SWITCH FILTER TO SIDENAV ON < MED SIZE SCREENS
+// sidenav class added and Materialize functionality activated
+
+$(document).ready(function() {
+  $(window).resize(function() {
+    if (window.screen.width < 992) {
+      $('.filter').addClass('sidenav');
+      $('.sidenav').sidenav();
+      $('.btnFilter').show()
+    }
+    else {
+      $('.filter').removeClass('sidenav');
+      $('.btnFilter').hide()
+    }
+  }).resize();
+})

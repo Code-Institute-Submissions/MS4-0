@@ -81,102 +81,10 @@
     {% endif %}
   </header>
 
-  <!-- Filter Sidebar - for screen below 992px - POP-OUT -->
-  <div id="sideFilterDiv" class="hide-on-large-only">
-    <div id="slide-out" class="sidenav sideFilter grey lighten-1">
-      {% if session.user %}
-      <h3>Filter</h3>
-      <br/>
-      <form>
-        <h5>COST</h5>
-        <div class="switch">
-          <label>
-            Nett
-            <input type="checkbox" name="cost" id="costSwitch" />
-            <span class="lever"></span>
-            Gross
-          </label>
-        </div>
-        <br />
-        <h5>STATUS</h5>
-        <p>
-          <label>
-            <input type="checkbox" id="A" onchange="handleChangeStatus()" checked />
-            <span>Approved</span>
-          </label>
-          <label>
-            <input type="checkbox" id="P" onchange="handleChangeStatus()" checked />
-            <span>Pending</span>
-          </label>
-          <br />
-          <label>
-            <input type="checkbox" onchange="handleChangeStatus()" id="WiP" checked />
-            <span>WiP</span>
-          </label>
-          <label>
-            <input type="checkbox" onchange="handleChangeStatus()" id="R" checked />
-            <span>Rejected</span>
-          </label>
-        </p>
-        <br />
-        <h5>CHANGE TYPE</h5>
-        <p>
-          <label>
-            <input type="checkbox" onchange="handleChangeChanges()" id="CA" checked />
-            <span>CA</span>
-          </label>
-          <label>
-            <input type="checkbox" onchange="handleChangeChanges()" id="CR" checked />
-            <span>CR</span>
-          </label>
-          <br />
-          <label>
-            <input type="checkbox" onchange="handleChangeChanges()" id="DD" checked />
-            <span>DD</span>
-          </label>
-          <label>
-            <input type="checkbox" onchange="handleChangeChanges()" id="PA" checked />
-            <span>PA</span>
-          </label>
-          <br />
-          <label>
-            <input type="checkbox" onchange="handleChangeChanges()" id="EW" checked />
-            <span>EW</span>
-          </label>
-          <label>
-            <input type="checkbox" onchange="handleChangeChanges()" id="VE" checked />
-            <span>VE</span>
-          </label>
-        </p>
-        <br />
-        <div id="period">
-          <h5>PERIOD (last 30 days)</h5>
-          <p>
-            <label>
-              <input type="checkbox" id="periodNew" />
-              <span>New</span>
-            </label>
-            <label>
-              <input type="checkbox" id="periodChange" />
-              <span>Changes</span>
-            </label>
-          </p>
-        </div>
-      </form>
-      {% else %}
-      <p>&nbsp;</p>
-      {% endif %}
-    </div>
-    <div class="fixed-action-btn btnFilter">
-      <a class="btn-floating btn-large waves-effect waves-light grey lighten-1 sidenav-trigger"
-        data-target="slide-out"><i class="fas fa-filter"></i></a>
-    </div>
-  </div>
-
-
   <!-- Filter Sidebar - screens above 992px - FIXED -->
+  <!-- JQuery function switches Filter to sidenav panel when <992px by adding 'sidenav' class -->
   <div class="row filterRow">
-    <div class="col l3 hide-on-med-and-down filter grey lighten-1">
+    <div id="slide-out" class="col l3 filter grey lighten-1">
       {% if session.user %}
       <h3>Filter</h3>
       <br />
@@ -257,24 +165,31 @@
           </p>
         </div>
       </form>
-      {% else %}
-      <p>&nbsp;</p>
-      {% endif %}
     </div>
+    
+    <div class="fixed-action-btn btnFilter">
+      <a class="btn-floating btn-large waves-effect waves-light grey lighten-1 sidenav-trigger"
+        data-target="slide-out"><i class="fas fa-filter"></i></a>
+    </div>
+    {% endif %}
 
     <div class="col s12 l9 section_main">
       {% block content %} {% endblock %}
     </div>
+
   </div>
 
-  {% with messages = get_flashed_messages() %} {% if messages %} {% for
-  message in messages %}
+  {% with messages = get_flashed_messages() %} 
+    {% if messages %} 
+      {% for message in messages %}
   <!-- The actual snackbar -->
-  <div id="snackbar">
-    {{ message }}
-    <a onclick="closeSnack()"><i class="material-icons">close</i></a>
-  </div>
-  {% endfor %} {% endif %} {% endwith %}
+        <div id="snackbar">
+            {{ message }}
+            <a onclick="closeSnack()"><i class="material-icons">close</i></a>
+        </div>
+      {% endfor %} 
+    {% endif %} 
+  {% endwith %}
 
   <!-- Materialize CDN - www.materializecss.com -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
