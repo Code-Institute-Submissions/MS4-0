@@ -74,6 +74,10 @@ nav .fa-bars {
   color: #0d47a1;
 }
 
+.filter label, .sideFilter label {
+  margin-right: 20px;
+}
+
 .filter h3, .sideFilter h3 {
   font-size: 1.5rem;
   font-weight: 700;
