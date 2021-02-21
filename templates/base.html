@@ -88,7 +88,6 @@
       {% if session.user %}
       <h3>Filter</h3>
       <br />
-
       <form>
         <h5>COST</h5>
         <div class="switch">
@@ -165,30 +164,31 @@
           </p>
         </div>
       </form>
+      {% endif %}
     </div>
     
-    <div class="fixed-action-btn btnFilter">
-      <a class="btn-floating btn-large waves-effect waves-light grey lighten-1 sidenav-trigger"
-        data-target="slide-out"><i class="fas fa-filter"></i></a>
-    </div>
-    {% endif %}
-
+    
     <div class="col s12 l9 section_main">
       {% block content %} {% endblock %}
     </div>
-
+    
+  </div>
+  
+  <div class="fixed-action-btn btnFilter">
+    <a class="btn-floating btn-large waves-effect waves-light grey lighten-1 sidenav-trigger"
+    data-target="slide-out"><i class="fas fa-filter"></i></a>
   </div>
 
-  {% with messages = get_flashed_messages() %} 
-    {% if messages %} 
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
       {% for message in messages %}
-  <!-- The actual snackbar -->
+        <!-- The actual snackbar -->
         <div id="snackbar">
             {{ message }}
             <a onclick="closeSnack()"><i class="material-icons">close</i></a>
         </div>
-      {% endfor %} 
-    {% endif %} 
+      {% endfor %}
+    {% endif %}
   {% endwith %}
 
   <!-- Materialize CDN - www.materializecss.com -->

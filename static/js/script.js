@@ -923,13 +923,11 @@ $('.formatNum').focusout(function () {
 
 // HIDE FILTER ON PAGE IF NOT DASHBOARD OR REGISTERS
 
-$(document).resize(function() {
+$(document).ready(function() {
   if (window.location.pathname !== '/dashboard' && window.location.pathname.indexOf('register') == -1) {
-    $('#sideFilterDiv').hide();
-    $('.filter').addClass('hide-on-large-only')
+    $('.btnFilter').remove();
     $('.section_main').addClass('l12');
     $('.section_main').removeClass('l9');
-
   }
 })
 
@@ -941,11 +939,11 @@ $(document).ready(function() {
     if (window.screen.width < 992) {
       $('.filter').addClass('sidenav');
       $('.sidenav').sidenav();
-      $('.btnFilter').show()
+      $('.btnFilter').show();
     }
     else {
       $('.filter').removeClass('sidenav');
-      $('.btnFilter').hide()
+      $('.btnFilter').hide();
     }
   }).resize();
 })
