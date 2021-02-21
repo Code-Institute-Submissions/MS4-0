@@ -1,412 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- jQuery CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Import Google fonts - www.google.com/fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
-      rel="stylesheet"
-    />
+  <!-- jQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!-- Import Fontawesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
-      integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
-      crossorigin="anonymous"
-      type="text/css"
-    />
+  <!-- Import Google fonts - www.google.com/fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
 
-    <!-- Import Materialize CNN - www.materializecss.com -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-      type="text/css"
-    />
+  <!-- Import Fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+    integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
+    crossorigin="anonymous" type="text/css" />
 
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}"
-      type="text/css"
-    />
+  <!-- Import Materialize CNN - www.materializecss.com -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    type="text/css" />
 
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
 
-    <!-- Favicon error appears in console (https://stackoverflow.com/questions/31075893/im-getting-favicon-ico-error) -->
-    <link rel="shortcut icon" href="#" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-    {% block styles %} {% endblock %}
+  <!-- Favicon error appears in console (https://stackoverflow.com/questions/31075893/im-getting-favicon-ico-error) -->
+  <link rel="shortcut icon" href="#" />
 
-    <title>Contrarotolum</title>
-  </head>
+  {% block styles %} {% endblock %}
 
-  <body>
-    <header>
-      <!-- Materialize Dropdown Menu -->
-      <ul id="dropdown1" class="dropdown-content">
-        {% if session.user %}
-        <li>
-          <a href="{{ url_for('profile', username=session['user']) }}"
-            >Profile</a
-          >
-        </li>
-        <li><a href="{{ url_for('budget') }}">Budget</a></li>
-        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-        {% else %}
-        <li><a href="{{ url_for('login') }}">Log In</a></li>
-        <li><a href="{{ url_for('registration') }}">Register</a></li>
-        {% endif %}
-      </ul>
-      <nav class="nav-main">
-        <div class="nav-wrapper blue darken-4">
-          {% if session.user %}
-          <a href="{{ url_for('dashboard') }}" class="brand-logo"
-            >Contrarotolum</a
-          >
-          {% else %}
-          <a href="{{ url_for('login') }}" class="brand-logo">Contrarotolum</a>
-          {% endif %}
-          <ul class="right">
-            <!-- Dropdown Trigger -->
-            <li>
-              <a class="btn-floating btn-large dropdown-trigger center" data-target="dropdown1"
-                ><i class="fas fa-bars blue"></i
-              ></a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+  <title>Contrarotolum</title>
+</head>
 
-      <!-- Materialize Fixed Navbar -->
+<body>
+  <header>
+    <!-- Materialize Dropdown Menu -->
+    <ul id="dropdown1" class="dropdown-content">
       {% if session.user %}
-      <nav>
-        <div class="nav-wrapper blue">
-          <div class="row">
-            <div class="col s6 center-align submenu-item">
-              <a href="{{ url_for('dashboard') }}">Dashboard</a>
-            </div>
-            <div class="col s6 center-align submenu-item">
-              <a href="{{ url_for('register', page_size=1, page_num=10) }}"
-                >Register</a
-              >
-            </div>
+      <li>
+        <a href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+      </li>
+      <li><a href="{{ url_for('budget') }}">Budget</a></li>
+      <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+      {% else %}
+      <li><a href="{{ url_for('login') }}">Log In</a></li>
+      <li><a href="{{ url_for('registration') }}">Register</a></li>
+      {% endif %}
+    </ul>
+    <nav class="nav-main">
+      <div class="nav-wrapper blue darken-4">
+        {% if session.user %}
+        <a href="{{ url_for('dashboard') }}" class="brand-logo">Contrarotolum</a>
+        {% else %}
+        <a href="{{ url_for('login') }}" class="brand-logo">Contrarotolum</a>
+        {% endif %}
+        <ul class="right">
+          <!-- Dropdown Trigger -->
+          <li>
+            <a class="btn-floating btn-large dropdown-trigger center" data-target="dropdown1"><i
+                class="fas fa-bars blue"></i></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Materialize Fixed Navbar -->
+    {% if session.user %}
+    <nav>
+      <div class="nav-wrapper blue">
+        <div class="row">
+          <div class="col s6 center-align submenu-item">
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+          </div>
+          <div class="col s6 center-align submenu-item">
+            <a href="{{ url_for('register', page_size=1, page_num=10) }}">Register</a>
           </div>
         </div>
-      </nav>
+      </div>
+    </nav>
+    {% endif %}
+  </header>
+
+  <!-- Filter Sidebar - for screen below 992px - POP-OUT -->
+  <div id="sideFilterDiv" class="hide-on-large-only">
+    <div id="slide-out" class="sidenav sideFilter grey lighten-1">
+      {% if session.user %}
+      <h3>Filter</h3>
+      <br />
+
+      <form>
+        <h5>COST</h5>
+        <div class="switch">
+          <label>
+            Nett
+            <input type="checkbox" name="cost" id="costSwitch" />
+            <span class="lever"></span>
+            Gross
+          </label>
+        </div>
+        <br />
+        <h5>STATUS</h5>
+        <p>
+          <label>
+            <input type="checkbox" id="A" onchange="handleChangeStatus()" checked />
+            <span>Approved</span>
+          </label>
+          <label>
+            <input type="checkbox" id="P" onchange="handleChangeStatus()" checked />
+            <span>Pending</span>
+          </label>
+          <br />
+          <label>
+            <input type="checkbox" onchange="handleChangeStatus()" id="WiP" checked />
+            <span>WiP</span>
+          </label>
+          <label>
+            <input type="checkbox" onchange="handleChangeStatus()" id="R" checked />
+            <span>Rejected</span>
+          </label>
+        </p>
+        <br />
+        <h5>CHANGE TYPE</h5>
+        <p>
+          <label>
+            <input type="checkbox" onchange="handleChangeChanges()" id="CA" checked />
+            <span>CA</span>
+          </label>
+          <label>
+            <input type="checkbox" onchange="handleChangeChanges()" id="CR" checked />
+            <span>CR</span>
+          </label>
+          <br />
+          <label>
+            <input type="checkbox" onchange="handleChangeChanges()" id="DD" checked />
+            <span>DD</span>
+          </label>
+          <label>
+            <input type="checkbox" onchange="handleChangeChanges()" id="PA" checked />
+            <span>PA</span>
+          </label>
+          <br />
+          <label>
+            <input type="checkbox" onchange="handleChangeChanges()" id="EW" checked />
+            <span>EW</span>
+          </label>
+          <label>
+            <input type="checkbox" onchange="handleChangeChanges()" id="VE" checked />
+            <span>VE</span>
+          </label>
+        </p>
+        <br />
+        <div id="period">
+          <h5>PERIOD (last 30 days)</h5>
+          <p>
+            <label>
+              <input type="checkbox" id="periodNew" />
+              <span>New</span>
+            </label>
+            <label>
+              <input type="checkbox" id="periodChange" />
+              <span>Changes</span>
+            </label>
+          </p>
+        </div>
+      </form>
+      {% else %}
+      <p>&nbsp;</p>
       {% endif %}
-    </header>
+    </div>
+    <div class="fixed-action-btn btnFilter">
+      <a class="btn-floating btn-large waves-effect waves-light grey lighten-1 sidenav-trigger"
+        data-target="slide-out"><i class="fas fa-filter"></i></a>
+    </div>
+  </div>
 
-    <!-- Filter Sidebar - for screen below 992px - POP-OUT -->
-    <div id="sideFilterDiv" class="hide-on-large-only">
-      <div id="slide-out" class="sidenav sideFilter grey lighten-1">
-        {% if session.user %}
-        <h3>Filter</h3>
+
+  <!-- Filter Sidebar - screens above 992px - FIXED -->
+  <div class="row filterRow">
+    <div class="col l3 hide-on-med-and-down filter grey lighten-1">
+      {% if session.user %}
+      <h3>Filter</h3>
+      <br />
+
+      <form>
+        <h5>COST</h5>
+        <div class="switch">
+          <label>
+            Nett
+            <input type="checkbox" name="cost" id="costSwitch" />
+            <span class="lever"></span>
+            Gross
+          </label>
+        </div>
         <br />
-
-        <form>
-          <h5>COST</h5>
-          <div class="switch">
-            <label>
-              Nett
-              <input type="checkbox" name="cost" id="costSwitch" />
-              <span class="lever"></span>
-              Gross
-            </label>
-          </div>
+        <h5>STATUS</h5>
+        <p>
+          <label>
+            <input type="checkbox" id="A" onchange="handleChangeStatus()" checked />
+            <span>Approved</span>
+          </label>
+          <label>
+            <input type="checkbox" id="P" onchange="handleChangeStatus()" checked />
+            <span>Pending</span>
+          </label>
           <br />
-          <h5>STATUS</h5>
+          <label>
+            <input type="checkbox" onchange="handleChangeStatus()" id="WiP" checked />
+            <span>WiP</span>
+          </label>
+          <label>
+            <input type="checkbox" onchange="handleChangeStatus()" id="R" checked />
+            <span>Rejected</span>
+          </label>
+        </p>
+        <br />
+        <h5>CHANGE TYPE</h5>
+        <p>
+          <label>
+            <input type="checkbox" onchange="handleChangeChanges()" id="CA" checked />
+            <span>CA</span>
+          </label>
+          <label>
+            <input type="checkbox" onchange="handleChangeChanges()" id="CR" checked />
+            <span>CR</span>
+          </label>
+          <br />
+          <label>
+            <input type="checkbox" onchange="handleChangeChanges()" id="DD" checked />
+            <span>DD</span>
+          </label>
+          <label>
+            <input type="checkbox" onchange="handleChangeChanges()" id="PA" checked />
+            <span>PA</span>
+          </label>
+          <br />
+          <label>
+            <input type="checkbox" onchange="handleChangeChanges()" id="EW" checked />
+            <span>EW</span>
+          </label>
+          <label>
+            <input type="checkbox" onchange="handleChangeChanges()" id="VE" checked />
+            <span>VE</span>
+          </label>
+        </p>
+        <br />
+        <div id="period">
+          <h5>PERIOD (last 30 days)</h5>
           <p>
             <label>
-              <input
-                type="checkbox"
-                id="A"
-                onchange="handleChangeStatus()"
-                checked
-              />
-              <span>Approved</span>
+              <input type="checkbox" id="periodNew" />
+              <span>New</span>
             </label>
             <label>
-              <input
-                type="checkbox"
-                id="P"
-                onchange="handleChangeStatus()"
-                checked
-              />
-              <span>Pending</span>
-            </label>
-            <br />
-            <label>
-              <input
-                type="checkbox"
-                onchange="handleChangeStatus()"
-                id="WiP"
-                checked
-              />
-              <span>WiP</span>
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                onchange="handleChangeStatus()"
-                id="R"
-                checked
-              />
-              <span>Rejected</span>
+              <input type="checkbox" id="periodChange" />
+              <span>Changes</span>
             </label>
           </p>
-          <br />
-          <h5>CHANGE TYPE</h5>
-          <p>
-            <label>
-              <input
-                type="checkbox"
-                onchange="handleChangeChanges()"
-                id="CA"
-                checked
-              />
-              <span>CA</span>
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                onchange="handleChangeChanges()"
-                id="CR"
-                checked
-              />
-              <span>CR</span>
-            </label>
-            <br />
-            <label>
-              <input
-                type="checkbox"
-                onchange="handleChangeChanges()"
-                id="DD"
-                checked
-              />
-              <span>DD</span>
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                onchange="handleChangeChanges()"
-                id="PA"
-                checked
-              />
-              <span>PA</span>
-            </label>
-            <br />
-            <label>
-              <input
-                type="checkbox"
-                onchange="handleChangeChanges()"
-                id="EW"
-                checked
-              />
-              <span>EW</span>
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                onchange="handleChangeChanges()"
-                id="VE"
-                checked
-              />
-              <span>VE</span>
-            </label>
-          </p>
-          <br />
-          <div id="period">
-            <h5>PERIOD (last 30 days)</h5>
-            <p>
-              <label>
-                <input type="checkbox" id="periodNew" />
-                <span>New</span>
-              </label>
-              <label>
-                <input type="checkbox" id="periodChange" />
-                <span>Changes</span>
-              </label>
-            </p>
-          </div>
-        </form>
-        {% else %}
-        <p>&nbsp;</p>
-        {% endif %}
-      </div>
-      <div class="fixed-action-btn btnFilter">
-        <a
-          class="btn-floating btn-large waves-effect waves-light grey lighten-1 sidenav-trigger"
-          data-target="slide-out"
-          ><i class="fas fa-filter"></i
-        ></a>
-      </div>
+        </div>
+      </form>
+      {% else %}
+      <p>&nbsp;</p>
+      {% endif %}
     </div>
 
-    <!-- Filter Sidebar - screens above 992px - FIXED -->
-    <div class="row filterRow">
-      <div class="col l3 hide-on-med-and-down filter grey lighten-1">
-        {% if session.user %}
-        <h3>Filter</h3>
-        <br />
-
-        <form>
-          <h5>COST</h5>
-          <div class="switch">
-            <label>
-              Nett
-              <input type="checkbox" name="cost" id="costSwitch" />
-              <span class="lever"></span>
-              Gross
-            </label>
-          </div>
-          <br />
-          <h5>STATUS</h5>
-          <p>
-            <label>
-              <input
-                type="checkbox"
-                id="A"
-                onchange="handleChangeStatus()"
-                checked
-              />
-              <span>Approved</span>
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                id="P"
-                onchange="handleChangeStatus()"
-                checked
-              />
-              <span>Pending</span>
-            </label>
-            <br />
-            <label>
-              <input
-                type="checkbox"
-                onchange="handleChangeStatus()"
-                id="WiP"
-                checked
-              />
-              <span>WiP</span>
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                onchange="handleChangeStatus()"
-                id="R"
-                checked
-              />
-              <span>Rejected</span>
-            </label>
-          </p>
-          <br />
-          <h5>CHANGE TYPE</h5>
-          <p>
-            <label>
-              <input
-                type="checkbox"
-                onchange="handleChangeChanges()"
-                id="CA"
-                checked
-              />
-              <span>CA</span>
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                onchange="handleChangeChanges()"
-                id="CR"
-                checked
-              />
-              <span>CR</span>
-            </label>
-            <br />
-            <label>
-              <input
-                type="checkbox"
-                onchange="handleChangeChanges()"
-                id="DD"
-                checked
-              />
-              <span>DD</span>
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                onchange="handleChangeChanges()"
-                id="PA"
-                checked
-              />
-              <span>PA</span>
-            </label>
-            <br />
-            <label>
-              <input
-                type="checkbox"
-                onchange="handleChangeChanges()"
-                id="EW"
-                checked
-              />
-              <span>EW</span>
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                onchange="handleChangeChanges()"
-                id="VE"
-                checked
-              />
-              <span>VE</span>
-            </label>
-          </p>
-          <br />
-          <div id="period">
-            <h5>PERIOD (last 30 days)</h5>
-            <p>
-              <label>
-                <input type="checkbox" id="periodNew" />
-                <span>New</span>
-              </label>
-              <label>
-                <input type="checkbox" id="periodChange" />
-                <span>Changes</span>
-              </label>
-            </p>
-          </div>
-        </form>
-        {% else %}
-        <p>&nbsp;</p>
-        {% endif %}
-      </div>
-
-      <div class="col s12 l9 section_main">
-        {% block content %} {% endblock %}
-      </div>
-
-      {% with messages = get_flashed_messages() %} {% if messages %} {% for
-      message in messages %}
-      <!-- The actual snackbar -->
-      <div id="snackbar">
-        {{ message }}
-        <a onclick="closeSnack()"><i class="material-icons">close</i></a>
-      </div>
-      {% endfor %} {% endif %} {% endwith %}
+    <div class="col s12 l9 section_main">
+      {% block content %} {% endblock %}
     </div>
+  </div>
 
-    <!-- Materialize CDN - www.materializecss.com -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  {% with messages = get_flashed_messages() %} {% if messages %} {% for
+  message in messages %}
+  <!-- The actual snackbar -->
+  <div id="snackbar">
+    {{ message }}
+    <a onclick="closeSnack()"><i class="material-icons">close</i></a>
+  </div>
+  {% endfor %} {% endif %} {% endwith %}
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <!-- Materialize CDN - www.materializecss.com -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    {% block scripts %} {% endblock %}
-  </body>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+  {% block scripts %} {% endblock %}
+</body>
+
 </html>

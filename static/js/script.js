@@ -895,14 +895,6 @@ $('#editForm,#addForm,#editBudget').submit(function (event) {
     }
   })
 
-  // $('.formatNum').each(function () {
-  //   let y = $(this).val()
-  //   if (y === "") {
-  //     y = 0;
-  //     $(this).val(y)
-  //   }
-  // });
-
   $(this).unbind('submit').submit();
 
 });
@@ -929,3 +921,16 @@ $('.formatNum').focusout(function () {
 });
 
 
+// HIDE FILTER ON PAGE IF NOT DASHBOARD OR REGISTERS
+
+$(document).ready(function() {
+  if (window.location.pathname !== '/dashboard' && window.location.pathname.indexOf('register') == -1) {
+    $('#sideFilterDiv').hide();
+    $('.filter').addClass('hide-on-large-only')
+    $('.section_main').addClass('l12');
+    $('.section_main').removeClass('l9');
+
+  }
+})
+
+// if (window.location.pathname.indexOf('edit_change') > -1 || window.location.pathname == '/add_change')
