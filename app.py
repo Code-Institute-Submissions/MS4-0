@@ -133,9 +133,9 @@ def logout():
 @app.route("/register/<int:page_size>/<int:page_num>",)
 def register(page_size=1, page_num=10):
     # retrieve information from register DB collection
-
-    skips = page_num * (page_size -1)
-    register = mongo.db.register.find().sort("change_nr").skip(skips).limit(page_num)
+    skips = page_num * (page_size - 1)
+    register = mongo.db.register.find().sort(
+        "change_nr").skip(skips).limit(page_num)
 
     if mongo.db.register.count() % 10 > 0:
         records = int(mongo.db.register.count() / 10) + 1
@@ -228,7 +228,8 @@ def budget():
             {"_id": ObjectId("6022ed6805fc505f69844c36")}, update)
         return redirect(url_for('dashboard'))
 
-    # as there is only one record kept in the collection, automatically returned
+    # as there is only one record kept in the
+    # collection, automatically returned
     budget = mongo.db.budget.find_one()
 
     return render_template("budget.html", budget=budget)

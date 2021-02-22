@@ -281,24 +281,28 @@ ____________
 
 The W3C Markup Validator and W3C CSS Validator Services were used to validate the main pages of the project to ensure there were no syntax errors in the project.
 
-**[W3C Markup Validator](https://validator.w3.org/) - [Results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdkeddie.github.io%2FMS2%2F)**
+**[W3C Markup Validator](https://validator.w3.org/)**
+
+In order to check the HTML, the code was copied by 'Text Input' on the validator, as the code is not passed and checked by the 'Address' method.  There are no outstanding errors - screen captures of the results are shown on the links below.
 
 **Results**
-  - [Dashboard](https://validator.w3.org/nu/?doc=http%3A%2F%2Fms3dkeddie.herokuapp.com%2Fdashboard)
-  - [Register](https://validator.w3.org/nu/?doc=http%3A%2F%2Fms3dkeddie.herokuapp.com%2Fregister)
-  - [Add Change](https://validator.w3.org/nu/?doc=http%3A%2F%2Fms3dkeddie.herokuapp.com%2Fadd_change)
-  - [Edit Change](https://validator.w3.org/nu/?doc=http%3A%2F%2Fms3dkeddie.herokuapp.com%2Fedit_change%2F6022351a011f5063ed3c0ba7)
+  - Dashboard
+  ![Dashboard](READMEinfo\W3CValidator-Dashboard.jpg "Dashboard")
+  - Register
+  ![Regsiter](READMEinfo\W3CValidator-Register.jpg "Register")
+  - Add Change
+  ![Add Change](READMEinfo\W3CValidator-AddChange.jpg "Add Change")
+  - Edit Change
+  ![Edit Change](READMEinfo\W3CValidator-Dashboard.jpg "Edit Change")
 
 
 <br>
 
-**[W3C CSS Validator](https://jigsaw.w3.org/css-validator/)**
+**[W3C CSS Validator](https://jigsaw.w3.org/css-validator/)** - [Results]("https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fms3dkeddie.herokuapp.com%2Fstatic%2Fcss%2Fstyle.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en")
 
-**Results**
-  - [Dashboard](https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fms3dkeddie.herokuapp.com%2Fdashboard&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
-  - [Register](https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fms3dkeddie.herokuapp.com%2Fregister&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
-  - [Add Change](https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fms3dkeddie.herokuapp.com%2Fadd_change&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
-  - [Edit Change](https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fms3dkeddie.herokuapp.com%2Fedit_change%2F6022351a011f5063ed3c0ba7&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+There are no errors highlighted by the CSS validator.
+<br>
+<br>
 
 ### Javascript Code Quality - JSHint
 

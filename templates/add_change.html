@@ -13,7 +13,8 @@
         <div class="col s9">
           <div class="row">
             <div class="input-field col s4 m3 l2">
-              <input value="{{ counter }}" id="change_nr" name="change_nr" type="number" class="validate" minlength="1" maxlength="3" required>
+              <input value="{{ counter }}" id="change_nr" name="change_nr" type="number" class="validate" min="1"
+                max="5" required>
               <label for="change_nr">Change Nr</label>
             </div>
             <div class="input-field col s4 offset-s1 hideInput">
@@ -33,13 +34,15 @@
           <div class="row">
             <div class="itemHeading">Change Details</div>
             <div class="input-field col s12">
-              <input value="" id="change_name" name="change_name" type="text" class="validate" minlength="1" maxlength="30" required>
+              <input value="" id="change_name" name="change_name" type="text" class="validate" minlength="1"
+                maxlength="30" required>
               <label for="change_name">Change Name</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <textarea id="change_description" name="change_description" class="materialize-textarea" minlength="1" maxlength="250"></textarea>
+              <textarea id="change_description" name="change_description" class="materialize-textarea" minlength="1"
+                maxlength="250"></textarea>
               <label for="change_description">Description of Change</label>
             </div>
           </div>
@@ -76,33 +79,39 @@
           <div class="row">
             <div class="itemHeading">Total Costs</div>
             <div class="input-field col s6">
-              <input value="" id="cost_nett" name="cost_nett" type="text" class="validate formatNum" onchange="updateTotal()">
+              <input value="" id="cost_nett" name="cost_nett" type="text" class="validate formatNum"
+                onchange="updateTotal()">
               <label for="cost_nett">Nett Cost</label>
             </div>
             <div class="input-field col s6">
-              <input value="0" id="cost_gross" name="cost_gross" type="text" class="validate formatNum" tabindex="-1" readonly>
+              <input value="0" id="cost_gross" name="cost_gross" type="text" class="validate formatNum" tabindex="-1"
+                readonly>
               <label for="cost_gross">Gross Cost</label>
             </div>
           </div>
           <div class="row">
             <div class="itemHeading">Contingency</div>
             <div class="input-field col s6">
-              <input value="" id="cont_design_total" name="cont_design_total" type="text" class="validate formatNum" onchange="updateTotal()">
+              <input value="" id="cont_design_total" name="cont_design_total" type="text" class="validate formatNum"
+                onchange="updateTotal()">
               <label for="cont_design_total">Design</label>
             </div>
             <div class="input-field col s6">
-              <input value="" id="cont_const_total" name="cont_const_total" type="text" class="validate formatNum" onchange="updateTotal()">
+              <input value="" id="cont_const_total" name="cont_const_total" type="text" class="validate formatNum"
+                onchange="updateTotal()">
               <label for="cont_const_total">Construction</label>
             </div>
           </div>
           <div class="row">
             <div class="itemHeading">Main Contractor On-Costs</div>
             <div class="input-field col s6">
-              <input value="" id="prelims_total" name="prelims_total" type="text" class="validate formatNum" onchange="updateTotal()">
+              <input value="" id="prelims_total" name="prelims_total" type="text" class="validate formatNum"
+                onchange="updateTotal()">
               <label for="prelims_total">Preliminaries</label>
             </div>
             <div class="input-field col s6">
-              <input value="" id="ohp_total" name="ohp_total" type="text" class="validate formatNum" onchange="updateTotal()">
+              <input value="" id="ohp_total" name="ohp_total" type="text" class="validate formatNum"
+                onchange="updateTotal()">
               <label for="ohp_total">OH&P</label>
             </div>
           </div>
@@ -120,13 +129,17 @@
           <div class="row">
             <div class="fixed-action-btn">
               <div class="col s12 right-align">
-                <button type="submit" class="btn-floating btn-large waves-effect waves-light blue"><i class="fas fa-check"></i></a>
-                <button type="button" onclick="window.location.href='{{ url_for('register', page_size=1, page_num=10) }}';" type="submit" class="btn-floating btn-large waves-effect waves-light blue"><i class="fas fa-times"></i></a>
+                <button type="submit" class="btn-floating btn-large waves-effect waves-light blue"><i
+                    class="fas fa-check"></i></button>
+                <button type="button"
+                  onclick="window.location.href='{{ url_for('register', page_size=1, page_num=10) }}';"
+                  class="btn-floating btn-large waves-effect waves-light blue"><i class="fas fa-times"></i></button>
               </div>
+            </div>
           </div>
         </div>
+      </div>
     </form>
-    </div>
   </div>
 </div>
 

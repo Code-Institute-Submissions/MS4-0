@@ -200,7 +200,7 @@ function pushValues(checkedStatus) {
     }).format(budgetAreaChange);
     $('#budgetRow').children('.areaChange').text(budgetAreaChangeDisplay);
 
-    let budgetAreaTotal = budget[0].GIA_ft2
+    let budgetAreaTotal = budget[0].GIA_ft2;
     let budgetAreaTotalDisplay = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -210,10 +210,10 @@ function pushValues(checkedStatus) {
 
     let budgetRate = (function () {
       if (budgetTotal === 0 && budgetAreaTotal === 0) {
-        return 0
+        return 0;
       }
       else {
-        return budgetTotal / budgetAreaTotal
+        return budgetTotal / budgetAreaTotal;
       }
     })();
     let budgetRateDisplay = new Intl.NumberFormat('en-US', {
@@ -254,7 +254,7 @@ function pushValues(checkedStatus) {
 
     let approvedAreaTotal = (function () {
       if (approvedAreaChange === 0 && approvedTotal === 0) {
-        return 0
+        return 0;
       }
       else {
         return budgetAreaTotal + approvedAreaChange;
@@ -306,7 +306,7 @@ function pushValues(checkedStatus) {
 
     let pendingAreaTotal = (function () {
       if (pendingAreaChange === 0 && pendingTotal === 0) {
-        return 0
+        return 0;
       }
       else {
         return budgetAreaTotal + approvedAreaChange + pendingAreaChange;
@@ -358,7 +358,7 @@ function pushValues(checkedStatus) {
 
     let wipAreaTotal = (function () {
       if (wipAreaChange === 0 && wipTotal === 0) {
-        return 0
+        return 0;
       }
       else {
         return budgetAreaTotal + approvedAreaChange + pendingAreaChange + wipAreaChange;
@@ -443,7 +443,7 @@ function pushValues(checkedStatus) {
 
     let rejectedAreaTotal = (function () {
       if (rejectedAreaChange === 0 && rejectedTotal === 0) {
-        return 0
+        return 0;
       }
       else {
         return revisedAreaTotal + rejectedAreaChange;
@@ -667,18 +667,18 @@ $(document).ready(function () {
 // Forward/Backward arrows - disable on first/last page
 $(document).ready(function () {
   if (window.location.pathname.indexOf('/register/1/') !== 0) {
-    $('.pagination li').removeClass('disabled')
+    $('.pagination li').removeClass('disabled');
   }
 });
 
 $(document).ready(function () {
-  const x = $('.pagination > li:nth-last-child(2)').text()
-  const y = "/register/"
+  const x = $('.pagination > li:nth-last-child(2)').text();
+  const y = "/register/";
   const path = window.location.pathname;
   if (path.includes(y + x)) {
-    $('.pagination li:last-child').addClass('disabled')
+    $('.pagination li:last-child').addClass('disabled');
   }
-})
+});
 
 // Highlight active page on pagination list
 // Populate forward/backward hrefs
@@ -690,10 +690,10 @@ $(document).ready(function () {
       // highlight active page
       $(element).addClass('active blue lighten-2');
       // backward chevron
-      const prevP = $(element).prev().find('a').attr('href')
+      const prevP = $(element).prev().find('a').attr('href');
       $('.pagination > li:first-child').find('a').attr('href', prevP);
       // forward chevron
-      const nextP = $(element).next().find('a').attr('href')
+      const nextP = $(element).next().find('a').attr('href');
       $('.pagination > li:last-child').find('a').attr('href', nextP);
     }
   });
@@ -705,7 +705,7 @@ $(document).ready(function () {
     $('#pages').hide();
     $('#backToPages').show();
   }
-})
+});
 
 
 // <<----- PAGES: ADD / EDIT / BUDGET ----->
@@ -883,8 +883,8 @@ $('#editForm,#addForm,#editBudget').submit(function (event) {
   $('.formatNum').each(function () {
     // Default value of "0" if no value entered
     if (!$(this).val()) {
-        let y = "0"
-        $(this).val(y)
+        let y = "0";
+        $(this).val(y);
     }
     // Ommits "," from numbers prior to submit
     else {
@@ -893,7 +893,7 @@ $('#editForm,#addForm,#editBudget').submit(function (event) {
         $(this).val(x);
       });
     }
-  })
+  });
 
   $(this).unbind('submit').submit();
 
@@ -930,7 +930,7 @@ $(document).ready(function() {
     $('.section_main').addClass('l12');
     $('.section_main').removeClass('l9');
   }
-})
+});
 
 // SWITCH FILTER TO SIDENAV ON < MED SIZE SCREENS
 // sidenav class added and Materialize functionality activated
@@ -947,4 +947,4 @@ $(document).ready(function() {
       $('.btnFilter').hide();
     }
   }).resize();
-})
+});

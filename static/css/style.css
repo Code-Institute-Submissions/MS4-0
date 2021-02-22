@@ -21,7 +21,6 @@ nav .brand-logo {
 @media only screen and (max-width: 992px) {
   nav .brand-logo {
     left: 0 !important;
-    -webkit-transform: translateX(0) !important;
     transform: translateX(0) !important;
   }
 }
@@ -65,40 +64,30 @@ nav .fa-bars {
   min-height: calc(100vh - 186px);
 }
 
-.sideFilter {
-  padding-left: 10px;
-}
-
-.filter .switch label,
-.sideFilter .switch label {
+.filter .switch label {
   font-size: 1rem;
   color: #0d47a1;
 }
 
-.filter label,
-.sideFilter label {
+.filter label {
   margin-right: 20px;
 }
 
-.filter h3,
-.sideFilter h3 {
+.filter h3 {
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.5rem;
   color: #0d47a1;
 }
 
-.filter h5,
-.sideFilter h5 {
+.filter h5 {
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.25rem;
   color: #0d47a1;
 }
 
-.filter p label,
-,
-.sideFilter p label {
+.filter p label {
   font-size: 1.5rem;
   color: #0d47a1;
   margin-right: 16px;
@@ -191,7 +180,7 @@ nav .fa-bars {
   background-color: #e3f2fd;
 }
 
-#blankRow td {
+.blankRow td {
   padding: 5px;
 }
 

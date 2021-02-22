@@ -17,7 +17,7 @@
             </div>
             <div class="input-field col s3 m2 l2 pull-s9 pull-m9 pull-l2">
               <input value="{{ change.change_nr }}" class="enableEdit validate" id="change_nr" name="change_nr"
-                type="number" minlength="1" maxlength="3" disabled>
+                type="number" min="1" max="5" disabled>
               <label for="change_nr">Change Nr</label>
             </div>
             <div class="input-field col m4 l4 hide-on-small-only pull-l2">
@@ -63,13 +63,13 @@
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <select id="status" name="status" class="validate enableEdit" required disabled>
+              <select id="status" name="status" class="validate enableEdit" size="4" required disabled>
                 {% for state in status %}
-                {% if state.status_abbr == change.status %}
-                <option value="{{ state.status_abbr }}" selected>{{ state.status_name }}</option>
-                {% else %}
-                <option value="{{ state.status_abbr }}">{{ state.status_name }}</option>
-                {% endif %}
+                  {% if state.status_abbr == change.status %}
+                    <option value="{{ state.status_abbr }}" selected>{{ state.status_name }}</option>
+                  {% else %}
+                    <option value="{{ state.status_abbr }}">{{ state.status_name }}</option>
+                  {% endif %}
                 {% endfor %}
               </select>
               <label for="status">Status</label>
@@ -77,13 +77,13 @@
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <select id="change_type" name="change_type" class="validate enableEdit" required disabled>
+              <select id="change_type" name="change_type" class="validate enableEdit" size="6" required disabled>
                 {% for change in change_type %}
-                {% if change.change_type_abbr == change.change_type %}
-                <option value="{{ change.change_type_abbr }}" selected>{{ change.change_type_name }}</option>
-                {% else %}
-                <option value="{{ change.change_type_abbr }}">{{ change.change_type_name }}</option>
-                {% endif %}
+                  {% if change.change_type_abbr == change.change_type %}
+                    <option value="{{ change.change_type_abbr }}" selected>{{ change.change_type_name }}</option>
+                  {% else %}
+                    <option value="{{ change.change_type_abbr }}">{{ change.change_type_name }}</option>
+                  {% endif %}
                 {% endfor %}
               </select>
               <label for="change_type">Change Type</label>
@@ -179,12 +179,13 @@
       </div>
     </form>
   </div>
+</div>
 
-  {% endif %}
-  {% endblock %}
+{% endif %}
+{% endblock %}
 
 
 
-  {% block scripts %}
+{% block scripts %}
 
-  {% endblock %}
+{% endblock %}
