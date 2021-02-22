@@ -308,10 +308,17 @@ There are no errors highlighted by the CSS validator.
 
 [JSHint](https://jshint.com/) has been used to check and test the Code Quality of the Javascript used on this page.  The Javascript has been updated in line with warnings initially returned.  The following items remain and which are deemed not critical to the functioning of the site:-
 
-- Where warnings of ES6, 8 and 10 have been raised, these have not been ignored, as the main browsers will function with the use of this version of Javascript.
-- There remains one warning, 'Redefinition of 'origin'', hover this is an intended part of the Javascript to be implemented on the page.
-- Undefined variables - these are undefined on the initial page load but become defined after further Javascript has been implemented.
-- Unused variables - these variables are required for the running of external APIs.
+![Warning 1](/READMEinfo/JSHint-1.jpg)
+*Whilst not addressed, this warning could be refactored in future to address the concerns raised.*
+
+<br>
+
+![Warning 2](READMEinfo/JSHint-2-1.jpg)  
+*These warnings are incorrect and the statements are not missing semi-colons*
+![Extract from script.js](READMEinfo/JSHint-2-2.jpg)  
+
+
+
 <br>
 
 ### Python compliance with PEP8
