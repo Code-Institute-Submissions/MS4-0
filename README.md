@@ -73,13 +73,16 @@ ___
 
 ## **Design**
 
-### **Desktop-only** (for now)
+### **Responive UX Design**
 
-The website is optimised for desktops only at this stage, as mobile versions will necessitate a 'lite' version.
+![Responsive Pages](READMEinfo/responsive_screens.jpg "Responsive Pages")
 
-Whilst the website / app is in development, the focus is on establishing all the desired functionality of the desktop version in order that there are no constraints are introduced.
+The website has been designed for use across multiple screen sizes, adapting content display to optimise the information to be displayed.  The information shown on-screen is reduced to accommodate smaller display sizes.  The changes are noted below:-
 
-Once all the desired features are fully developed, a 'Lite' version will be deployed.
+- Large (desktop) screens - full information displayed on-screen, including filter options.
+- Medium (tablet) screens - filter sidenav becomes a slideout field, operated by floating button.  The user can still access all information.
+- Small (phone) screens - A final step is the reduction of information displayed on-screen.  Only key information is shown on small screens.  This is achieved by reducing the number of columns in the tables shown on the Dashboard and Register.
+
 <br>
 
 
