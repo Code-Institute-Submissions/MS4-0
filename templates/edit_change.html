@@ -77,7 +77,7 @@
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <select id="change_type" name="change_type" class="validate enableEdit" size="6" required disabled>
+              <select id="change_type" name="change_type" class="validate enableEdit" required disabled>
                 {% for change in change_type %}
                   {% if change.change_type_abbr == change.change_type %}
                     <option value="{{ change.change_type_abbr }}" selected>{{ change.change_type_name }}</option>
