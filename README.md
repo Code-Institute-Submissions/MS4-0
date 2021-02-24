@@ -148,7 +148,9 @@ An overview of the features on the website are listed below:
 
 * **Add Change**: Users can add a change by clicking on the '+' button on the Register page, which will bring them to this input page.
 
-  The dates auto-populate to the current date and are not editable.  The Gross Cost also auto-calculates, and is the sum of the Nett Cost, Contingencies and Main Contractor On-Costs.  This ensures that there is no manual error in the calculation.
+  The Change Nr auto-populates based on incrementing the Nr of records in the DB collection.  The field is still editable in order that users can customise, as it is sometimes necessary to coordinate these values with other consultants working on projects.
+
+  The Gross Cost also auto-calculates, and is the sum of the Nett Cost, Contingencies and Main Contractor On-Costs.  This ensures that there is no manual error in the calculation.
 
   ![Add Change](/READMEinfo/existingF_addChange.jpg "Add Change")
 
