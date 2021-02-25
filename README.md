@@ -28,7 +28,7 @@ The website will provide a consistent approach in the reporting of costs and cha
 
 On any property development, there will be methods for tracking and reporting costs.  A cost manager will normally implement a simple cost tracker utilising an Excel spreadsheet to list the changes and report this back to the Developer/Client.
 
-I currently work for a developer and we require our cost managers to implement these procedures. The cost managers utilise the Excel cost tracker which can be viewed [here](XXXXXXXXXXX)
+I currently work for a developer and we require our cost managers to implement these procedures. The cost managers utilise the Excel cost tracker which can be viewed [here](/READMEinfo/CostTracker.xlsx/)
 
 My aspiration is to incorporate the principles of this template into a more robust data management system which can be used for different construction projects by different developers / clients.
 
@@ -351,9 +351,9 @@ The following tests were carried out to ensure functionality before deployment:-
 * Results:-
   * The period filter operated as expected, but removing the Changes with dates outwith the 30 day period.
 
-**Test**: Test zero values inputted into fields in Add Change page
+**Test**: Test empty values in fields on the Add Change page
 * Steps followed:-
-  1. Entered zero values into fields and submit form
+  1. Entered no values into fields (ie did not enter the field) and submitted form
   2. Check Register loads
   3. Click on Change to View/Edit and confirm item loads
 * Results:-
@@ -367,10 +367,10 @@ The following tests were carried out to ensure functionality before deployment:-
 **Test**: To test the thousand separator included in value fields, different values inputted to test the Add Change page
 * Steps followed:-
   1. Entered values of 
-      - '100000'(one hundred thousand), 
+      - '100000' (one hundred thousand), 
       - '1000000' (one million), and 
       - '100000000' (one hundred million)  
-      
+
       to test how the form handles the values on (a) calculation of Gross Total and (b) submission of values to the DB
   2. Check that Gross Total is calculating properly
   2. Check Register loads
@@ -382,7 +382,6 @@ The following tests were carried out to ensure functionality before deployment:-
 * Fix:-
   * JS function which removes the ',' from the number strings updated to omit all ','.
   * This now allows numbers of 999,999 to function on the website as anticipated.
-
 
 During the on-going testing and development of the site, bugs were discovered and resolved.  These can be reviewed in the list of Git commits, specifically those with the 'fix' prefix.
 
@@ -400,18 +399,14 @@ During the development of the website, and again as a final, comprehensive and i
 
 ### Known Bugs
 
-The following issues were identified during development of the site.  Some of them have been fixed during the final checking, testing and deployment phase:-
-
-1. 
-2. 
-3. 
+There are no known bugs.
 
 
 ## Deployment
 
 ### For Development Purposes
 
-The website has been deployed on GitHub and is currently publicly accessible. 
+The website has been deployed on Heroku and is currently publicly accessible.
 
 The development of the website has been undertaken on VSCode.
 
@@ -421,7 +416,7 @@ The steps from start to present were:-
 
   1. Creation of repository on GitHub, utilising Code Institute template.
 
-  2. Clone of GitHub repository to local machine but utilising GitBash to implement the command:-  
+  2. Clone of GitHub repository to local machine but utilising GitBash to implement the command:-
   `git clone https://github.com/dkeddie/MS3.git`
 
 **Deployment to Heroku**
