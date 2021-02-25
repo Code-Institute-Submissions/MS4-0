@@ -351,6 +351,39 @@ The following tests were carried out to ensure functionality before deployment:-
 * Results:-
   * The period filter operated as expected, but removing the Changes with dates outwith the 30 day period.
 
+**Test**: Test zero values inputted into fields in Add Change page
+* Steps followed:-
+  1. Entered zero values into fields and submit form
+  2. Check Register loads
+  3. Click on Change to View/Edit and confirm item loads
+* Results:-
+  * Register and View/Edit Change pages do not load.
+  * On checking the DB, any fields not inputted with a value become 'null'.
+  * Consequently, Jinja2 is not able to input valid text within the field.
+* Fix:-
+  * JS function included to populate any empty fields with '0' before the form is submitted.  This is implemented when the Submit button is clicked.
+  * The Add change function now operates so that no values need to be inputted in order to function, the default value of these fields will now be '0'/zero.
+
+**Test**: To test the thousand separator included in value fields, different values inputted to test the Add Change page
+* Steps followed:-
+  1. Entered values of 
+      - '100000'(one hundred thousand), 
+      - '1000000' (one million), and 
+      - '100000000' (one hundred million)  
+      
+      to test how the form handles the values on (a) calculation of Gross Total and (b) submission of values to the DB
+  2. Check that Gross Total is calculating properly
+  2. Check Register loads
+  3. Click on Change to View/Edit and confirm item loads
+* Results:-
+  * Value of 100,000 operates as expected.
+  * Values of 1,000,000 and 100,000,000 do not calculate the Gross Total correctly.  The function to omit the only omits the first ',' from the values, preventing the calculation.
+  * The Register and View/Edit pages do load, but are not the correct/anticipated values.
+* Fix:-
+  * JS function which removes the ',' from the number strings updated to omit all ','.
+  * This now allows numbers of 999,999 to function on the website as anticipated.
+
+
 During the on-going testing and development of the site, bugs were discovered and resolved.  These can be reviewed in the list of Git commits, specifically those with the 'fix' prefix.
 
 For a list of the Git Commit history, this can be viewed [here](https://github.com/dkeddie/MS2/commits/master)
