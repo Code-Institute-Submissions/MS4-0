@@ -23,6 +23,17 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+@app.route("/dashboard", methods=["GET"])
+def dashboard():
+
+    # ensures dashboard only accessible if user logged in
+    if not session.get('user') is None:
+        return render_template("dashboard.html")
+
+    else:
+        return redirect(url_for("login"))
+
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -49,17 +60,6 @@ def login():
             return redirect(url_for("login"))
 
     return render_template("login.html")
-
-
-@app.route("/dashboard", methods=["GET"])
-def dashboard():
-
-    # ensures dashboard only accessible if user logged in
-    if not session.get('user') is None:
-        return render_template("dashboard.html")
-
-    else:
-        return redirect(url_for("login"))
 
 
 @app.route("/getbudget", methods=["GET"])

@@ -28,7 +28,7 @@ The website will provide a consistent approach in the reporting of costs and cha
 
 On any property development, there will be methods for tracking and reporting costs.  A cost manager will normally implement a simple cost tracker utilising an Excel spreadsheet to list the changes and report this back to the Developer/Client.
 
-I currently work for a developer and we require our cost managers to implement these procedures. The cost managers utilise the Excel cost tracker which can be viewed [here](/READMEinfo/CostTracker.xlsx/)
+I currently work for a developer and we require our cost managers to implement these procedures. The cost managers utilise the Excel cost tracker which can be viewed [here](/READMEinfo/CostTracker.xlsx)
 
 My aspiration is to incorporate the principles of this template into a more robust data management system which can be used for different construction projects by different developers / clients.
 
