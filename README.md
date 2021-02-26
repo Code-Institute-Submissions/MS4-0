@@ -493,6 +493,11 @@ Should you wish to deploy your own version of the website, the following steps m
 
 All content and code was written by the developer, except where taken from libraries or documented within this file or the Code files.
 
+### Code
+
+* Snackbars - flash messages which hover over the page are adapted and inspired from [W3Schools](https://www.w3schools.com/howto/howto_js_snackbar.asp)
+* Clickable table rows - code to make the row clickable to View/Edit the item was taken from [electrictoolbox](https://electrictoolbox.com/jquey-make-entire-table-row-clickable/)
+
 ### Acknowledgements
 
 Thank you to my mentor for feedback and advice given throughout the project.
