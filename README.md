@@ -179,13 +179,46 @@ An overview of the features on the website are listed below:
   ![Log Out](/READMEinfo/existingF_logout.jpg "Log Out")
 
 
+### Database
+
+In order to implement CRUD (Create, Read, Update, Delete) functionality on the website, MongoDB - a NoSQL database - is used. A number of collections were created to support the operation of the website.  A record/extract from each collection has been inlcuded below for reference:-
+
+* Register - this is the primary collection of the database, implementing full CRUD functionality which enables users to manage and track the cost of changes occurring on a project.  
+![Register](/READMEinfo/DB_change.jpg "Users")  
+Create [Y]  Read [Y]  Update [Y]  Delete [Y]  
+Users are able create records on the 'Add' page.  
+The read functionality is implemented in a variety of different ways across the website, whether it is through the Dashboard and the computation of values of the records to display a summary, the full list of records of the collection on the Register, or viewing the details of the record on the View page.
+Records can be edited or deleted from the View page.
+
+* Users - this collection is used to allow users to Login and new records are created when a user registers.
+![users](/READMEinfo/DB_users.jpg "Users")  
+Create [Y]  Read [Y]  Update [N]  Delete [N]
+Update and Delete functionality could be implemented in future updates of the website.
+
+* Status and Change Type - these collections are fixed and not intended to be changeable by Users.  They provide the options in Input Fields to Add / Edit a change.  
+![Status](/READMEinfo/DB_status.jpg "Status")
+![Change Type](/READMEinfo/DB_changetype.jpg "Change Type")  
+Create [N]  Read [Y]  Update [N]  Delete [N]
+It is not intended to permit users to add, change or delete these options in order that they are permanent and consistent.  They are associated with wider functionality of the website, including the Filters, and allowing further CRUD functionality would disrupt them (without further wider development of the website).
+
+* Budget - this collection is currently only intended to host 1 record.  
+![Budget](/READMEinfo/DB_budget.jpg "Budget")
+Create [N]  Read [Y]  Update [Y]  Delete [N]
+The record is required from the outset, even if the budget has not been established and the values are '0'/zero, so there is no requirement for Create functionality.  Likewise, the record cannot nor should be deleted.
+
+
 ### Features to Implement in the Future
 
 The functions implemented on this website are for demonstration purposes only at this stage, there is further development required before the website can be deployed for a live development.  Those features required before live deployment include:-
 
+* **Currency:** Ability to change the default currency displayed for the project.
+* **Multiple Projects:** Currently the website assumes that there is only one project.  Extend the functionality of the application to enable the cost tracking of multiple projects.
+* **Filter memory:** When a page reloads, the Filter currently returns to the default selection. Future development would consider maintaining selected filter options on page re-loads with a 'Reset' option to return to the default selection.
 * **Authorisation of Registration:** After a user has registered, access will not be granted until an Administrator approves access and sets privileges.
+*  **Update of User Profile:** Currently the User Profile is limited to Read Only.  This will be updated to enable the update of user details and also to delete if access is no longer required.
 * **Access privileges:** Users will be granted different rights and viewer privileges dependent upon their role on the project. For example, a cost manager will be able to add and edit changes, whereas other users will only be able to view them.  An Adminstrator role will also be introduced for controlling these access privileges.
 * **Graphical Representation:** To enhance and make the user experience more engaging, the Dashboard can benefit from graphs or other figurative representations of the data in a more visually absorbing way.
+* **Upload Supporting Information:** Whilst the DB stores the high level costs associated with the change, being able to upload supporting information (breakdown of costs, design information) to provide full details of the change would be beneficial to users.
 
 <br>
 
@@ -199,6 +232,9 @@ The functions implemented on this website are for demonstration purposes only at
 * [Python](https://www.python.org/)
 
 ### Frameworks, Libraries and Programmes Used 
+
+* [MongoDB](https://mongodb.com/)
+MongoDB provides the backend database for storing the information submitted from, and viewed on, the website.
 
 * [MaterializeCSS](https://materializecss.com/)  
 Materialize is generally used to assist with the layout, utilising the in-built grid system, and design functionality.
@@ -292,13 +328,13 @@ In order to check the HTML, the code was copied by 'Text Input' on the validator
 
 **Results**
   - Dashboard
-  ![Dashboard](READMEinfo\W3CValidator-Dashboard.jpg "Dashboard")
+  ![Dashboard](READMEinfo/W3CValidator-Dashboard.jpg "Dashboard")
   - Register
-  ![Regsiter](READMEinfo\W3CValidator-Register.jpg "Register")
+  ![Regsiter](READMEinfo/W3CValidator-Register.jpg "Register")
   - Add Change
-  ![Add Change](READMEinfo\W3CValidator-AddChange.jpg "Add Change")
+  ![Add Change](READMEinfo/W3CValidator-AddChange.jpg "Add Change")
   - Edit Change
-  ![Edit Change](READMEinfo\W3CValidator-Dashboard.jpg "Edit Change")
+  ![Edit Change](READMEinfo/W3CValidator-Dashboard.jpg "Edit Change")
 
 
 <br>
